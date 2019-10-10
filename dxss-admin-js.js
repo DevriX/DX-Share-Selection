@@ -1,19 +1,15 @@
 var lists = [];
 lists.push( Array('...', '#', 'favicon' ));
-lists.push( Array('Twitter', 'http://twitter.com/home?status=%ts {url}', 'favicon') );
-lists.push( Array('Facebook', 'http://www.facebook.com/sharer.php?t=%s&u={url}', 'favicon') );
+lists.push( Array('Twitter', 'https://twitter.com/intent/tweet?text=%s', 'favicon') );
+lists.push( Array('Facebook', 'http://www.facebook.com/sharer.php?u={url}&quote=%s', 'favicon') );
 lists.push( Array('Wikipedia (en)', 'http://en.wikipedia.org/w/index.php?title=Special:Search&search=%s', 'favicon') );
 lists.push( Array('Google Maps', 'http://maps.google.com/?q=%s', 'favicon') );
-lists.push( Array('Google Reader', 'http://www.google.com/reader/link?title={title}&snippet=%s&url={url}', 'http://www.google.com/reader/ui/favicon.ico') );
-lists.push( Array('Google Buzz', 'http://www.google.com/buzz/post?url={url}', 'http://www.google.com/intl/da_ALL/mobile/buzz/icon.png') );
 lists.push( Array('Email', 'mailto:?subject={title}&amp;body=%s - {url}', 'http://mail.google.com/favicon.ico') );
-lists.push( Array('Print', 'http://www.printfriendly.com/print?url={url}', 'http://www.printfriendly.com/images/printfriendly.ico') );
-lists.push( Array('Digg', 'http://digg.com/submit?phase=2&amp;url={url}&amp;title={title}&amp;bodytext=%s', 'favicon') );
-lists.push( Array('Blogger', 'http://www.blogger.com/blog_this.pyra?t&u={url}&n={title}&pli=1', 'favicon') );
-lists.push( Array('LinkedIn', 'http://www.linkedin.com/shareArticle?mini=0&url={url}&title={title}&summary=%s', 'favicon') );
-lists.push( Array('Orkut', 'http://promote.orkut.com/preview?nt=orkut.com&amp;tt={title}&amp;du={url}&amp;cn=%s', 'http://orkut.com/favicon.ico') );
-lists.push( Array('Tumblr', 'http://www.tumblr.com/share?v=3&amp;u={url}&amp;t={title}&amp;s=%s', 'favicon') );
-lists.push( Array('Posterous', 'http://posterous.com/share?linkto={url}&title={title}&selection=%s', 'http://posterous.com/images/favicon.png') );
+lists.push( Array('Tumblr', 'https://www.tumblr.com/widgets/share/tool?url={url}&caption=%s', 'favicon') );
+// Not sure if these should stay...
+// lists.push( Array('Blogger', 'http://www.blogger.com/blog_this.pyra?t&u={url}&n={title}&pli=1', 'favicon') );
+// lists.push( Array('LinkedIn', 'https://www.linkedin.com/sharing/share-offsite/?url={url}', 'favicon') );
+
 
 $j = jQuery.noConflict();
 
