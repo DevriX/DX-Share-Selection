@@ -197,8 +197,9 @@ function dxss_scripts() {
 	## Get the Options
 	$dxss_settings = DXSS_Option_Helper::fetch_settings_data();
 	$dxss_scriptPlace = $dxss_settings['scriptPlace'];
-		
-	wp_enqueue_script('wp-selected-text-searcher', $dxss_pluginpath . 'dxss/jquery.selected-text-sharer.min.js', array('jquery'), null, $dxss_scriptPlace);
+
+	wp_enqueue_script('wp-selected-text-searcher', $dxss_pluginpath . 'dxss/dev/jquery.selected-text-sharer.js', array('jquery'), null, $dxss_scriptPlace);
+
 }
 
 ## Activate Jquery the Jquery

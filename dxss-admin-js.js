@@ -11,6 +11,7 @@ lists.push( Array('Tumblr', 'https://www.tumblr.com/widgets/share/tool?url={url}
 // lists.push( Array('LinkedIn', 'https://www.linkedin.com/sharing/share-offsite/?url={url}', 'favicon') );
 
 
+
 $j = jQuery.noConflict();
 
 $j(document).ready(function(){
@@ -68,7 +69,7 @@ $j(document).ready(function(){
 	});
 	
 	$j('.closeHelp, .openHelp').toggle(function(){
-		$j('.helpWindow').fadeIn();
+		$j('.helpWindow').fadeIn(); 
 	},function(){
 		$j('.helpWindow').fadeOut();
 	});
