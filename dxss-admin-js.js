@@ -6,10 +6,6 @@ lists.push( Array('Wikipedia (en)', 'http://en.wikipedia.org/w/index.php?title=S
 lists.push( Array('Google Maps', 'http://maps.google.com/?q=%s', 'favicon') );
 lists.push( Array('Email', 'mailto:?subject={title}&amp;body=%s - {url}', 'http://mail.google.com/favicon.ico') );
 lists.push( Array('Tumblr', 'https://www.tumblr.com/widgets/share/tool?url={url}&caption=%s', 'favicon') );
-// Not sure if these should stay...
-// lists.push( Array('Blogger', 'http://www.blogger.com/blog_this.pyra?t&u={url}&n={title}&pli=1', 'favicon') );
-// lists.push( Array('LinkedIn', 'https://www.linkedin.com/sharing/share-offsite/?url={url}', 'favicon') );
-
 
 $j = jQuery.noConflict();
 
@@ -36,7 +32,7 @@ $j(document).ready(function(){
 		if($j('#addList').val() == 'moreButtons'){
 			$j('.wpsrBox').fadeIn();
 			$j('#dxss_list_search').focus();
-		}else{
+		} else {
 			if( $j(this).val() > 0 ) {
 				val = $j('#dxss_lists').val() + "\n" + lists[$j(this).val()];
 				$j('#dxss_lists').val(val);
@@ -68,7 +64,7 @@ $j(document).ready(function(){
 	});
 	
 	$j('.closeHelp, .openHelp').toggle(function(){
-		$j('.helpWindow').fadeIn();
+		$j('.helpWindow').fadeIn(); 
 	},function(){
 		$j('.helpWindow').fadeOut();
 	});
