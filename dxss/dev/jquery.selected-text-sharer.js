@@ -88,7 +88,7 @@
 
     stsBoxEle.css({
       'display': 'none',
-      'z-index': 1000,
+      'z-index': 200,
       'position': 'absolute',
       'overflow': 'hidden',
       'border': '1px solid #CCC',
@@ -127,7 +127,7 @@
     });
 
     $('.stsBox ul, .stsBox li').css({
-      'padding': '8px 12px',
+      'padding': '2px',
       'cursor': 'pointer',
       'list-style-type': 'none',
       'transition': 'all .3s ease',

@@ -72,7 +72,7 @@ function dxss_admin_js() {
 	global $dxss_pluginpath;
 	$admin_js_url = $dxss_pluginpath . 'dxss-admin-js.js';
 	$color_url = $dxss_pluginpath . '/js/farbtastic/farbtastic.js';
-	$dxss_js = $dxss_pluginpath . '/dxss/jquery.selected-text-sharer.min.js';
+	$dxss_js = $dxss_pluginpath . '/dxss/dev/jquery.selected-text-sharer.js';
 
 	if (isset($_GET['page']) && $_GET['page'] == 'dx-share-selection') {
 		wp_enqueue_script('jquery');
