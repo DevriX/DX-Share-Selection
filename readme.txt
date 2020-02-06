@@ -33,7 +33,7 @@ Allows you to share/search selected text from your site - select a snippet, sear
 * Simple and light interface.
 * Template system for adding links to the popup.
 * No knowledge of coding required.
-* Integration with [WP Socializer plugin](http://www.aakashweb.com/wordpress-plugins/wp-socializer/)
+* Integration with [WP Socializer plugin](https://wordpress.org/plugins/wp-socializer//)
 
 == Installation ==
 

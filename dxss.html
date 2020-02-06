@@ -151,11 +151,11 @@
 	<p><?php _e('You can install the powerful WP Socializer plugin in one click securely by clicking the Install button below.', 'dxss'); ?></p>
 	    <?php
 	$nonce= wp_create_nonce ('dxss-nonce');
-	$installUrl = 'update.php?action=install-plugin&plugin=wp-socializer&_wpnonce=' . $nonce;
+	$installUrl = 'https://wordpress.org/plugins/wp-socializer/' . $nonce;
 	?>
 	<p align="center"><a href="<?php echo $installUrl; ?>" target="_blank" class="button-primary"><?php _e('Install Plugin', 'dxss'); ?></a></p>
 												       <b><?php _e('Note:', 'dxss'); ?></b><br />
-													   <small class="smallText"><?php _e('DX share Selection requires to install WP Socializer to link the additional 98 buttons. <a href="http://www.aakashweb.com/wordpress-plugins/wp-socializer/" target="_blank">See here</a> for more info', 'dxss'); ?></small>
+													   <small class="smallText"><?php _e('DX share Selection requires to install WP Socializer to link the additional 98 buttons. <a href="https://wordpress.org/plugins/wp-socializer/" target="_blank">See here</a> for more info', 'dxss'); ?></small>
 																     <?php endif; ?>
 																      </div>
   
