@@ -62,17 +62,21 @@ $j(document).ready(function(){
 			$j('#dxss_lists').val(val);
 		}
 	});
-	
-	$j('.closeHelp, .openHelp').toggle(function(){
-		$j('.helpWindow').fadeIn(); 
-	},function(){
+
+	$j('.openHelp').click(function(){
+		$j('.helpWindow').fadeIn();
+	});
+
+	$j('.closeHelp').click(function(){
 		$j('.helpWindow').fadeOut();
 	});
-	
-	$j('.closeLinks, .openWpsrLinks').toggle(function(){
+
+	$j('.openWpsrLinks').click(function(){
 		$j('.wpsrBox').fadeIn();
 		$j('#dxss_list_search').focus();
-	},function(){
+	});
+
+	$j('.closeLinks').click(function(){
 		$j('.wpsrBox').fadeOut();
 	});
 	
