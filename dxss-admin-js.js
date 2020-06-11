@@ -1,6 +1,6 @@
 var lists = [];
 lists.push( Array('...', '#', 'favicon' ));
-lists.push( Array('Twitter', 'https://twitter.com/intent/tweet?text=%s', 'favicon') );
+lists.push( Array('Twitter', 'https://twitter.com/intent/tweet?text=%s {url}', 'favicon') );
 lists.push( Array('Facebook', 'http://www.facebook.com/sharer.php?u={url}&quote=%s', 'favicon') );
 lists.push( Array('Wikipedia (en)', 'http://en.wikipedia.org/w/index.php?title=Special:Search&search=%s', 'favicon') );
 lists.push( Array('Google Maps', 'http://maps.google.com/?q=%s', 'favicon') );

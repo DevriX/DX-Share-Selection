@@ -25,7 +25,7 @@
 		<input type="button" class="toolBt openHelp button" value="<?php _e('Help', 'dxss'); ?>" />
 	    </tr>
 	    <tr>
-	      <td colspan="2"><textarea name="dxss_lists" id="dxss_lists"><?php echo $dxss_lists; ?></textarea>
+	      <td colspan="2"><textarea name="dxss_lists" id="dxss_lists"><?php echo htmlentities($dxss_lists); ?></textarea>
 		<span class="smallText"><?php _e('Format : Name, Share/Search URL, Icon URL', 'dxss'); ?></span>					  </td>
 	    </tr>
 	  </table>

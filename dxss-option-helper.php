@@ -19,7 +19,7 @@ class DXSS_Option_Helper {
 			
 			self::$dxss_settings_data = array(
 					'title' => __('Share this text ...', 'dxss'),
-					'lists' => "Search, $searchUrl, favicon\nTweet this, http://twitter.com/home?status=%ts {url}, favicon",
+					'lists' => "Search,$searchUrl,favicon\nTwitter,https://twitter.com/intent/tweet?text=%s {url},favicon",
 					'borderColor' => '#444',
 					'bgColor' => '#fff',
 					'titleColor' => '#f2f2f2',
