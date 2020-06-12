@@ -308,7 +308,7 @@ function dxss_admin_page(){
     /* Load the admin menu html
      * It has php and html mixed up, so a simple readfile() won't work.
      */
-    require 'dxss.html';
+    require 'dxss.php';
 }
 
 ?>
