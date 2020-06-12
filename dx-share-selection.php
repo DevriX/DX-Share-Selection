@@ -39,7 +39,7 @@ function dxss_is_active(){
 function dxss_plugin_activate(){
 	update_option("dxss_active", 1);
 }
-register_deactivation_hook(__FILE__, 'dxss_plugin_activate');
+register_activation_hook(__FILE__, 'dxss_plugin_activate');
 
 ## WPSTS plugin deactivate
 function dxss_plugin_deactivate(){
