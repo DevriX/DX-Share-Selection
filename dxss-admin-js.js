@@ -110,7 +110,7 @@ $j(document).ready(function(){
 	});
 	
 	$j('.dxss_wpsr_sites a').click(function(){
-		val = $j('#dxss_lists').val() + "\n" + $j(this).text() + ',' + $j(this).attr('rel') + ',' + 'favicon';
+		val = $j('#dxss_lists').val() + "\n" + $j(this).text() + ',' + decodeURIComponent($j(this).attr('rel')) + ',' + 'favicon';
 		$j('#dxss_lists').val(val);
 		$j(this).after('<span class="addedInfo">  Added !</span>');
 		$j('.addedInfo').fadeOut('100');

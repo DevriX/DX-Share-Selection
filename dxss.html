@@ -131,7 +131,7 @@
   </div>
   
   <div class="lightBox wpsrBox bottomShadow">
-    <?php if(function_exists('wp_socializer')): ?>
+    <?php if( class_exists( 'WP_Socializer' ) ): ?>
      <input type="button" class="closeLinks close button" value="Close" />
      <h3><?php _e('Insert more social buttons', 'dxss'); ?></h3>
 	  <small class="smallText"><?php _e('These buttons are taken from wp-socializer plugin. You can now use these buttons for wp-selected-text-searcher', 'dxss'); ?></small>
