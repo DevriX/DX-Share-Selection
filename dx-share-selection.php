@@ -225,17 +225,19 @@ function dxss_jquery_plugin_activate(){
 "<script type='text/javascript'>
 /* <![CDATA[ */
 	jQuery(document).ready(function(){
-		jQuery('body').selectedTextSharer({
-			title : '$dxss_title',
-			lists : '" . dxss_get_processed_list() . "',
-			truncateChars : '$dxss_truncateChars',
-			extraClass : '$dxss_extraClass',
-			borderColor : '$dxss_borderColor',
-			background : '$dxss_bgColor',
-			titleColor : '$dxss_titleColor',
-			hoverColor : '$dxss_hoverColor',
-			textColor : '$dxss_textColor'
-		});
+		if(jQuery('" . $dxss_element . "').length > 0){
+			jQuery('" . $dxss_element . "').selectedTextSharer({
+				title : '$dxss_title',
+				lists : '" . dxss_get_processed_list() . "',
+				truncateChars : '$dxss_truncateChars',
+				extraClass : '$dxss_extraClass',
+				borderColor : '$dxss_borderColor',
+				background : '$dxss_bgColor',
+				titleColor : '$dxss_titleColor',
+				hoverColor : '$dxss_hoverColor',
+				textColor : '$dxss_textColor'
+			});
+		}
 	});
 /* ]]>*/
 </script>\n";
