@@ -107,7 +107,7 @@
     stsBoxEle.find('.title').css({
       'color': options.textColor,
       'background': options.titleColor,
-      'padding': '3',
+      'padding': '10px',
       'border-bottom': '1px solid #e5e5e5'
     });
 
@@ -123,7 +123,8 @@
     });
 
     stsBoxEle.find('.list').css({
-      'background': options.background
+      'background': options.background,
+      'padding': '7px'
     });
 
     $('.stsBox ul, .stsBox li').css({
@@ -131,7 +132,12 @@
       'cursor': 'pointer',
       'list-style-type': 'none',
       'transition': 'all .3s ease',
-      'user-select': 'none'
+      'user-select': 'none',
+      'margin-bottom' : '5px'
+    });
+
+    $('.stsBox ul, .stsBox li img').css({
+      'margin-bottom' : '3px'
     });
 
 
