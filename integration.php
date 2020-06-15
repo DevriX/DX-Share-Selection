@@ -1,11 +1,11 @@
 <?php
 /** DX Share Selection
-  * Contains the integration files for DX Share Selection with WP Socializer
-  * v 1.0
-  */
+ * Contains the integration files for DX Share Selection with WP Socializer
+ * v 1.0
+ */
 
 ## Get links from WP-Socializer
-function dxss_wpsr_get_links(){
+function dxss_wpsr_get_links() {
 
 	if ( class_exists( 'WPSR_Lists' ) ) {
 		$wpsr_socialsites_list = WPSR_Lists::social_icons();
@@ -27,4 +27,4 @@ function dxss_wpsr_get_links(){
 		}
 	}
 }
-?>
+
