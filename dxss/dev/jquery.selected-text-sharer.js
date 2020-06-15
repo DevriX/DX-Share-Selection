@@ -91,7 +91,7 @@
       'z-index': 200,
       'position': 'absolute',
       'overflow': 'hidden',
-      'border': '1px solid #CCC',
+      'border': '1px solid ' + options.borderColor,
       'white-space': 'nowrap',
       'font-family': 'sans-serif',
       'background': '#FFF',
