@@ -60,7 +60,11 @@
 						</tr>
 						<tr>
 							<td><?php _e( 'Extra Class', 'dxss' ); ?></td>
-							<td><input name="dxss_extraClass" type="text" value="<?php echo $dxss_extraClass; ?>"/></td>
+							<td>
+								<input name="dxss_extraClass" type="text" value="<?php echo $dxss_extraClass; ?>"/>
+								<br/>
+								<small class="smallText"><?php _e('The class will be added to the main Share Selection div'); ?></small>
+							</td>
 						</tr>
 						<tr>
 							<td><?php _e( 'Grep Element', 'dxss' ); ?></td>
@@ -87,13 +91,18 @@
 						</tr>
 						<tr>
 							<td height="35"><?php _e( 'Target Content', 'dxss' ); ?></td>
-							<td><input name="dxss_element" type="text" value="<?php echo $dxss_element; ?>"/></td>
+							<td>
+								<input name="dxss_element" type="text" value="<?php echo $dxss_element; ?>"/></br>
+								<small class="smallText"><?php _e('The DX Share Selection will work only with this jQuery selector'); ?></small>
+							</td>
 						</tr>
 						<tr>
 							<td><?php _e( 'Bitly Settings', 'dxss' ); ?></td>
-							<td><input name="dxss_bitly" type="text" value="<?php echo $dxss_bitly; ?>" size="40"/>
+							<td>
+								<input name="dxss_bitly" type="text" value="<?php echo $dxss_bitly; ?>" size="40"/>
 								<br/>
-								<small class="smallText"><?php _e( 'Bitly Username, API key. Used in twitter URL', 'dxss' ); ?></small></td>
+								<small class="smallText"><?php _e('Bitly Username, API key. Used for <code>{surl}</code>', 'dxss'); ?></small>
+							</td>
 						</tr>
 					</table>
 				</div>
