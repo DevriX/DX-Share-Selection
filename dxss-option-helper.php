@@ -26,7 +26,6 @@ class DXSS_Option_Helper {
 				'hoverColor'    => '#ffffcc',
 				'textColor'     => '#000',
 				'extraClass'    => '',
-				'grepElement'   => '',
 				'element'       => 'body',
 				'scriptPlace'   => '1',
 				'truncateChars' => '115',

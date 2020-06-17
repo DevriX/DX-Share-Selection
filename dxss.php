@@ -66,10 +66,6 @@
 								<small class="smallText"><?php _e('The class will be added to the main Share Selection div'); ?></small>
 							</td>
 						</tr>
-						<tr>
-							<td><?php _e( 'Grep Element', 'dxss' ); ?></td>
-							<td><input name="dxssgrep_element" type="text" value="<?php echo $dxssgrep_element; ?>"/></td>
-						</tr>
 					</table>
 				</div>
 

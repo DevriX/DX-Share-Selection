@@ -288,7 +288,6 @@ function dxss_admin_page() {
 		$dxss_settings['truncateChars'] = $_POST['dxss_truncateChars'];
 		$dxss_settings['element']       = $_POST['dxss_element'];
 		$dxss_settings['bitly']         = $_POST['dxss_bitly'];
-		$dxss_settings['grepElement']   = $_POST['dxssgrep_element'];
 
 		$dxss_settings['dxss_is_activate'] = 1;
 		DXSS_Option_Helper::update_settings_data( $dxss_settings );
@@ -315,7 +314,6 @@ function dxss_admin_page() {
 	$dxss_hoverColor  = $dxss_settings['hoverColor'];
 	$dxss_textColor   = $dxss_settings['textColor'];
 	$dxss_extraClass  = $dxss_settings['extraClass'];
-	$dxssgrep_element = $dxss_settings['grepElement'];
 
 	$dxss_element       = $dxss_settings['element'];
 	$dxss_scriptPlace   = $dxss_settings['scriptPlace'];
