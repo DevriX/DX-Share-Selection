@@ -241,6 +241,10 @@
       window.open(theUrl, 'sts_window');
     });
 
+    $('img').on('error', function (e) {
+      e.target.style.display = 'none'
+    })
+
     $(document).mousedown(function(e) {
       if ($(e.target).closest('.stsBox').length)
         return;
