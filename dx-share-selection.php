@@ -271,6 +271,19 @@ function dxss_admin_page(){
 		$dxss_settings['bitly'] = $_POST['dxss_bitly'];
 		$dxss_settings['grepElement'] = $_POST['dxssgrep_element'];
 
+		if ( isset( $_POST['dxss_deactDesktop'] ) ) {
+			$dxss_settings['deactDesktop'] = $_POST['dxss_deactDesktop'];
+
+		} else {
+			$dxss_settings['deactDesktop'] = 'activate';
+		}
+
+		if ( isset( $_POST['dxss_deactMobile'] ) ) {
+			$dxss_settings['deactMobile'] = $_POST['dxss_deactMobile'];
+		} else {
+			$dxss_settings['deactMobile'] = 'activate';
+		}
+		
 		$dxss_settings['dxss_is_activate'] = 1;
 		DXSS_Option_Helper::update_settings_data( $dxss_settings );
 		$dxss_updated = true;
@@ -303,6 +316,18 @@ function dxss_admin_page(){
 	$dxss_scriptPlace = $dxss_settings['scriptPlace'];
 	$dxss_truncateChars = $dxss_settings['truncateChars'];
 	$dxss_bitly = $dxss_settings['bitly'];
+	$dxss_deactDesktop = 'checked';
+	$dxss_deactMobile = 'checked';
+
+
+	if ( $dxss_settings['deactDesktop'] == "activate" ) {
+		$dxss_deactDesktop = '';
+	}
+
+	if (  $dxss_settings['deactMobile'] == "activate" ) {
+		$dxss_deactMobile = '';
+	}
+
     /* Load the admin menu html
      * It has php and html mixed up, so a simple readfile() won't work.
      */

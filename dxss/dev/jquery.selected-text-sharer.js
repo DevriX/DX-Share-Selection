@@ -189,7 +189,7 @@
 
     init($(this));
 
-    $(this).mouseup(function(e){
+    $(this).on('touchstart mouseup',function(e){
 
       if ($(e.target).closest('.stsBox').length){
         return;

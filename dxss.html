@@ -94,7 +94,15 @@
 	      <td><input name="dxss_bitly" type="text"	value="<?php echo $dxss_bitly; ?>" size="40"/>
 		<br />
 		<small class="smallText"><?php _e('Bitly Username, API key. Used in twitter URL', 'dxss'); ?></small>					  </td>
-	    </tr>
+		</tr>
+		<tr>
+			<td height="35"><?php _e('Deactivate on Desktop', 'dxss'); ?></td>
+			<td><input type="checkbox" name="dxss_deactDesktop" value="deactivate" <?php echo $dxss_deactDesktop ?> ></td>
+		</tr>
+		<tr>
+			<td height="35"><?php _e('Deactivate on Mobile', 'dxss'); ?></td>
+			<td><input type="checkbox" name="dxss_deactMobile" value="deactivate" <?php echo $dxss_deactMobile ?>></td>
+		</tr>
 	  </table>
 	</div>
 	
