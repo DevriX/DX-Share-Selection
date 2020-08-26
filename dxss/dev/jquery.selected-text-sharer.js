@@ -189,7 +189,7 @@
 
     init($(this));
 
-    $(this).on('touchend mouseup',function(e){
+    $(this).on('vmouseup',function(e){
 
       if ($(e.target).closest('.stsBox').length){
         return;
@@ -235,7 +235,7 @@
       window.open(theUrl, 'sts_window');
     });
 
-    $(document).on('touchstart mousedown ', function(e) {
+    $(document).on('vmousedown ', function(e) {
       if ($(e.target).closest('.stsBox').length)
         return;
 

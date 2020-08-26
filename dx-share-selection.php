@@ -198,7 +198,8 @@ function dxss_scripts() {
 	$dxss_settings = DXSS_Option_Helper::fetch_settings_data();
 	$dxss_scriptPlace = $dxss_settings['scriptPlace'];
 
-    wp_enqueue_script('wp-selected-text-searcher', $dxss_pluginpath . 'dxss/dev/jquery.selected-text-sharer.js', array('jquery'), null, $dxss_scriptPlace);
+	wp_enqueue_script('wp-selected-text-searcher', $dxss_pluginpath . 'dxss/dev/jquery.selected-text-sharer.js', array('jquery'), null, $dxss_scriptPlace);
+	wp_enqueue_script('jquery-mobile', $dxss_pluginpath . 'dxss/jquery.mobile-1.4.5.min.js', array('jquery'));
 }
 
 ## Activate Jquery the Jquery
