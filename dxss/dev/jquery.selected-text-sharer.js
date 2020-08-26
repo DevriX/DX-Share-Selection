@@ -235,7 +235,7 @@
       window.open(theUrl, 'sts_window');
     });
 
-    $(document).mousedown(function(e) {
+    $(document).on('touchend mousedown ', function(e) {
       if ($(e.target).closest('.stsBox').length)
         return;
 
