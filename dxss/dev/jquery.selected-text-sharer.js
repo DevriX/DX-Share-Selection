@@ -190,6 +190,8 @@
     init($(this));
 
     $(this).on('vmouseup',function(e){
+      $(this).on('vmouseup',function(e){
+
 
       if ($(e.target).closest('.stsBox').length){
         return;
@@ -225,6 +227,7 @@
             });
 
           }
+        });
         });
 
     $('.stsBox li').click(function(){
