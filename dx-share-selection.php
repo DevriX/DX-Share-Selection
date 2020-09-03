@@ -109,7 +109,7 @@ function dxss_admin_css() {
 add_action( 'admin_enqueue_scripts', 'dxss_admin_css' );
 
 // Bitly shorten url
-function dxss_shorten_url( $url, $format = 'xml' ) {
+function dxss_shorten_url( $url ) {
 
 	// Get the Options
 	$dxss_settings = DXSS_Option_Helper::fetch_settings_data();
@@ -122,21 +122,24 @@ function dxss_shorten_url( $url, $format = 'xml' ) {
 
 	$login   = trim( $bityly_split[0] );
 	$appkey  = trim( $bityly_split[1] );
-	$version = '2.0.1';
+	$version = '4';
 
-	$bitly = 'http://api.bit.ly/shorten?version=' . $version . '&longUrl=' . urlencode( $url ) . '&login=' . $login . '&apiKey=' . $appkey . '&format=' . $format;
+	$bitly   = 'https://api-ssl.bitly.com/v' . $version . '/shorten';
 
-	$response = file_get_contents( $bitly );
+	$response = wp_remote_post( $bitly, array(
+		'headers'     => array( 'Content-Type' => 'application/json; charset=utf-8', 'Authorization' => 'Bearer ' . $appkey ),
+		'body'        => json_encode( array( 'long_url' => $url ) ),
+		'method'      => 'POST',
+		'data_format' => 'body',
+	) );
 
-	if ( strtolower( $format ) == 'json' ) {
-		$json = @json_decode( $response, true );
+	if ( ! is_wp_error( $response ) ) {
+		$response_arr = json_decode( $response['body'], true );
 
-		return $json['results'][ $url ]['shortUrl'];
-	} else {
-		$xml = simplexml_load_string( $response );
-
-		return 'http://bit.ly/' . $xml->results->nodeKeyVal->hash;
+		return $response_arr['link'];
 	}
+
+	return false;
 }
 
 // One function for getting the url and title of the page
@@ -190,7 +193,7 @@ function dxss_get_processed_list() {
 	$replacable = array(
 		$info['permalink'],
 		$info['title'],
-		dxss_shorten_url( $info['permalink'], 'json' ),
+		dxss_shorten_url( $info['permalink'] ),
 		$blogname,
 		$rss,
 	);
