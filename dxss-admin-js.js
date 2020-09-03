@@ -118,6 +118,23 @@ $j( document ).ready( function() {
 	$j( '.preview' ).hover( function() {
 		listVal = $j( '#dxss_lists' ).val();
 		listsFinal = listVal.split( '\n' ).join( '|' );
+
+		terms = [
+			'{url}',
+			'{title}',
+			'{surl}',
+			'{blogname}',
+			'{rss-url}',
+		];
+		replacable = [
+			window.location.href,
+			document.title,
+			window.location.href,
+			document.title,
+			window.location.origin + '/feed',
+		];
+		listsFinal = listsFinal.replaceArray(terms, replacable);
+		
 		$j( '.preview' ).selectedTextSharer( {
 			title: $j( 'input[name="dxss_title"]' ).val(),
 			lists: listsFinal,
@@ -159,3 +176,14 @@ $j( document ).ready( function() {
 		$j( 'input[name=dxss_bitly]' ).val( defaultSetings.bitly );
 	} );
 } );
+
+
+String.prototype.replaceArray = function(find, replace) {
+	var replaceString = this;
+	var regex;
+	for (var i = 0; i < find.length; i++) {
+		regex = new RegExp(find[i], "g");
+		replaceString = replaceString.replace(regex, replace[i]);
+	}
+	return replaceString;
+};
