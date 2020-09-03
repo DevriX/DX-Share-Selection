@@ -220,9 +220,16 @@ function dxss_scripts() {
 	$dxss_settings    = DXSS_Option_Helper::fetch_settings_data();
 	$dxss_scriptPlace = $dxss_settings['scriptPlace'];
 
-	wp_enqueue_script('wp-selected-text-searcher', $dxss_pluginpath . 'dxss/dev/jquery.selected-text-sharer.js', array('jquery'), null, $dxss_scriptPlace);
-	wp_enqueue_script('jquery-mobile', $dxss_pluginpath . 'dxss/jquery.mobile-1.4.5.min.js', array('jquery'));
-	wp_enqueue_style( 'dsxx-css', $dxss_pluginpath . 'dxss-css.css' );
+	if( wp_is_mobile() && $dxss_settings['deactMobile'] == "activate" ) {
+		wp_enqueue_script('wp-selected-text-searcher', $dxss_pluginpath . 'dxss/dev/jquery.selected-text-sharer.js', array('jquery'), null, $dxss_scriptPlace);
+		wp_enqueue_script('jquery-mobile', $dxss_pluginpath . 'dxss/jquery.mobile-1.4.5.min.js', array('jquery'));
+		wp_enqueue_style( 'dsxx-css', $dxss_pluginpath . 'dxss-css.css' );
+
+	} elseif( ! wp_is_mobile() && $dxss_settings['deactDesktop'] == "activate" ) {
+		wp_enqueue_script('wp-selected-text-searcher', $dxss_pluginpath . 'dxss/dev/jquery.selected-text-sharer.js', array('jquery'), null, $dxss_scriptPlace);
+		wp_enqueue_script('jquery-mobile', $dxss_pluginpath . 'dxss/jquery.mobile-1.4.5.min.js', array('jquery'));
+		wp_enqueue_style( 'dsxx-css', $dxss_pluginpath . 'dxss-css.css' );
+	}
 }
 
 // Activate Jquery the Jquery
@@ -339,6 +346,22 @@ function dxss_admin_page() {
 	$dxss_element       = $dxss_settings['element'];
 	$dxss_scriptPlace   = $dxss_settings['scriptPlace'];
 	$dxss_truncateChars = $dxss_settings['truncateChars'];
+	$dxss_bitly = $dxss_settings['bitly'];
+	$dxss_deactDesktop = 'checked';
+	$dxss_deactMobile = 'checked';
+
+
+	if ( $dxss_settings['deactDesktop'] == "activate" ) {
+		$dxss_deactDesktop = '';
+	}
+
+	if (  $dxss_settings['deactMobile'] == "activate" ) {
+		$dxss_deactMobile = '';
+	}
+
+    /* Load the admin menu html
+     * It has php and html mixed up, so a simple readfile() won't work.
+     */
 	$dxss_bitly         = $dxss_settings['bitly'];
 	/*
 	 Load the admin menu html

@@ -101,6 +101,14 @@
 								<small class="smallText"><?php _e('Bitly Username, API key. Used for <code>{surl}</code>', 'dxss'); ?></small>
 							</td>
 						</tr>
+						<tr>
+							<td height="35"><?php _e('Deactivate on Desktop', 'dxss'); ?></td>
+							<td><input type="checkbox" name="dxss_deactDesktop" value="deactivate" <?php echo $dxss_deactDesktop ?> ></td>
+						</tr>
+						<tr>
+							<td height="35"><?php _e('Deactivate on Mobile', 'dxss'); ?></td>
+							<td><input type="checkbox" name="dxss_deactMobile" value="deactivate" <?php echo $dxss_deactMobile ?>></td>
+						</tr>
 					</table>
 					<div class="restore-button-parent"><input type="button" id="restore-optional" class="toolBt button" value="<?php _e('Restore Optional Settings', 'dxss'); ?>" /></div>
 				</div>
