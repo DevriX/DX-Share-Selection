@@ -339,32 +339,12 @@ function dxss_admin_page() {
 	$dxss_element       = $dxss_settings['element'];
 	$dxss_scriptPlace   = $dxss_settings['scriptPlace'];
 	$dxss_truncateChars = $dxss_settings['truncateChars'];
-<<<<<<< HEAD
-	$dxss_bitly = $dxss_settings['bitly'];
-	$dxss_deactDesktop = 'checked';
-	$dxss_deactMobile = 'checked';
-
-
-	if ( $dxss_settings['deactDesktop'] == "activate" ) {
-		$dxss_deactDesktop = '';
-	}
-
-	if (  $dxss_settings['deactMobile'] == "activate" ) {
-		$dxss_deactMobile = '';
-	}
-
-    /* Load the admin menu html
-     * It has php and html mixed up, so a simple readfile() won't work.
-     */
-    require 'dxss.html';
-=======
 	$dxss_bitly         = $dxss_settings['bitly'];
 	/*
 	 Load the admin menu html
 	 * It has php and html mixed up, so a simple readfile() won't work.
 	 */
 	require 'dxss.php';
->>>>>>> 999f2754ba273d41179f190ada2063d46529b83d
 }
 
 
