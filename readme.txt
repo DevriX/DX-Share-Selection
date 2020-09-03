@@ -1,11 +1,11 @@
 === DX Share Selection ===
 Contributors: nofearinc, devrix
-Donate link: http://devwp.eu/
-Author URI: http://devwp.eu/
+Author URI: https://devrix.com/
 Tags: posts, page, links, plugin, share, search, jquery, content, social, social bookmarking, tweet, Facebook, twitter, bitly
-Requires at least: 3.6
+Requires at least: 4.9
 Tested up to: 5.2.4
-Stable tag: trunk
+Stable tag: 1.4
+Requires PHP: 5.6
 
 Allows you to share/search selected text from your site - select a snippet, search for it or share it to popular social networks. 
 
@@ -33,7 +33,7 @@ Allows you to share/search selected text from your site - select a snippet, sear
 * Simple and light interface.
 * Template system for adding links to the popup.
 * No knowledge of coding required.
-* Integration with [WP Socializer plugin](http://www.aakashweb.com/wordpress-plugins/wp-socializer/)
+* Integration with [WP Socializer plugin](https://wordpress.org/plugins/wp-socializer//)
 
 == Installation ==
 
@@ -57,6 +57,12 @@ Yes, define the given selector in the admin section.
 2. Admin Page
 
 == Changelog ==
+
+= 1.4 =
+* Fixed 'Install plugin' link
+
+= 1.3 =
+* Fixed some errors 
 
 = 1.2 =
 * Fork and fixes from the original plugin version
