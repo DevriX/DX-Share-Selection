@@ -84,6 +84,10 @@ function dxss_admin_js() {
 	if ( isset( $_GET['page'] ) && $_GET['page'] == 'dx-share-selection' ) {
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'dx-share-selection', $admin_js_url, array( 'jquery' ) );
+		wp_localize_script( 'dx-share-selection', 'dx_share_selection', array(
+				'settings_data_default' => DXSS_Option_Helper::get_default_settings_data()
+			)
+		);
 		wp_enqueue_script( 'farbtastic', $color_url, array( 'jquery', 'dx-share-selection' ) );
 		wp_enqueue_script( 'dxss_js', $dxss_js, array( 'jquery', 'dx-share-selection', 'farbtastic' ) );
 	}

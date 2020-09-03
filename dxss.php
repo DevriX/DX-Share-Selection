@@ -67,6 +67,7 @@
 							</td>
 						</tr>
 					</table>
+					<div class="restore-button-parent"><input type="button" id="restore-customize" class="toolBt button" value="<?php _e('Restore Customize Settings', 'dxss'); ?>" /></div>
 				</div>
 
 				<h4><?php _e( 'Optional', 'dxss' ); ?></h4>
@@ -101,6 +102,7 @@
 							</td>
 						</tr>
 					</table>
+					<div class="restore-button-parent"><input type="button" id="restore-optional" class="toolBt button" value="<?php _e('Restore Optional Settings', 'dxss'); ?>" /></div>
 				</div>
 
 				<h4><?php _e( 'Preview', 'dxss' ); ?></h4>

@@ -130,4 +130,32 @@ $j( document ).ready( function() {
 			textColor: $j( 'input[name=dxss_textColor]' ).val(),
 		} );
 	} );
+
+	$j( '#restore-customize' ).click( function() {
+		const defaultSetings = dx_share_selection.settings_data_default;
+
+		$j( 'input[name=dxss_borderColor]' ).val( defaultSetings.borderColor );
+		$j( 'input[name=dxss_bgColor]' ).val( defaultSetings.bgColor );
+		$j( 'input[name=dxss_titleColor]' ).val( defaultSetings.titleColor );
+		$j( 'input[name=dxss_hoverColor]' ).val( defaultSetings.hoverColor );
+		$j( 'input[name=dxss_textColor]' ).val( defaultSetings.textColor );
+		$j( 'input[name=dxss_extraClass]' ).val( defaultSetings.extraClass );
+		$j( 'input[name=dxss_dxssgrep_element]' ).val( defaultSetings.grepElement );
+
+		$j( '.color' ).each( function() {
+			f.linkTo( this );
+		} ).focus( function() {
+			f.linkTo( this );
+		} );
+
+	} );
+
+	$j( '#restore-optional' ).click( function() {
+		const defaultSetings = dx_share_selection.settings_data_default;
+
+		$j( 'select[name=dxss_scriptPlace]' ).val( defaultSetings.scriptPlace );
+		$j( 'input[name=dxss_truncateChars]' ).val( defaultSetings.truncateChars );
+		$j( 'input[name=dxss_element]' ).val( defaultSetings.element );
+		$j( 'input[name=dxss_bitly]' ).val( defaultSetings.bitly );
+	} );
 } );
