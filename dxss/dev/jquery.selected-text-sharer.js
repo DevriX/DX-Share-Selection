@@ -190,43 +190,42 @@
     init($(this));
 
     $(this).on('vmouseup',function(e){
-
-      if ($(e.target).closest('.stsBox').length){
-        return;
-      }
-
-      if(getSelectionText() != ''){
-
-        if( $(this).height() == $('body').height() ){
-          stsBoxEle = $(this).find('.stsBox');
-        } else {
-          stsBoxEle = $(this).next('.stsBox');
+  
+        if ($(e.target).closest('.stsBox').length){
+          return;
         }
-
-        var x = e.pageX;
-        var y = e.pageY;
-
-        stsBoxEle.fadeIn('fast');
-        if( stsBoxEle.outerHeight() <= y ) {
-          stsBoxEle.css({
-            top: y - (stsBoxEle.outerHeight() + ( $('.stsBox li a').length  )),
-            left: x + 30
-          });
-              // The menu shouldn't get displayed out of the viewport
-            } else {
-              stsBoxEle.css({
-                top: y - ( stsBoxEle.outerHeight() - ( $('.stsBox li a').length  * 30 ) ),
-                left: x + 30
-              });
-            }
-
-            $('.stsBox li a').each(function(){
-              $(this).attr('rev', getSelectionText());
-            });
-
+  
+        if(getSelectionText() != ''){
+  
+          if( $(this).height() == $('body').height() ){
+            stsBoxEle = $(this).find('.stsBox');
+          } else {
+            stsBoxEle = $(this).next('.stsBox');
           }
+  
+          var x = e.pageX;
+          var y = e.pageY;
+  
+          stsBoxEle.fadeIn('fast');
+          if( stsBoxEle.outerHeight() <= y ) {
+            stsBoxEle.css({
+              top: y - (stsBoxEle.outerHeight() + ( $('.stsBox li a').length  )),
+              left: x + 30
+            });
+                // The menu shouldn't get displayed out of the viewport
+              } else {
+                stsBoxEle.css({
+                  top: y - ( stsBoxEle.outerHeight() - ( $('.stsBox li a').length  * 30 ) ),
+                  left: x + 30
+                });
+              }
+  
+              $('.stsBox li a').each(function(){
+                $(this).attr('rev', getSelectionText());
+              });
+  
+            }
         });
-
     $('.stsBox li').click(function(){
       sUrl = $(this).children('a').attr('rel');
       selectedText = $(this).children('a').attr('rev');
