@@ -113,15 +113,22 @@ function dxss_shorten_url( $url ) {
 
 	// Get the Options
 	$dxss_settings = DXSS_Option_Helper::fetch_settings_data();
-	$dxss_bitly    = $dxss_settings['bitly'];
-	$bityly_split  = explode( ',', $dxss_bitly );
+	$dxss_bitly    = isset( $dxss_settings['bitly'] ) ? $dxss_settings['bitly'] : '' ;
+	$dxss_bitly_token = isset( $dxss_settings['bitly_token'] ) ? $dxss_settings['bitly_token'] : '';
 
-	if ( $bityly_split[0] == '' || $bityly_split[1] == '' ) {
-		return false;
+	// If user used the old Bitly Settings, set the token value from there
+	if ( ! isset( $dxss_settings['bitly_token'] ) && ! empty( $dxss_bitly ) ) {
+		$bityly_split = explode( ',', $dxss_bitly );
+		if ( ! empty( $bityly_split[1] ) ) {
+			$dxss_bitly_token = $bityly_split[1];
+		}
 	}
 
-	$login   = trim( $bityly_split[0] );
-	$appkey  = trim( $bityly_split[1] );
+	if ( empty( $dxss_bitly_token ) ) {
+		return false;
+	}
+	
+	$appkey  = trim( $dxss_bitly_token);
 	$version = '4';
 
 	$bitly   = 'https://api-ssl.bitly.com/v' . $version . '/shorten';
@@ -300,7 +307,7 @@ function dxss_admin_page() {
 		$dxss_settings['scriptPlace']   = $_POST['dxss_scriptPlace'];
 		$dxss_settings['truncateChars'] = $_POST['dxss_truncateChars'];
 		$dxss_settings['element']       = $_POST['dxss_element'];
-		$dxss_settings['bitly']         = $_POST['dxss_bitly'];
+		$dxss_settings['bitly_token']   = $_POST['dxss_bitly_token'];
 
 		$dxss_settings['dxss_is_activate'] = 1;
 		DXSS_Option_Helper::update_settings_data( $dxss_settings );
@@ -331,7 +338,17 @@ function dxss_admin_page() {
 	$dxss_element       = $dxss_settings['element'];
 	$dxss_scriptPlace   = $dxss_settings['scriptPlace'];
 	$dxss_truncateChars = $dxss_settings['truncateChars'];
-	$dxss_bitly         = $dxss_settings['bitly'];
+	$dxss_bitly         = isset( $dxss_settings['bitly'] ) ? $dxss_settings['bitly'] : '';
+	$dxss_bitly_token   = isset( $dxss_settings['bitly_token'] ) ? $dxss_settings['bitly_token'] : '';
+
+	// If user used the old Bitly Settings, set the token value from there
+	if ( ! isset( $dxss_settings['bitly_token'] ) && ! empty( $dxss_bitly ) ) {
+		$bityly_split = explode( ',', $dxss_bitly );
+		if ( ! empty( $bityly_split[1] ) ) {
+			$dxss_bitly_token = $bityly_split[1];
+		}
+	}
+	
 	/*
 	 Load the admin menu html
 	 * It has php and html mixed up, so a simple readfile() won't work.

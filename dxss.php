@@ -94,11 +94,11 @@
 							</td>
 						</tr>
 						<tr>
-							<td><?php _e( 'Bitly Settings', 'dxss' ); ?></td>
+							<td><?php _e( 'Bitly Token', 'dxss' ); ?></td>
 							<td>
-								<input name="dxss_bitly" type="text" value="<?php echo $dxss_bitly; ?>" size="40"/>
+								<input name="dxss_bitly_token" type="text" value="<?php echo $dxss_bitly_token; ?>" size="40"/>
 								<br/>
-								<small class="smallText"><?php _e('Bitly Username, API key. Used for <code>{surl}</code>', 'dxss'); ?></small>
+								<small class="smallText"><?php _e('Bitly API Access Token. Used for <code>{surl}</code>', 'dxss'); ?> <a href="https://bitly.is/accesstoken" target="_blank">Generate here</a></small>
 							</td>
 						</tr>
 					</table>

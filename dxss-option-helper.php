@@ -15,7 +15,7 @@ class DXSS_Option_Helper {
 		'element' => 'body',
 		'scriptPlace' => '1',
 		'truncateChars' => '115',
-		'bitly' => ''
+		'bitly_token' => ''
 	);
 	
 	public static function fetch_settings_data() {

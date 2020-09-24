@@ -10,7 +10,7 @@ function dxss_wpsr_get_links() {
 	if ( class_exists( 'WPSR_Lists' ) ) {
 		$wpsr_socialsites_list = WPSR_Lists::social_icons();
 		$i                     = 0;
-		foreach ( $wpsr_socialsites_list as $key => $value ) {
+		foreach ( $wpsr_socialsites_list as $key => $value ) { 
 			//Messenger needs fb-app-id
 			if ( in_array( $key, array( 'addtofavorites', 'fbmessenger' ) ) ) {
 				continue;
