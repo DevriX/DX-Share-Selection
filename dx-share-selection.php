@@ -77,11 +77,13 @@ add_filter( 'plugin_action_links', 'dxss_plugin_actions', 10, 2 );
 // Load the Javascripts
 function dxss_admin_js() {
 	global $dxss_pluginpath;
-	$admin_js_url = $dxss_pluginpath . 'dxss-admin-js.js';
-	$color_url    = $dxss_pluginpath . '/js/farbtastic/farbtastic.js';
-	$dxss_js      = $dxss_pluginpath . '/dxss/dev/jquery.selected-text-sharer.js';
 
 	if ( isset( $_GET['page'] ) && $_GET['page'] == 'dx-share-selection' ) {
+		
+		$admin_js_url = $dxss_pluginpath . 'assets/dist/js/dxss-admin-js.min.js';
+		$dxss_js      = $dxss_pluginpath . 'assets/dist/js/selected-text-sharer.min.js';
+		$color_url    = $dxss_pluginpath . 'js/farbtastic/farbtastic.js';
+		
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'dx-share-selection', $admin_js_url, array( 'jquery' ) );
 		wp_localize_script( 'dx-share-selection', 'dx_share_selection', array(
@@ -100,8 +102,8 @@ function dxss_admin_css() {
 	global $dxss_pluginpath;
 
 	if ( isset( $_GET['page'] ) && $_GET['page'] == 'dx-share-selection' ) {
-		wp_enqueue_style( 'dsxx-css', $dxss_pluginpath . 'dxss-css.css' );
-		wp_enqueue_style( 'dxss-admin-css', $dxss_pluginpath . 'dxss-admin-css.css' );
+		wp_enqueue_style( 'dsxx-css', $dxss_pluginpath . 'assets/dist/css/dxss-css.min.css' );
+		wp_enqueue_style( 'dxss-admin-css', $dxss_pluginpath . 'assets/dist/css/dxss-admin-css.min.css' );
 		wp_enqueue_style( 'farbtastic-css', $dxss_pluginpath . '/js/farbtastic/farbtastic.css' );
 	}
 }
@@ -232,9 +234,11 @@ function dxss_scripts() {
 	// Get the Options
 	$dxss_settings    = DXSS_Option_Helper::fetch_settings_data();
 	$dxss_scriptPlace = $dxss_settings['scriptPlace'];
+	
+	$dxss_js      = $dxss_pluginpath . 'assets/dist/js/selected-text-sharer.min.js';
 
-	wp_enqueue_style( 'dsxx-css', $dxss_pluginpath . 'dxss-css.css' );
-	wp_enqueue_script( 'wp-selected-text-searcher', $dxss_pluginpath . 'dxss/dev/jquery.selected-text-sharer.js', array( 'jquery' ), null, $dxss_scriptPlace );
+	wp_enqueue_style( 'dsxx-css', $dxss_pluginpath . 'assets/dist/css/dxss-css.min.css' );
+	wp_enqueue_script( 'wp-selected-text-searcher', $dxss_js, array( 'jquery' ), null, $dxss_scriptPlace );
 }
 
 // Activate Jquery the Jquery

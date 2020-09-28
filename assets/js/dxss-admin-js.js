@@ -149,7 +149,7 @@ $j( document ).ready( function() {
 	} );
 
 	$j( '#restore-customize' ).click( function() {
-		const defaultSetings = dx_share_selection.settings_data_default;
+		var defaultSetings = dx_share_selection.settings_data_default;
 
 		$j( 'input[name=dxss_borderColor]' ).val( defaultSetings.borderColor );
 		$j( 'input[name=dxss_bgColor]' ).val( defaultSetings.bgColor );
@@ -168,8 +168,8 @@ $j( document ).ready( function() {
 	} );
 
 	$j( '#restore-optional' ).click( function() {
-		const defaultSetings = dx_share_selection.settings_data_default;
-
+		var defaultSetings = dx_share_selection.settings_data_default;
+		
 		$j( 'select[name=dxss_scriptPlace]' ).val( defaultSetings.scriptPlace );
 		$j( 'input[name=dxss_truncateChars]' ).val( defaultSetings.truncateChars );
 		$j( 'input[name=dxss_element]' ).val( defaultSetings.element );
