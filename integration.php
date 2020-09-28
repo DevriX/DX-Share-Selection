@@ -15,7 +15,7 @@ function dxss_wpsr_get_links() {
 			if ( in_array( $key, array( 'addtofavorites', 'fbmessenger' ) ) ) {
 				continue;
 			}
-			if ( $i != 0 ) {
+			if ( 0 != $i ) {
 				$tempUrl = str_replace( '{permalink}', '{url}', $value['link'] );
 				$tempUrl = str_replace( array( '{excerpt}', '{excerpt-plain}' ), '%s', $tempUrl );
 				$tempUrl = str_replace( '{title-plain}', '{title}', $tempUrl );

@@ -28,7 +28,7 @@ require_once 'dxss-option-helper.php';
 
 // WPSTS Is active check
 function dxss_is_active() {
-	if ( get_option( 'dxss_active' ) == 1 ) {
+	if ( 1 == get_option( 'dxss_active' ) ) {
 		return 1;
 	} else {
 		return 0;
@@ -51,7 +51,7 @@ register_deactivation_hook( __FILE__, 'dxss_plugin_deactivate' );
 
 // Admin Notices
 function dxss_admin_notices() {
-	if ( isset( $_GET['page'] ) && ! dxss_is_active() && $_GET['page'] != 'dx-share-selection' ) {
+	if ( isset( $_GET['page'] ) && ! dxss_is_active() && 'dx-share-selection' != $_GET['page'] ) {
 		echo '<div class="updated fade"><p>' . __( '<b>DX Share Selection</b> plugin is intalled. You should immediately adjust <a href="options-general.php?page=dx-share-selection">the settings</a>', 'dxss' ) . '</p></div>';
 	}
 }
@@ -77,13 +77,11 @@ add_filter( 'plugin_action_links', 'dxss_plugin_actions', 10, 2 );
 // Load the Javascripts
 function dxss_admin_js() {
 	global $dxss_pluginpath;
+	$admin_js_url = $dxss_pluginpath . 'assets/dist/js/dxss-admin-js.min.js';
+	$dxss_js      = $dxss_pluginpath . 'assets/dist/js/selected-text-sharer.min.js';
+	$color_url    = $dxss_pluginpath . 'js/farbtastic/farbtastic.js';
 
-	if ( isset( $_GET['page'] ) && $_GET['page'] == 'dx-share-selection' ) {
-		
-		$admin_js_url = $dxss_pluginpath . 'assets/dist/js/dxss-admin-js.min.js';
-		$dxss_js      = $dxss_pluginpath . 'assets/dist/js/selected-text-sharer.min.js';
-		$color_url    = $dxss_pluginpath . 'js/farbtastic/farbtastic.js';
-		
+	if ( isset( $_GET['page'] ) && 'dx-share-selection' == $_GET['page'] ) {
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'dx-share-selection', $admin_js_url, array( 'jquery' ) );
 		wp_localize_script( 'dx-share-selection', 'dx_share_selection', array(
@@ -101,7 +99,7 @@ add_action( 'admin_enqueue_scripts', 'dxss_admin_js' );
 function dxss_admin_css() {
 	global $dxss_pluginpath;
 
-	if ( isset( $_GET['page'] ) && $_GET['page'] == 'dx-share-selection' ) {
+	if ( isset( $_GET['page'] ) && 'dx-share-selection' == $_GET['page'] ) {
 		wp_enqueue_style( 'dsxx-css', $dxss_pluginpath . 'assets/dist/css/dxss-css.min.css' );
 		wp_enqueue_style( 'dxss-admin-css', $dxss_pluginpath . 'assets/dist/css/dxss-admin-css.min.css' );
 		wp_enqueue_style( 'farbtastic-css', $dxss_pluginpath . '/js/farbtastic/farbtastic.css' );
@@ -166,7 +164,7 @@ function dxss_get_post_details() {
 	$permalink_outside_loop = ( ! empty( $_SERVER['HTTPS'] ) ) ? 'https://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'] : 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 	$title_outside_loop     = str_replace( '+', '%20', wp_title( '', 0 ) );
 	// If title is null
-	if ( $title_outside_loop == '' ) {
+	if ( '' == $title_outside_loop ) {
 		$title_outside_loop = str_replace( '+', '%20', get_bloginfo( 'name' ) );
 	}
 
@@ -317,12 +315,12 @@ function dxss_admin_page() {
 		DXSS_Option_Helper::update_settings_data( $dxss_settings );
 		$dxss_updated = true;
 
-		if ( get_option( 'dxss_active' ) == 0 ) {
+		if ( 0 == get_option( 'dxss_active' ) ) {
 			update_option( 'dxss_active', 1 );
 		}
 	}
 
-	if ( $dxss_updated == true ) {
+	if ( true == $dxss_updated ) {
 		echo "<div class='message updated'><p>Updated successfully</p></div>";
 	}
 
