@@ -11,6 +11,7 @@ class DXSS_Option_Helper {
 		'titleColor' => '#f2f2f2',
 		'hoverColor' => '#ffffcc',
 		'textColor' => '#000',
+		'titleTextColor' => '#000',
 		'extraClass' => '',
 		'element' => 'body',
 		'scriptPlace' => '1',

@@ -248,12 +248,13 @@ function dxss_jquery_plugin_activate() {
 	$dxss_title = $dxss_settings['title'];
 	$dxss_lists = $dxss_settings['lists'];
 
-	$dxss_borderColor = $dxss_settings['borderColor'];
-	$dxss_bgColor     = $dxss_settings['bgColor'];
-	$dxss_titleColor  = $dxss_settings['titleColor'];
-	$dxss_hoverColor  = $dxss_settings['hoverColor'];
-	$dxss_textColor   = $dxss_settings['textColor'];
-	$dxss_extraClass  = $dxss_settings['extraClass'];
+	$dxss_borderColor    = $dxss_settings['borderColor'];
+	$dxss_bgColor        = $dxss_settings['bgColor'];
+	$dxss_titleColor     = $dxss_settings['titleColor'];
+	$dxss_hoverColor     = $dxss_settings['hoverColor'];
+	$dxss_textColor      = $dxss_settings['textColor'];
+	$dxss_titleTextColor = $dxss_settings['titleTextColor'];
+	$dxss_extraClass     = $dxss_settings['extraClass'];
 
 	$dxss_element       = $dxss_settings['element'];
 	$dxss_scriptPlace   = $dxss_settings['scriptPlace'];
@@ -273,7 +274,8 @@ function dxss_jquery_plugin_activate() {
 				background : '$dxss_bgColor',
 				titleColor : '$dxss_titleColor',
 				hoverColor : '$dxss_hoverColor',
-				textColor : '$dxss_textColor'
+				textColor : '$dxss_textColor',
+				titleTextColor : '$dxss_titleTextColor'
 			});
 		}
 	});
@@ -299,12 +301,13 @@ function dxss_admin_page() {
 		$dxss_settings['title'] = $_POST['dxss_title'];
 		$dxss_settings['lists'] = preg_replace( '/^[ \t]*[\r\n]+/m', '', trim( stripslashes( $_POST['dxss_lists'] ) ) );
 
-		$dxss_settings['borderColor'] = $_POST['dxss_borderColor'];
-		$dxss_settings['bgColor']     = $_POST['dxss_bgColor'];
-		$dxss_settings['titleColor']  = $_POST['dxss_titleColor'];
-		$dxss_settings['hoverColor']  = $_POST['dxss_hoverColor'];
-		$dxss_settings['textColor']   = $_POST['dxss_textColor'];
-		$dxss_settings['extraClass']  = $_POST['dxss_extraClass'];
+		$dxss_settings['borderColor']    = $_POST['dxss_borderColor'];
+		$dxss_settings['bgColor']        = $_POST['dxss_bgColor'];
+		$dxss_settings['titleColor']     = $_POST['dxss_titleColor'];
+		$dxss_settings['hoverColor']     = $_POST['dxss_hoverColor'];
+		$dxss_settings['textColor']      = $_POST['dxss_textColor'];
+		$dxss_settings['titleTextColor'] = $_POST['dxss_titleTextColor'];
+		$dxss_settings['extraClass']     = $_POST['dxss_extraClass'];
 
 		$dxss_settings['scriptPlace']   = $_POST['dxss_scriptPlace'];
 		$dxss_settings['truncateChars'] = $_POST['dxss_truncateChars'];
@@ -330,12 +333,13 @@ function dxss_admin_page() {
 	$dxss_title = $dxss_settings['title'];
 	$dxss_lists = $dxss_settings['lists'];
 
-	$dxss_borderColor = $dxss_settings['borderColor'];
-	$dxss_bgColor     = $dxss_settings['bgColor'];
-	$dxss_titleColor  = $dxss_settings['titleColor'];
-	$dxss_hoverColor  = $dxss_settings['hoverColor'];
-	$dxss_textColor   = $dxss_settings['textColor'];
-	$dxss_extraClass  = $dxss_settings['extraClass'];
+	$dxss_borderColor    = $dxss_settings['borderColor'];
+	$dxss_bgColor        = $dxss_settings['bgColor'];
+	$dxss_titleColor     = $dxss_settings['titleColor'];
+	$dxss_hoverColor     = $dxss_settings['hoverColor'];
+	$dxss_textColor      = $dxss_settings['textColor'];
+	$dxss_titleTextColor = isset( $dxss_settings['titleTextColor'] ) ? $dxss_settings['titleTextColor'] : '';
+	$dxss_extraClass     = $dxss_settings['extraClass'];
 
 	$dxss_element       = $dxss_settings['element'];
 	$dxss_scriptPlace   = $dxss_settings['scriptPlace'];
@@ -349,6 +353,11 @@ function dxss_admin_page() {
 		if ( ! empty( $bityly_split[1] ) ) {
 			$dxss_bitly_token = $bityly_split[1];
 		}
+	}
+
+	// If user have not previously set Title Text Color use Text Color
+	if ( ! isset( $dxss_settings['titleTextColor'] ) ) {
+		$dxss_titleTextColor = $dxss_textColor;
 	}
 	
 	/*

@@ -17,7 +17,8 @@
      background : '#fff',
      titleColor : '#f2f2f2',
      hoverColor : '#ffffcc',
-     textColor : '#000'
+     textColor : '#000',
+     titleTextColor : '#000',
    };
 
    var options = $.extend(defaults, options);
@@ -105,7 +106,7 @@
     });
 
     stsBoxEle.find('.title').css({
-      'color': options.textColor,
+      'color': options.titleTextColor,
       'background': options.titleColor,
       'padding': '10px',
       'border-bottom': '1px solid #e5e5e5'

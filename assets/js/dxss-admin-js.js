@@ -145,6 +145,7 @@ $j( document ).ready( function() {
 			titleColor: $j( 'input[name=dxss_titleColor]' ).val(),
 			hoverColor: $j( 'input[name=dxss_hoverColor]' ).val(),
 			textColor: $j( 'input[name=dxss_textColor]' ).val(),
+			titleTextColor: $j( 'input[name=dxss_titleTextColor]' ).val(),
 		} );
 	} );
 
@@ -156,6 +157,7 @@ $j( document ).ready( function() {
 		$j( 'input[name=dxss_titleColor]' ).val( defaultSetings.titleColor );
 		$j( 'input[name=dxss_hoverColor]' ).val( defaultSetings.hoverColor );
 		$j( 'input[name=dxss_textColor]' ).val( defaultSetings.textColor );
+		$j( 'input[name=dxss_titleTextColor]' ).val( defaultSetings.titleTextColor );
 		$j( 'input[name=dxss_extraClass]' ).val( defaultSetings.extraClass );
 		$j( 'input[name=dxss_dxssgrep_element]' ).val( defaultSetings.grepElement );
 

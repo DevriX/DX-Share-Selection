@@ -51,6 +51,10 @@
 							<td><input name="dxss_titleColor" id="dxss_titleColor" class="color" type="text" value="<?php echo $dxss_titleColor; ?>"/></td>
 						</tr>
 						<tr>
+							<td height="30"><?php _e( 'Title Text Color', 'dxss' ); ?></td>
+							<td><input name="dxss_titleTextColor" id="dxss_titleTextColor" class="color" type="text" value="<?php echo $dxss_titleTextColor; ?>"/></td>
+						</tr>
+						<tr>
 							<td height="36"><?php _e( 'Hover Color', 'dxss' ); ?></td>
 							<td><input name="dxss_hoverColor" id="dxss_hoverColor" class="color" type="text" value="<?php echo $dxss_hoverColor; ?>"/></td>
 						</tr>
