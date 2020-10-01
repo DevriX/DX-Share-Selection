@@ -16,9 +16,14 @@
 							<td>&nbsp;</td>
 						</tr>
 						<tr>
-							<td height="33" colspan="2"><span class="smallText"><?php _e( 'Add buttons', 'dxss' ); ?></span>
-								<select name="select" id="addList">
-								</select>
+							<td height="33" colspan="2">
+								<div class="smallText"><?php _e( 'Add buttons', 'dxss' ); ?></div>
+								<div id="addList">
+							</td>
+						</tr>
+						<tr>
+							<td height="33" colspan="2">
+								<div class="smallText"><?php _e( 'Other buttons', 'dxss' ); ?></div>
 								<input type="button" id="addCustom" class="toolBt button" value="<?php _e( 'Add custom button', 'dxss' ); ?>"/>
 								<input type="button" id="addSearch" class="toolBt button" value="<?php _e( 'Add search button', 'dxss' ); ?>"/>
 								<input type="button" class="toolBt openWpsrLinks button" value="<?php _e( 'More buttons', 'dxss' ); ?>"/>
@@ -143,7 +148,7 @@
 	</div>
 
 	<div class="lightBox wpsrBox bottomShadow">
-		<?php if ( function_exists( 'wp_socializer' ) ): ?>
+		<?php if ( class_exists( 'WPSR_Lists' ) ): ?>
 			<input type="button" class="closeLinks close button" value="Close"/>
 			<h3><?php _e( 'Insert more social buttons', 'dxss' ); ?></h3>
 			<small class="smallText"><?php _e( 'These buttons are taken from wp-socializer plugin. You can now use these buttons for wp-selected-text-searcher', 'dxss' ); ?></small>

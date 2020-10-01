@@ -1,10 +1,10 @@
 var lists = [];
-lists.push( Array( '...', '#', 'favicon' ) );
 lists.push( Array( 'Twitter', 'https://twitter.com/intent/tweet?text=%s {url}', 'favicon' ) );
-lists.push( Array( 'Facebook', 'http://www.facebook.com/sharer.php?u={url}&quote=%s', 'favicon' ) );
-lists.push( Array( 'Wikipedia (en)', 'http://en.wikipedia.org/w/index.php?title=Special:Search&search=%s', 'favicon' ) );
+lists.push( Array( 'Facebook', 'https://www.facebook.com/sharer.php?u={url}&quote=%s', 'favicon' ) );
+lists.push( Array( 'Wikipedia (en)', 'https://en.wikipedia.org/w/index.php?title=Special:Search&search=%s', 'favicon' ) );
+lists.push( Array( 'Google Search', 'https://google.com/search?q=%s', 'favicon' ) );
 lists.push( Array( 'Google Maps', 'http://maps.google.com/?q=%s', 'favicon' ) );
-lists.push( Array( 'Email', 'mailto:?subject={title}&amp;body=%s - {url}', 'http://mail.google.com/favicon.ico' ) );
+lists.push( Array( 'Email', 'mailto:?subject={title}&amp;body=%s - {url}', 'https://mail.google.com/favicon.ico' ) );
 lists.push( Array( 'Tumblr', 'https://www.tumblr.com/widgets/share/tool?url={url}&caption=%s', 'favicon' ) );
 
 $j = jQuery.noConflict();
@@ -23,21 +23,27 @@ $j( document ).ready( function() {
 	} );
 
 	for ( i = 0; i < lists.length; i++ ) {
-		$j( '#addList' ).append( '<option value="' + i + '">' + lists[i][0] + '</option>' );
-	}
-	$j( '#addList' ).append( '<option value="moreButtons">More buttons ...</option>' );
-
-
-	$j( '#addList' ).change( function() {
-		if ( $j( '#addList' ).val() == 'moreButtons' ) {
-			$j( '.wpsrBox' ).fadeIn();
-			$j( '#dxss_list_search' ).focus();
-		} else {
-			if ( $j( this ).val() > 0 ) {
-				val = $j( '#dxss_lists' ).val() + '\n' + lists[$j( this ).val()];
-				$j( '#dxss_lists' ).val( val );
+		if(lists[i][2] != null){
+			iconUrl = lists[i][2].split(' ').join('');
+			if(iconUrl == 'favicon'){
+				img = '<img src="' + getBaseUrl(lists[i][1]) + 'favicon.ico" width="16" height="16" alt="' + lists[i][0] + '"/> ';
+			} else {
+				img = '<img src="' + lists[i][2] + '" width="16" height="16" alt="' + lists[i][0] + '"/> ';
 			}
+		} else {
+			img = '';
 		}
+		$j( '#addList' ).append( '<button value="' + i + '" type="button" class="button" >' + img + lists[i][0] + '</button>' );
+	}
+
+
+	$j( '#addList button' ).click( function() {
+		
+		var button = lists[$j( this ).val()];
+		delete button[3];
+		val = $j( '#dxss_lists' ).val() + '\n' + button;
+		$j( '#dxss_lists' ).val( val );
+	
 	} );
 
 	$j( '#addCustom' ).click( function() {
@@ -189,3 +195,11 @@ String.prototype.replaceArray = function(find, replace) {
 	}
 	return replaceString;
 };
+
+function getBaseUrl( url ) {
+	if (url.indexOf('.') == -1 || url.indexOf('/') == -1){
+		return false;
+	}
+	var result = url.substr(0, url.indexOf( '/' , url.indexOf('.') ) + 1 );
+	return result;
+}
