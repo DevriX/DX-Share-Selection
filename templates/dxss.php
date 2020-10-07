@@ -105,7 +105,7 @@
 						<tr>
 							<td><?php _e( 'Bitly Token', 'dxss' ); ?></td>
 							<td>
-								<input name="dxss_bitly_token" type="text" value="<?php echo $dxss_settings['bitly_token']; ?>" size="40"/>
+								<input name="dxss_bitly_token" type="text" value="<?php echo !empty($dxss_settings['bitly_token']) ? DXSS_Encryption::$dumb_token_view : '' ; ?>" autocomplete="off" size="40"/>
 								<br/>
 								<small class="smallText"><?php _e('Bitly API Access Token. Used for <code>{surl}</code>', 'dxss'); ?> <a href="https://bitly.is/accesstoken" target="_blank">Generate here</a></small>
 							</td>

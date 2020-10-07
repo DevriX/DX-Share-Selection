@@ -51,6 +51,31 @@ class DXSS_Option_Helper {
 		self::$dxss_settings = $data;
 	}
 
+
+	public static function get_bitly_token( $bitly_token ) {
+
+		$dxss_old_settings = self::fetch_settings_data();
+		$old_token         = $dxss_old_settings['bitly_token'];
+
+		// If user have set a token, before encryption was implemented and it's not changed, encrypt the token before save
+		if ( ! isset( $dxss_old_settings['bitly_token_encrypted'] ) && ! empty( $old_token ) && $bitly_token === DXSS_Encryption::$dumb_token_view ) {
+			// This will run only once
+			$bitly_token = DXSS_Encryption::encrypt( $old_token );
+
+			// Normal save scenario	
+		} else {
+			// The user has not changed the previously encrypted token
+			if ( $bitly_token === DXSS_Encryption::$dumb_token_view ) {
+				$bitly_token = $old_token;
+				// The user has entered new token value
+			} elseif ( ! empty( $value ) ) {
+				$bitly_token = DXSS_Encryption::encrypt( $bitly_token );
+			}
+		}
+
+		return $bitly_token;
+	}
+
 	/**
 	 * Return Default Settings
 	 *

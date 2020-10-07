@@ -16,7 +16,11 @@ class DXSS_Bitly {
 			return false;
 		}
 
-		$appkey  = trim( $dxss_bitly_token );
+		if ( isset( $dxss_settings['bitly_token_encrypted'] ) ) {
+			$dxss_bitly_token = DXSS_Encryption::decrypt( $dxss_bitly_token );
+		}
+
+		$appkey  = trim($dxss_bitly_token);
 		$version = '4';
 
 		$bitly = 'https://api-ssl.bitly.com/v' . $version . '/shorten';

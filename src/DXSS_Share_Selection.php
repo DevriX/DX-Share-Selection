@@ -202,8 +202,7 @@ class DXSS_Share_Selection {
 	}
 
 	public function dxss_save_options(){
-		$dxss_updated = false;
-		// Get and store options
+
 		$dxss_settings['title'] = $_POST['dxss_title'];
 		$dxss_settings['lists'] = preg_replace( '/^[ \t]*[\r\n]+/m', '', trim( stripslashes( $_POST['dxss_lists'] ) ) );
 
@@ -218,19 +217,19 @@ class DXSS_Share_Selection {
 		$dxss_settings['scriptPlace']   = $_POST['dxss_scriptPlace'];
 		$dxss_settings['truncateChars'] = $_POST['dxss_truncateChars'];
 		$dxss_settings['element']       = $_POST['dxss_element'];
-		$dxss_settings['bitly_token']   = $_POST['dxss_bitly_token'];
+		$dxss_settings['bitly_token']   = DXSS_Option_Helper::get_bitly_token( $_POST['dxss_bitly_token'] );
 
-		$dxss_settings['dxss_is_activate'] = 1;
+		$dxss_settings['dxss_is_activate']      = 1;
+		$dxss_settings['bitly_token_encrypted'] = 1;
+
+
 		DXSS_Option_Helper::update_settings_data( $dxss_settings );
-		$dxss_updated = true;
 
 		if ( 0 == get_option( 'dxss_active' ) ) {
 			update_option( 'dxss_active', 1 );
 		}
 
-		if ( true == $dxss_updated ) {
-			echo "<div class='message updated'><p>Updated successfully</p></div>";
-		}
+		echo "<div class='message updated'><p>Updated successfully</p></div>";
 	}
 
 

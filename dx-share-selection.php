@@ -36,6 +36,7 @@ require_once 'src/DXSS_Share_Selection.php';
 require_once 'src/DXSS_WPSR.php';
 require_once 'src/DXSS_Option_Helper.php';
 require_once 'src/DXSS_Bitly.php';
+require_once 'src/DXSS_Encryption.php';
 
 
 $dxss_share_selection = new DXSS_Share_Selection();
