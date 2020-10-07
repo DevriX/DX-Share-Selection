@@ -11,360 +11,56 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
-define('DXSS_VERSION', '1.4');
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-if ( ! defined( 'WP_CONTENT_URL' ) ) {
-	$dxss_pluginpath = get_option( 'siteurl' ) . '/wp-content/plugins/' . plugin_basename( dirname( __FILE__ ) ) . '/';
-} else {
-	$dxss_pluginpath = WP_CONTENT_URL . '/plugins/' . plugin_basename( dirname( __FILE__ ) ) . '/';
+if ( ! defined( 'DXSS_VERSION' ) ) {
+	define( 'DXSS_VERSION', '1.4');
+}
+if ( ! defined( 'DXSS_DIR' ) ) {
+	define( 'DXSS_DIR', dirname( __FILE__ ) );
+}
+if ( ! defined( 'DXSS_URL' ) ) {
+	define( 'DXSS_URL', plugin_dir_url( __FILE__ ) );
+}
+if ( ! defined( 'DXSS_BASENAME' ) ) {
+	define( 'DXSS_BASENAME', plugin_basename( __FILE__ ) );
 }
 
 // Load languages
 load_plugin_textdomain( 'dxss', false, basename( dirname( __FILE__ ) ) . '/languages/' );
 
 // Include the files
-require_once 'integration.php';
-require_once 'dxss-option-helper.php';
-
-// WPSTS Is active check
-function dxss_is_active() {
-	if ( 1 == get_option( 'dxss_active' ) ) {
-		return 1;
-	} else {
-		return 0;
-	}
-}
-
-// WPSTS plugin activate
-function dxss_plugin_activate() {
-	update_option( 'dxss_active', 1 );
-}
-
-register_activation_hook( __FILE__, 'dxss_plugin_activate' );
-
-// WPSTS plugin deactivate
-function dxss_plugin_deactivate() {
-	update_option( 'dxss_active', 0 );
-}
-
-register_deactivation_hook( __FILE__, 'dxss_plugin_deactivate' );
-
-// Admin Notices
-function dxss_admin_notices() {
-	if ( isset( $_GET['page'] ) && ! dxss_is_active() && 'dx-share-selection' != $_GET['page'] ) {
-		echo '<div class="updated fade"><p>' . __( '<b>DX Share Selection</b> plugin is intalled. You should immediately adjust <a href="options-general.php?page=dx-share-selection">the settings</a>', 'dxss' ) . '</p></div>';
-	}
-}
-
-add_action( 'admin_notices', 'dxss_admin_notices' );
-
-// Action Links
-function dxss_plugin_actions( $links, $file ) {
-	static $this_plugin;
-	if ( ! $this_plugin ) {
-		$this_plugin = plugin_basename( __FILE__ );
-	}
-	if ( $file == $this_plugin ) {
-		$settings_link = '<a href="options-general.php?page=dx-share-selection">' . __( 'Settings', 'dxss' ) . '</a> ' . __( 'Support', 'dxss' ) . '</a>';
-		$links         = array_merge( array( $settings_link ), $links );
-	}
-
-	return $links;
-}
-
-add_filter( 'plugin_action_links', 'dxss_plugin_actions', 10, 2 );
-
-// Load the Javascripts
-function dxss_admin_js() {
-	global $dxss_pluginpath;
-	$admin_js_url = $dxss_pluginpath . 'assets/dist/js/dxss-admin-js.min.js';
-	$dxss_js      = $dxss_pluginpath . 'assets/dist/js/selected-text-sharer.min.js';
-	$color_url    = $dxss_pluginpath . 'js/farbtastic/farbtastic.js';
-
-	if ( isset( $_GET['page'] ) && 'dx-share-selection' == $_GET['page'] ) {
-		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'dx-share-selection', $admin_js_url, array( 'jquery' ) );
-		wp_localize_script( 'dx-share-selection', 'dx_share_selection', array(
-				'settings_data_default' => DXSS_Option_Helper::get_default_settings_data()
-			)
-		);
-		wp_enqueue_script( 'farbtastic', $color_url, array( 'jquery', 'dx-share-selection' ) );
-		wp_enqueue_script( 'dxss_js', $dxss_js, array( 'jquery', 'dx-share-selection', 'farbtastic' ) );
-	}
-}
-
-add_action( 'admin_enqueue_scripts', 'dxss_admin_js' );
-
-// Load the admin CSS
-function dxss_admin_css() {
-	global $dxss_pluginpath;
-
-	if ( isset( $_GET['page'] ) && 'dx-share-selection' == $_GET['page'] ) {
-		wp_enqueue_style( 'dsxx-css', $dxss_pluginpath . 'assets/dist/css/dxss-css.min.css' );
-		wp_enqueue_style( 'dxss-admin-css', $dxss_pluginpath . 'assets/dist/css/dxss-admin-css.min.css' );
-		wp_enqueue_style( 'farbtastic-css', $dxss_pluginpath . '/js/farbtastic/farbtastic.css' );
-	}
-}
-
-add_action( 'admin_enqueue_scripts', 'dxss_admin_css' );
-
-// Bitly shorten url
-function dxss_shorten_url( $url ) {
-
-	// Get the Options
-	$dxss_settings = DXSS_Option_Helper::fetch_settings_data();
-	$dxss_bitly    = isset( $dxss_settings['bitly'] ) ? $dxss_settings['bitly'] : '' ;
-	$dxss_bitly_token = isset( $dxss_settings['bitly_token'] ) ? $dxss_settings['bitly_token'] : '';
-
-	// If user used the old Bitly Settings, set the token value from there
-	if ( ! isset( $dxss_settings['bitly_token'] ) && ! empty( $dxss_bitly ) ) {
-		$bityly_split = explode( ',', $dxss_bitly );
-		if ( ! empty( $bityly_split[1] ) ) {
-			$dxss_bitly_token = $bityly_split[1];
-		}
-	}
-
-	if ( empty( $dxss_bitly_token ) ) {
-		return false;
-	}
-	
-	$appkey  = trim( $dxss_bitly_token);
-	$version = '4';
-
-	$bitly   = 'https://api-ssl.bitly.com/v' . $version . '/shorten';
-
-	$response = wp_remote_post( $bitly, array(
-		'headers'     => array( 'Content-Type' => 'application/json; charset=utf-8', 'Authorization' => 'Bearer ' . $appkey ),
-		'body'        => json_encode( array( 'long_url' => $url ) ),
-		'method'      => 'POST',
-		'data_format' => 'body',
-	) );
-
-	if ( ! is_wp_error( $response ) && ! empty( $response['body'] ) ) {
-		$response_arr = json_decode( $response['body'], true );
-
-		if ( ! empty( $response_arr['link'] ) ) {
-			return $response_arr['link'];
-		}
-	}
-
-	return false;
-}
-
-// One function for getting the url and title of the page
-function dxss_get_post_details() {
-	// Get the global variables
-	global $post;
-
-	// Inside loop
-	$permalink_inside_loop = get_permalink( $post->ID );
-	$title_inside_loop     = str_replace( '+', '%20', get_the_title( $post->ID ) );
-
-	// Outside loop
-	$permalink_outside_loop = ( ! empty( $_SERVER['HTTPS'] ) ) ? 'https://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'] : 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
-	$title_outside_loop     = str_replace( '+', '%20', wp_title( '', 0 ) );
-	// If title is null
-	if ( '' == $title_outside_loop ) {
-		$title_outside_loop = str_replace( '+', '%20', get_bloginfo( 'name' ) );
-	}
-
-	if ( in_the_loop() ) {
-		$details = array(
-			'permalink' => $permalink_inside_loop,
-			'title'     => $title_inside_loop,
-		);
-
-	} else {
-		$details = array(
-			'permalink' => $permalink_outside_loop,
-			'title'     => $title_outside_loop,
-		);
-	}
-
-	return $details;
-}
-
-// Get processed list
-function dxss_get_processed_list() {
-	global $post;
-
-	$info     = dxss_get_post_details();
-	$rss      = get_bloginfo( 'rss_url' );
-	$blogname = urlencode( get_bloginfo( 'name' ) . ' ' . get_bloginfo( 'description' ) );
-
-	$terms      = array(
-		'{url}',
-		'{title}',
-		'{blogname}',
-		'{rss-url}',
-	);
-	$replacable = array(
-		$info['permalink'],
-		$info['title'],
-		$blogname,
-		$rss,
-	);
-
-	// Get the Options
-	$dxss_settings = DXSS_Option_Helper::fetch_settings_data();
-	$dxss_lists    = $dxss_settings['lists'];
-
-	// Generate short url from Bit.ly only if needed
-	if ( false !== mb_strpos( $dxss_lists, '{surl}' ) ) {
-		$terms[]      = '{surl}';
-		$replacable[] = dxss_shorten_url( $info['permalink'] );
-	}
-
-	$listExplode = explode( "\n", $dxss_lists );
-	$listImplode = implode( '|', $listExplode );
-	$list        = str_replace( "\r", '', $listImplode );
-
-	$listFinal = str_replace( $terms, $replacable, $list );
-
-	return $listFinal;
-}
-
-// Enqueue Scripts to the WordPress
-add_action( 'wp_enqueue_scripts', 'dxss_scripts' );
-function dxss_scripts() {
-	global $dxss_pluginpath;
-
-	// Get the Options
-	$dxss_settings    = DXSS_Option_Helper::fetch_settings_data();
-	$dxss_scriptPlace = $dxss_settings['scriptPlace'];
-	
-	$dxss_js      = $dxss_pluginpath . 'assets/dist/js/selected-text-sharer.min.js';
-
-	wp_enqueue_style( 'dsxx-css', $dxss_pluginpath . 'assets/dist/css/dxss-css.min.css' );
-	wp_enqueue_script( 'wp-selected-text-searcher', $dxss_js, array( 'jquery' ), null, $dxss_scriptPlace );
-}
-
-// Activate Jquery the Jquery
-function dxss_jquery_plugin_activate() {
-
-	// Get the Options
-	$dxss_settings = DXSS_Option_Helper::fetch_settings_data();
-
-	$dxss_title = $dxss_settings['title'];
-	$dxss_lists = $dxss_settings['lists'];
-
-	$dxss_borderColor    = $dxss_settings['borderColor'];
-	$dxss_bgColor        = $dxss_settings['bgColor'];
-	$dxss_titleColor     = $dxss_settings['titleColor'];
-	$dxss_hoverColor     = $dxss_settings['hoverColor'];
-	$dxss_textColor      = $dxss_settings['textColor'];
-	$dxss_titleTextColor = $dxss_settings['titleTextColor'];
-	$dxss_extraClass     = $dxss_settings['extraClass'];
-
-	$dxss_element       = $dxss_settings['element'];
-	$dxss_scriptPlace   = $dxss_settings['scriptPlace'];
-	$dxss_truncateChars = $dxss_settings['truncateChars'];
-
-	echo "\n" .
-	     "<script type='text/javascript'>
-/* <![CDATA[ */
-	jQuery(document).ready(function(){
-		if(jQuery('" . $dxss_element . "').length > 0){
-			jQuery('" . $dxss_element . "').selectedTextSharer({
-				title : '$dxss_title',
-				lists : '" . dxss_get_processed_list() . "',
-				truncateChars : '$dxss_truncateChars',
-				extraClass : '$dxss_extraClass',
-				borderColor : '$dxss_borderColor',
-				background : '$dxss_bgColor',
-				titleColor : '$dxss_titleColor',
-				hoverColor : '$dxss_hoverColor',
-				textColor : '$dxss_textColor',
-				titleTextColor : '$dxss_titleTextColor'
-			});
-		}
-	});
-/* ]]>*/
-</script>\n";
-}
-
-add_action( 'wp_footer', 'dxss_jquery_plugin_activate' );
-
-## Add the Admin menu
-add_action('admin_menu', 'dxss_addpage');
-
-function dxss_addpage() {
-	add_submenu_page( 'options-general.php', 'DX Share Selection', 'DX Share Selection', 'manage_options', 'dx-share-selection', 'dxss_admin_page' );
-}
-
-function dxss_admin_page() {
-	global $dxss_pluginpath;
-	$dxss_updated = false;
-
-	if ( ! empty( $_POST['dxss_submit'] ) ) {
-		// Get and store options
-		$dxss_settings['title'] = $_POST['dxss_title'];
-		$dxss_settings['lists'] = preg_replace( '/^[ \t]*[\r\n]+/m', '', trim( stripslashes( $_POST['dxss_lists'] ) ) );
-
-		$dxss_settings['borderColor']    = $_POST['dxss_borderColor'];
-		$dxss_settings['bgColor']        = $_POST['dxss_bgColor'];
-		$dxss_settings['titleColor']     = $_POST['dxss_titleColor'];
-		$dxss_settings['hoverColor']     = $_POST['dxss_hoverColor'];
-		$dxss_settings['textColor']      = $_POST['dxss_textColor'];
-		$dxss_settings['titleTextColor'] = $_POST['dxss_titleTextColor'];
-		$dxss_settings['extraClass']     = $_POST['dxss_extraClass'];
-
-		$dxss_settings['scriptPlace']   = $_POST['dxss_scriptPlace'];
-		$dxss_settings['truncateChars'] = $_POST['dxss_truncateChars'];
-		$dxss_settings['element']       = $_POST['dxss_element'];
-		$dxss_settings['bitly_token']   = $_POST['dxss_bitly_token'];
-
-		$dxss_settings['dxss_is_activate'] = 1;
-		DXSS_Option_Helper::update_settings_data( $dxss_settings );
-		$dxss_updated = true;
-
-		if ( 0 == get_option( 'dxss_active' ) ) {
-			update_option( 'dxss_active', 1 );
-		}
-	}
-
-	if ( true == $dxss_updated ) {
-		echo "<div class='message updated'><p>Updated successfully</p></div>";
-	}
-
-	// Get the Options
-	$dxss_settings = DXSS_Option_Helper::fetch_settings_data();
-
-	$dxss_title = $dxss_settings['title'];
-	$dxss_lists = $dxss_settings['lists'];
-
-	$dxss_borderColor    = $dxss_settings['borderColor'];
-	$dxss_bgColor        = $dxss_settings['bgColor'];
-	$dxss_titleColor     = $dxss_settings['titleColor'];
-	$dxss_hoverColor     = $dxss_settings['hoverColor'];
-	$dxss_textColor      = $dxss_settings['textColor'];
-	$dxss_titleTextColor = isset( $dxss_settings['titleTextColor'] ) ? $dxss_settings['titleTextColor'] : '';
-	$dxss_extraClass     = $dxss_settings['extraClass'];
-
-	$dxss_element       = $dxss_settings['element'];
-	$dxss_scriptPlace   = $dxss_settings['scriptPlace'];
-	$dxss_truncateChars = $dxss_settings['truncateChars'];
-	$dxss_bitly         = isset( $dxss_settings['bitly'] ) ? $dxss_settings['bitly'] : '';
-	$dxss_bitly_token   = isset( $dxss_settings['bitly_token'] ) ? $dxss_settings['bitly_token'] : '';
-
-	// If user used the old Bitly Settings, set the token value from there
-	if ( ! isset( $dxss_settings['bitly_token'] ) && ! empty( $dxss_bitly ) ) {
-		$bityly_split = explode( ',', $dxss_bitly );
-		if ( ! empty( $bityly_split[1] ) ) {
-			$dxss_bitly_token = $bityly_split[1];
-		}
-	}
-
-	// If user have not previously set Title Text Color use Text Color
-	if ( ! isset( $dxss_settings['titleTextColor'] ) ) {
-		$dxss_titleTextColor = $dxss_textColor;
-	}
-	
-	/*
-	 Load the admin menu html
-	 * It has php and html mixed up, so a simple readfile() won't work.
-	 */
-	require 'dxss.php';
-}
+require_once 'src/DXSS_Share_Selection.php';
+require_once 'src/DXSS_WPSR.php';
+require_once 'src/DXSS_Option_Helper.php';
+require_once 'src/DXSS_Bitly.php';
+
+
+$dxss_share_selection = new DXSS_Share_Selection();
+register_activation_hook( __FILE__, array( $dxss_share_selection, 'dxss_plugin_activate' ) );
+register_deactivation_hook( __FILE__, array( $dxss_share_selection, 'dxss_plugin_deactivate' ) );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

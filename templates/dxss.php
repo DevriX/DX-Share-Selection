@@ -1,5 +1,5 @@
 <div class="wrap">
-	<h2><img width="32" height="32" src="<?php echo $dxss_pluginpath; ?>images/dx-share-selection.png" align="absmiddle"/>&nbsp;DX Share Selection <span class="smallText">v<?php echo DXSS_VERSION; ?></span></h2>
+	<h2><img width="32" height="32" src="<?php echo DXSS_URL; ?>images/dx-share-selection.png" align="absmiddle"/>&nbsp;DX Share Selection <span class="smallText">v<?php echo DXSS_VERSION; ?></span></h2>
 
 	<div id="leftContent">
 		<form method="post">
@@ -9,7 +9,7 @@
 					<table width="100%" border="0">
 						<tr>
 							<td width="19%" height="32"><?php _e( 'Widget Title', 'dxss' ); ?></td>
-							<td width="81%"><input name="dxss_title" id="dxss_title" type="text" value="<?php echo $dxss_title; ?>"/></td>
+							<td width="81%"><input name="dxss_title" id="dxss_title" type="text" value="<?php echo $dxss_settings['title']; ?>"/></td>
 						</tr>
 						<tr>
 							<td height="33"><?php _e( 'Share Items', 'dxss' ); ?></td>
@@ -17,20 +17,20 @@
 						</tr>
 						<tr>
 							<td height="33" colspan="2">
-								<div class="smallText"><?php _e( 'Add buttons', 'dxss' ); ?></div>
+								<div class="smallText buttons-text"><?php _e( 'Add buttons', 'dxss' ); ?></div>
 								<div id="addList">
 							</td>
 						</tr>
 						<tr>
 							<td height="33" colspan="2">
-								<div class="smallText"><?php _e( 'Other buttons', 'dxss' ); ?></div>
+								<div class="smallText buttons-text"><?php _e( 'Other buttons', 'dxss' ); ?></div>
 								<input type="button" id="addCustom" class="toolBt button" value="<?php _e( 'Add custom button', 'dxss' ); ?>"/>
 								<input type="button" id="addSearch" class="toolBt button" value="<?php _e( 'Add search button', 'dxss' ); ?>"/>
 								<input type="button" class="toolBt openWpsrLinks button" value="<?php _e( 'More buttons', 'dxss' ); ?>"/>
 								<input type="button" class="toolBt openHelp button" value="<?php _e( 'Help', 'dxss' ); ?>"/>
 						</tr>
 						<tr>
-							<td colspan="2"><textarea name="dxss_lists" id="dxss_lists"><?php echo esc_html($dxss_lists); ?></textarea>
+							<td colspan="2"><textarea name="dxss_lists" id="dxss_lists"><?php echo esc_html($dxss_settings['lists'] ); ?></textarea>
 								<span class="smallText"><?php _e( 'Format : Name, Share/Search URL, Icon URL', 'dxss' ); ?></span></td>
 						</tr>
 					</table>
@@ -45,32 +45,32 @@
 					<table width="100%" height="220" border="0">
 						<tr>
 							<td width="22%" height="33"><?php _e( 'Border Color', 'dxss' ); ?></td>
-							<td width="78%"><input name="dxss_borderColor" id="dxss_borderColor" class="color" type="text" value="<?php echo $dxss_borderColor; ?>"/></td>
+							<td width="78%"><input name="dxss_borderColor" id="dxss_borderColor" class="color" type="text" value="<?php echo $dxss_settings['borderColor'] ; ?>"/></td>
 						</tr>
 						<tr>
 							<td height="37"><?php _e( 'Background Color', 'dxss' ); ?></td>
-							<td><input name="dxss_bgColor" id="dxss_bgColor" class="color" type="text" value="<?php echo $dxss_bgColor; ?>"/></td>
+							<td><input name="dxss_bgColor" id="dxss_bgColor" class="color" type="text" value="<?php echo $dxss_settings['bgColor']; ?>"/></td>
 						</tr>
 						<tr>
 							<td height="35"><?php _e( 'Title Background color', 'dxss' ); ?></td>
-							<td><input name="dxss_titleColor" id="dxss_titleColor" class="color" type="text" value="<?php echo $dxss_titleColor; ?>"/></td>
+							<td><input name="dxss_titleColor" id="dxss_titleColor" class="color" type="text" value="<?php echo $dxss_settings['titleColor'];; ?>"/></td>
 						</tr>
 						<tr>
 							<td height="30"><?php _e( 'Title Text Color', 'dxss' ); ?></td>
-							<td><input name="dxss_titleTextColor" id="dxss_titleTextColor" class="color" type="text" value="<?php echo $dxss_titleTextColor; ?>"/></td>
+							<td><input name="dxss_titleTextColor" id="dxss_titleTextColor" class="color" type="text" value="<?php echo $dxss_settings['titleTextColor']; ?>"/></td>
 						</tr>
 						<tr>
 							<td height="36"><?php _e( 'Hover Color', 'dxss' ); ?></td>
-							<td><input name="dxss_hoverColor" id="dxss_hoverColor" class="color" type="text" value="<?php echo $dxss_hoverColor; ?>"/></td>
+							<td><input name="dxss_hoverColor" id="dxss_hoverColor" class="color" type="text" value="<?php echo $dxss_settings['hoverColor']; ?>"/></td>
 						</tr>
 						<tr>
 							<td height="30"><?php _e( 'Text Color', 'dxss' ); ?></td>
-							<td><input name="dxss_textColor" id="dxss_textColor" class="color" type="text" value="<?php echo $dxss_textColor; ?>"/></td>
+							<td><input name="dxss_textColor" id="dxss_textColor" class="color" type="text" value="<?php echo $dxss_settings['textColor']; ?>"/></td>
 						</tr>
 						<tr>
 							<td><?php _e( 'Extra Class', 'dxss' ); ?></td>
 							<td>
-								<input name="dxss_extraClass" type="text" value="<?php echo $dxss_extraClass; ?>"/>
+								<input name="dxss_extraClass" type="text" value="<?php echo $dxss_settings['extraClass']; ?>"/>
 								<br/>
 								<small class="smallText"><?php _e('The class will be added to the main Share Selection div'); ?></small>
 							</td>
@@ -85,27 +85,27 @@
 						<tr>
 							<td height="35"><?php _e( 'Load scripts in', 'dxss' ); ?></td>
 							<td><select id="dxss_scriptPlace" name="dxss_scriptPlace">
-									<option <?php echo $dxss_scriptPlace == '0' ? ' selected="selected"' : ''; ?> value="0"><?php _e( 'Header', 'dxss' ); ?></option>
-									<option <?php echo $dxss_scriptPlace == '1' ? ' selected="selected"' : ''; ?> value="1"><?php _e( 'Footer', 'dxss' ); ?></option>
+									<option <?php echo $dxss_settings['scriptPlace'] == '0' ? ' selected="selected"' : ''; ?> value="0"><?php _e( 'Header', 'dxss' ); ?></option>
+									<option <?php echo $dxss_settings['scriptPlace'] == '1' ? ' selected="selected"' : ''; ?> value="1"><?php _e( 'Footer', 'dxss' ); ?></option>
 								</select></td>
 						</tr>
 						<tr>
 							<td height="35"><?php _e( 'Truncate Text', 'dxss' ); ?></td>
-							<td><input name="dxss_truncateChars" type="text" value="<?php echo $dxss_truncateChars; ?>"/><br/>
+							<td><input name="dxss_truncateChars" type="text" value="<?php echo $dxss_settings['truncateChars']; ?>"/><br/>
 								<small class="smallText"><?php _e( 'Selected texts are truncated when <code>%ts</code> is used in the URL', 'dxss' ); ?></small>
 							</td>
 						</tr>
 						<tr>
 							<td height="35"><?php _e( 'Target Content', 'dxss' ); ?></td>
 							<td>
-								<input name="dxss_element" type="text" value="<?php echo $dxss_element; ?>"/></br>
+								<input name="dxss_element" type="text" value="<?php echo $dxss_settings['element']; ?>"/></br>
 								<small class="smallText"><?php _e('The DX Share Selection will work only with this jQuery selector'); ?></small>
 							</td>
 						</tr>
 						<tr>
 							<td><?php _e( 'Bitly Token', 'dxss' ); ?></td>
 							<td>
-								<input name="dxss_bitly_token" type="text" value="<?php echo $dxss_bitly_token; ?>" size="40"/>
+								<input name="dxss_bitly_token" type="text" value="<?php echo $dxss_settings['bitly_token']; ?>" size="40"/>
 								<br/>
 								<small class="smallText"><?php _e('Bitly API Access Token. Used for <code>{surl}</code>', 'dxss'); ?> <a href="https://bitly.is/accesstoken" target="_blank">Generate here</a></small>
 							</td>
@@ -157,7 +157,7 @@
 			<hr/>
 			<div class="wrap">
 				<ol class="dxss_wpsr_sites">
-					<?php dxss_wpsr_get_links(); ?>
+					<?php DXSS_WPSR::dxss_wpsr_get_links(); ?>
 				</ol>
 			</div>
 		<?php else: ?>

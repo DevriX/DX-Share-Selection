@@ -114,6 +114,8 @@
 	display: inline-block;
 	font-size: 10px;
 	color: #666666;
+}
+.buttons-text{
 	width: 70px;
 }
 table #addList{
