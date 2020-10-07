@@ -14,27 +14,36 @@ module.exports = function( grunt ) {
 		cssmin: {
 			options: {
 				shorthandCompacting: false,
-				roundingPrecision: -1
+				roundingPrecision: -1,
 			},
 			target: {
-				files: [{
-					expand: true,
-					cwd: 'assets/css',
-					src: ['*.css', '!*.min.css'],
-					dest: 'assets/dist/css',
-					ext: '.min.css'
-				}]
-			}
+				files: [
+					{
+						expand: true,
+						cwd: 'assets/css',
+						src: ['*.css', '!*.min.css'],
+						dest: 'assets/dist/css',
+						ext: '.min.css',
+					},
+				],
+			},
 		},
 		uglify: {
+			options: {
+				compress: {
+					drop_debugger: false,
+				},
+			},
 			target: {
-				files: [{
-					expand: true,
-					cwd: 'assets/js',
-					src: ['*.js', '!*.min.js'],
-					dest: 'assets/dist/js',
-					ext: '.min.js'
-				}],
+				files: [
+					{
+						expand: true,
+						cwd: 'assets/js',
+						src: ['*.js', '!*.min.js'],
+						dest: 'assets/dist/js',
+						ext: '.min.js',
+					},
+				],
 			},
 		},
 	} );
@@ -44,8 +53,8 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 
 	grunt.registerTask( 'default', ['watch'] );
-	grunt.registerTask('css', ['cssmin']);
-	grunt.registerTask('js', ['uglify']);
-	grunt.registerTask('minify', ['cssmin']);
-	grunt.registerTask('minifyjs', ['uglify']);
+	grunt.registerTask( 'css', ['cssmin'] );
+	grunt.registerTask( 'js', ['uglify'] );
+	grunt.registerTask( 'minify', ['cssmin'] );
+	grunt.registerTask( 'minifyjs', ['uglify'] );
 };

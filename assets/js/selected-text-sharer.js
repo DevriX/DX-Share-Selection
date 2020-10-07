@@ -45,20 +45,14 @@
     e = e || window.event;
     stsBox = '<div class="stsBox ' + options.extraClass + '"><div class="title">' + options.title + '</div><div class="list"><ul></ul></div><span class="arrow"></span></div>';
 
-    if(ele.height() == $('body').height()){
-      ele.append(stsBox);
-    }else{
-      ele.after(stsBox);
-    }
+    $('body > .stsBox ').remove();
+    $('body').append(stsBox);
+  
   }
 
   function addToList(ele){
 
-    if(ele.height() == $('body').height()){
-      stsBoxEle = ele.find('.stsBox');
-    } else {
-      stsBoxEle = ele.next('.stsBox');
-    }
+    stsBoxEle = $('body').find('.stsBox');
 
     for(i = 0; i < listSplit.length; i++){
       if(lstSplit[i][0] != null){
@@ -80,12 +74,7 @@
   }
 
   function applyCss(ele){
-
-    if(ele.height() == $('body').height()){
-      stsBoxEle = ele.find('.stsBox');
-    }else{
-      stsBoxEle = ele.next('.stsBox');
-    }
+    stsBoxEle = $('body').find('.stsBox');
 
     stsBoxEle.css({
       'display': 'none',
@@ -204,11 +193,7 @@
 
       if(getSelectionText() != ''){
 
-        if( $(this).height() == $('body').height() ){
-          stsBoxEle = $(this).find('.stsBox');
-        } else {
-          stsBoxEle = $(this).next('.stsBox');
-        }
+        stsBoxEle = $('body').find('.stsBox');
 
         var x = e.pageX;
         var y = e.pageY;
@@ -216,7 +201,7 @@
         stsBoxEle.fadeIn('fast');
         if( stsBoxEle.outerHeight() <= y ) {
           stsBoxEle.css({
-            top: y - (stsBoxEle.outerHeight() + ( $('.stsBox li a').length  )),
+            top: y - 10 - (stsBoxEle.outerHeight() + ( $('.stsBox li a').length  )),
             left: x + 30
           });
               // The menu shouldn't get displayed out of the viewport
