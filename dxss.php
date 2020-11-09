@@ -19,8 +19,10 @@
 							<td height="33" colspan="2"><span class="smallText"><?php _e( 'Add buttons', 'dxss' ); ?></span>
 								<select name="select" id="addList">
 								</select>
-								<input type="button" id="addCustom" class="toolBt button" value="<?php _e( 'Add custom button', 'dxss' ); ?>"/>
-								<input type="button" id="addSearch" class="toolBt button" value="<?php _e( 'Add search button', 'dxss' ); ?>"/>
+								<!-- <input type="button" id="addCustom" class="toolBt button" value="<?php _e( 'Add custom button', 'dxss' ); ?>"/>
+								<input type="button" id="addSearch" class="toolBt button" value="<?php _e( 'Add search button', 'dxss' ); ?>"/> -->
+								<a class="toolBt button js-toggle-modal" data-modal="custom-button">Add Custom Button</a>
+								<a class="toolBt button js-toggle-modal" data-modal="search-button">Add Search Button</a>
 								<input type="button" class="toolBt openWpsrLinks button" value="<?php _e( 'More buttons', 'dxss' ); ?>"/>
 								<input type="button" class="toolBt openHelp button" value="<?php _e( 'Help', 'dxss' ); ?>"/>
 						</tr>
@@ -160,11 +162,38 @@
 			<?php
 			$installUrl = 'https://wordpress.org/plugins/wp-socializer/';
 			?>
-			<p align="center"><a href="<?php echo $installUrl; ?>" target="_blank" class="button-primary"><?php _e( 'Install Plugin', 'dxss' ); ?></a></p>
+			<p style="align:center"><a href="<?php echo $installUrl; ?>" target="_blank" class="button-primary"><?php _e( 'Install Plugin', 'dxss' ); ?></a></p>
 			<b><?php _e( 'Note:', 'dxss' ); ?></b><br/>
 			<small class="smallText"><?php _e( 'DX share Selection requires to install WP Socializer to link the additional 98 buttons. <a href="https://wordpress.org/plugins/wp-socializer/" target="_blank">See here</a> for more info', 'dxss' ); ?></small>
 		<?php endif; ?>
 	</div>
-
-
+	<div class="overlay">
+		<div class="modal" data-modal="custom-button">
+			<form action="#">
+				<div class="form-inner">
+					<label for="name-input">Name of the Button</label>
+					<input type="text" class="modal-input" placeholder="Google, Wikipedia" id="name-input">
+					<label for="url-input">Share URL of the Site</label>
+					<input type="text" class="modal-input" placeholder="https://" id="url-input">
+					<label for="favicon-input">Icon URL</label>
+					<input type="text" class="modal-input" placeholder="favicon" default="favicon"  value="favicon" id="favicon-input">
+					<button>Create Custom Button</button
+				</div>
+				
+			</form>
+		</div>
+		<div class="modal" data-modal="search-button">
+			<form action="#">
+				<div class="form-inner">
+					<label for="search-name-input">Name of the Button</label>
+					<input type="text" class="modal-input" placeholder="Search my Blog" id="search-name-input">
+					<label for="search-url-input">Search URL of your site</label>
+					<input type="text" class="modal-input" placeholder="https://domain.com/?s=%s" id="search-url-input">
+					<label for="search-icon-input">Icon URL</label>
+					<input type="text" class="modal-input" placeholder="favicon" value="favicon" id="search-icon-input">
+					<button>Create Search Button</button
+				</div>
+			</form>
+		</div>
+	</div>
 </div>

@@ -9,3 +9,53 @@
 .stsBox .list li img {
     display: inline-block;
 }
+
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: rgba(0,0,0,0.2);
+	width: 100vw;
+    height: 100vh;
+    z-index: 90;
+    display: none;
+}
+
+.modal {
+    position: absolute;
+    z-index: 100;
+    background-color: #fff;
+    padding: 3em 2em; 
+    min-width: 320px;
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: 0.4s ease-in-out;
+}
+
+.is-visible {
+    display: block;
+    opacity: 1;
+}
+
+.modal .form-inner {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal .modal-input {
+    padding: 0.8em 1.5em;
+    margin-bottom: 2em;
+    line-height: 1;
+}
+
+.modal button {
+    background: none;
+    padding: 1em 1.5em;
+    border-radius: 4px;
+    margin-top: 4em;
+}
