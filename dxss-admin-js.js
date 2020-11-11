@@ -175,6 +175,26 @@ $j( document ).ready( function() {
 		$j( 'input[name=dxss_element]' ).val( defaultSetings.element );
 		$j( 'input[name=dxss_bitly]' ).val( defaultSetings.bitly );
 	} );
+
+	var $modals = $j(`.modal`);
+	var $modalOverlay = $j( '.overlay' )
+	$j( '.js-toggle-modal' ).on('click', function (e) {
+		var $button = $j(e.target)
+		var currentModal = $button.attr("data-modal");
+		$modalOverlay.addClass('is-visible')
+		$modals.removeClass('is-visible')
+		$modals.each(function () {
+			var $this = $j(this)
+			if ($this.attr('data-modal') === currentModal) {
+				$this.addClass('is-visible')
+			}
+		})
+	})
+
+	$modalOverlay.on('click', function () {
+		$modals.removeClass('is-visible')
+		$modalOverlay.removeClass('is-visible')
+	}) 
 } );
 
 

@@ -168,30 +168,31 @@
 		<?php endif; ?>
 	</div>
 	<div class="overlay">
-		<div class="modal" data-modal="custom-button">
-			<form action="#">
-				<div class="form-inner">
-					<label for="name-input">Name of the Button</label>
-					<input type="text" class="modal-input" placeholder="Google, Wikipedia" id="name-input">
-					<label for="url-input">Share URL of the Site</label>
-					<input type="text" class="modal-input" placeholder="https://" id="url-input">
-					<label for="favicon-input">Icon URL</label>
-					<input type="text" class="modal-input" placeholder="favicon" default="favicon"  value="favicon" id="favicon-input">
-					<button>Create Custom Button</button
-				</div>
-				
-			</form>
-		</div>
 		<div class="modal" data-modal="search-button">
+			<h3 class="modal-heading">Add Search Button</h3>
 			<form action="#">
 				<div class="form-inner">
 					<label for="search-name-input">Name of the Button</label>
-					<input type="text" class="modal-input" placeholder="Search my Blog" id="search-name-input">
+					<input type="text" class="modal-input" placeholder="Search my Blog" id="search-name-input" />
 					<label for="search-url-input">Search URL of your site</label>
-					<input type="text" class="modal-input" placeholder="https://domain.com/?s=%s" id="search-url-input">
+					<input type="text" class="modal-input" placeholder="https://domain.com/?s=%s" id="search-url-input" />
 					<label for="search-icon-input">Icon URL</label>
-					<input type="text" class="modal-input" placeholder="favicon" value="favicon" id="search-icon-input">
-					<button>Create Search Button</button
+					<input type="text" class="modal-input" placeholder="favicon" value="favicon" id="search-icon-input" />
+					<button>Create Search Button</button>
+				</div>
+			</form>
+		</div>
+		<div class="modal" data-modal="custom-button">
+			<h3 class="modal-heading">Add Search Button</h3>
+			<form action="#">
+				<div class="form-inner">
+					<label for="name-input">Name of the Button</label>
+					<input type="text" class="modal-input" placeholder="Google, Wikipedia" id="name-input" />
+					<label for="url-input">Share URL of the Site</label>
+					<input type="text" class="modal-input" placeholder="https://" id="url-input" />
+					<label for="favicon-input">Icon URL</label>
+					<input type="text" class="modal-input" placeholder="favicon" default="favicon"  value="favicon" id="favicon-input" />
+					<button>Create Custom Button</button>
 				</div>
 			</form>
 		</div>

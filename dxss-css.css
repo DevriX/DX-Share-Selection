@@ -47,6 +47,10 @@
     flex-direction: column;
 }
 
+.modal .modal-heading {
+    margin-bottom: 1.5em;
+}
+
 .modal .modal-input {
     padding: 0.8em 1.5em;
     margin-bottom: 2em;
