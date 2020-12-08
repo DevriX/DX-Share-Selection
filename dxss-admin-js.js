@@ -191,7 +191,10 @@ $j( document ).ready( function() {
 		})
 	})
 
-	$modalOverlay.on('click', function () {
+	$modalOverlay.on('click', function (e) {
+		if ( !$j(e.target).hasClass('overlay') ) {
+			return
+		}
 		$modals.removeClass('is-visible')
 		$modalOverlay.removeClass('is-visible')
 	}) 
