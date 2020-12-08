@@ -40,27 +40,33 @@ $j( document ).ready( function() {
 		}
 	} );
 
-	$j( '#addCustom' ).click( function() {
-		customName = prompt( 'Enter the name of the button. Eg: Google, Wikipedia' );
-		customUrl = prompt( 'Enter the Share URL of the site. Use %s in the URL for the selected text. See help for more terms', 'http://' );
-		customIcon = prompt( 'Enter the Icon URL. Use "favicon" to automatically get the Icon', 'favicon' );
-
-		if ( customName != null ) {
+	$j( '#addCustom' ).click( function(e) {
+		e.preventDefault();
+		customName = $j('#custom-name-input').val();
+		customUrl = $j('#custom-url-input').val();
+		customIcon = $j('#custom-favicon-input').val();
+		
+		if ( customName ) {
 			val = $j( '#dxss_lists' ).val() + '\n' + customName + ',' + customUrl + ',' + customIcon;
 			$j( '#dxss_lists' ).val( val );
 		}
 
+		$modals.removeClass('is-visible')
+		$modalOverlay.removeClass('is-visible')
 	} );
 
-	$j( '#addSearch' ).click( function() {
-		searchName = prompt( 'Enter the name of the button. Eg: Search my blog' );
-		searchUrl = prompt( 'Enter the Search URL of your site. You can also use your google adsense search URL eg:http://domain.com/?s=%s', 'http://' );
-		searchIcon = prompt( 'Enter the Icon URL. Use "favicon" to automatically get the Icon', 'favicon' );
+	$j( '#addSearch' ).click( function(e) {
+		e.preventDefault();
+		searchName = $j('#search-name-input').val();
+		searchUrl = $j('#search-name-input').val();
+		searchIcon = $j('#search-name-input').val();
 
-		if ( searchName != null ) {
+		if ( searchName ) {
 			val = $j( '#dxss_lists' ).val() + '\n' + searchName + ',' + searchUrl + ',' + searchIcon;
 			$j( '#dxss_lists' ).val( val );
 		}
+		$modals.removeClass('is-visible')
+		$modalOverlay.removeClass('is-visible')
 	} );
 
 	$j( '.openHelp' ).click( function() {

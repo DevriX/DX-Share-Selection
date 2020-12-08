@@ -169,30 +169,30 @@
 	</div>
 	<div class="overlay">
 		<div class="modal" data-modal="search-button">
-			<h3 class="modal-heading">Add Search Button</h3>
+			<h3 class="modal-heading"><?php _e( 'Add Search Button', 'dxss' ) ?></h3>
 			<form action="#">
 				<div class="form-inner">
-					<label for="search-name-input">Name of the Button</label>
+					<label for="search-name-input"><?php _e( 'Name of the Button', 'dxss' ) ?></label>
 					<input type="text" class="modal-input" placeholder="Search my Blog" id="search-name-input" />
-					<label for="search-url-input">Search URL of your site</label>
+					<label for="search-url-input"><?php _e( 'Search URL of your site', 'dxss' ) ?></label>
 					<input type="text" class="modal-input" placeholder="https://domain.com/?s=%s" id="search-url-input" />
-					<label for="search-icon-input">Icon URL</label>
+					<label for="search-icon-input"><?php _e( 'Icon URL', 'dxss' ) ?></label>
 					<input type="text" class="modal-input" placeholder="favicon" value="favicon" id="search-icon-input" />
-					<button>Create Search Button</button>
+					<button id="addSearch"><?php _e( 'Create Search Button', 'dxss' ) ?></button>
 				</div>
 			</form>
 		</div>
 		<div class="modal" data-modal="custom-button">
-			<h3 class="modal-heading">Add Search Button</h3>
+			<h3 class="modal-heading"><?php _e( 'Add Custom Button', 'dxss' ) ?></h3>
 			<form action="#">
 				<div class="form-inner">
-					<label for="name-input">Name of the Button</label>
-					<input type="text" class="modal-input" placeholder="Google, Wikipedia" id="name-input" />
-					<label for="url-input">Share URL of the Site</label>
-					<input type="text" class="modal-input" placeholder="https://" id="url-input" />
-					<label for="favicon-input">Icon URL</label>
-					<input type="text" class="modal-input" placeholder="favicon" default="favicon"  value="favicon" id="favicon-input" />
-					<button>Create Custom Button</button>
+					<label for="name-input"><?php _e( 'Name of the Button', 'dxss' ) ?></label>
+					<input type="text" class="modal-input" placeholder="Google, Wikipedia" id="custom-name-input" />
+					<label for="url-input"><?php _e( 'URL of the Site', 'dxss' ) ?></label>
+					<input type="text" class="modal-input" placeholder="https://" id="custom-url-input" />
+					<label for="favicon-input"><?php _e( 'Icon URL', 'dxss' ) ?></label>
+					<input type="text" class="modal-input" placeholder="favicon" default="favicon"  value="favicon" id="custom-favicon-input" />
+					<button id="addCustom"><?php _e( 'Create Custom Button', 'dxss' ) ?></button>
 				</div>
 			</form>
 		</div>
