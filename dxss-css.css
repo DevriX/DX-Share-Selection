@@ -59,6 +59,12 @@
     color: skyblue;
 }
 
+.dxss-settings .textarea-preview-wrapper {
+    display: flex;
+    max-width: 900px;
+    justify-content: space-between;
+}
+
 .dxss-settings textarea {
     padding: 1em;
     max-width: 700px;
@@ -104,5 +110,18 @@
 @media(max-width: 360px) {
     .optional-settings input, .optional-settings select {
         margin-left: 0;
+    }
+}
+
+.test-preview {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 100%;
+}
+
+@media (max-width: 780px) {
+    .test-preview {
+        display: none;
     }
 }

@@ -115,6 +115,47 @@ $j( document ).ready( function() {
 		$j( '.addedInfo' ).fadeOut( '100' );
 	} );
 
+	$j('.dxss-settings textarea').on('input', updatePreview);
+	$j('.dxss-settings input').on('input', updatePreview);
+	$j('.color-settings input').on('focusout', updatePreview);
+
+	function updatePreview () {
+		console.log("Enters")
+		listVal = $j( '#dxss_lists' ).val();
+		listsFinal = listVal.split( '\n' ).join( '|' );
+
+		terms = [
+			'{url}',
+			'{title}',
+			'{surl}',
+			'{blogname}',
+			'{rss-url}',
+		];
+		replacable = [
+			window.location.href,
+			document.title,
+			window.location.href,
+			document.title,
+			window.location.origin + '/feed',
+		];
+		listsFinal = listsFinal.replaceArray(terms, replacable);
+		
+		$j( '.test-preview' ).empty();
+		$j( '.test-preview' ).append('<div class="append-here"></div>');
+		$j( '.append-here' ).selectedTextSharer( {
+			title: $j( 'input[name="dxss_title"]' ).val(),
+			lists: listsFinal,
+			truncateChars: $j( 'input[name=dxss_truncateChars]' ).val(),
+			extraClass: $j( 'input[name=dxss_extraClass]' ).val(),
+			borderColor: $j( 'input[name=dxss_borderColor]' ).val(),
+			background: $j( 'input[name=dxss_bgColor]' ).val(),
+			titleColor: $j( 'input[name=dxss_titleColor]' ).val(),
+			hoverColor: $j( 'input[name=dxss_hoverColor]' ).val(),
+			textColor: $j( 'input[name=dxss_textColor]' ).val(),
+			isPreview: true
+		} );
+	}
+
 	$j( '.preview' ).hover( function() {
 		listVal = $j( '#dxss_lists' ).val();
 		listsFinal = listVal.split( '\n' ).join( '|' );

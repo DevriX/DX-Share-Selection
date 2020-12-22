@@ -21,8 +21,9 @@
 							<input type="button" class="toolBt openWpsrLinks button" value="<?php _e( 'More buttons', 'dxss' ); ?>"/>
 							<input type="button" class="toolBt openHelp button" value="<?php _e( 'Help', 'dxss' ); ?>"/>
 						</p>
-						<p>
+						<p class="textarea-preview-wrapper">
 							<textarea name="dxss_lists" id="dxss_lists"><?php echo esc_html($dxss_lists); ?></textarea>
+							<span class="test-preview"></span>
 						</p>
 						<p>
 							<span class="smallText"><?php _e( 'Format : Name, Share/Search URL, Icon URL', 'dxss' ); ?></span></td>

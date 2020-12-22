@@ -17,7 +17,8 @@
      background : '#fff',
      titleColor : '#f2f2f2',
      hoverColor : '#ffffcc',
-     textColor : '#000'
+     textColor : '#000',
+     isPreview : false
    };
 
    var options = $.extend(defaults, options);
@@ -87,7 +88,7 @@
     }
 
     stsBoxEle.css({
-      'display': 'none',
+      'display': options.isPreview ? "block" : "none",
       'z-index': 200,
       'position': 'absolute',
       'overflow': 'hidden',
@@ -245,13 +246,15 @@
       e.target.style.display = 'none'
     })
 
-    $(document).mousedown(function(e) {
-      if ($(e.target).closest('.stsBox').length)
-        return;
-
-      $('.stsBox').fadeOut('fast');
-    });
-
+    if (!options.isPreview) {
+      $(document).mousedown(function(e) {
+        if ($(e.target).closest('.stsBox').length)
+          return;
+  
+        $('.stsBox').fadeOut('fast');
+      });
+    }
+  
     $(window).blur(function(e) {
       $('.stsBox').fadeOut('fast');
     });
