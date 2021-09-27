@@ -7,25 +7,25 @@ Tested up to: 5.5.1
 Stable tag: 1.4
 Requires PHP: 5.6
 
-Allows you to share/search selected text from your site - select a snippet, search for it or share it to popular social networks. 
+Allows you to share/search selected text from your site - select a snippet, search for it or share it to popular social networks.
 
 == Description ==
 
-This is a fork of WP Selected Text Sharer which hasn't been maintained for a few years. 
+This is a fork of WP Selected Text Sharer which hasn't been maintained for a few years.
 
-Allows you to share/search selected text from your site - select a snippet, search for it or share it to popular social networks. A small popup is displayed above the selected text which contains links to share / search selected text.
+Allows you to share/search selected text from your site - select a snippet, search for it or share it to popular social networks. A small popup is displayed above the selected text which contains links to share/search selected text.
 
 = Instructions =
 
 * When a user selects a text snippet in a page or post of your site, a popup is displayed. When that quote is tweeted (or shared in another social network), the selected Quote and the link to that blog post is also shared in the following network. Hence increasing site visibility.
 
-* Search engines (Your site's search / Google adsense search / Yahoo search etc ...) can also be added to the popup. 
+* Search engines (Your site's search / Google adsense search / Yahoo search etc ...) can also be added to the popup.
 
-* Apart from sharing texts only, this plugin acts like a social bookmarking button also.
+* Apart from sharing texts only, this plugin also acts like a social bookmarking button.
 
 = Features =
 
-* Light weight, 4KB jquery plugin is required.
+* Lightweight, 4KB jquery plugin is required.
 * Various color/style and option arguments.
 * Automatic selected text truncation for Twitter.
 * Shorten the post link using Bitly.
@@ -71,7 +71,7 @@ Yes, define the given selector in the admin section.
 * Fixed 'Install plugin' link
 
 = 1.3 =
-* Fixed some errors 
+* Fixed some errors
 
 = 1.2 =
 * Fork and fixes from the original plugin version
