@@ -193,30 +193,107 @@
                 }
 
                 if (getSelectionText() != '') {
-
                     stsBoxEle = $('body').find('.stsBox');
 
-                    var x = e.pageX;
-                    var y = e.pageY;
+					// Get the coordinates of the mouse on the screen.
+                    var mouseX = e.pageX;
+                    var mouseY = e.pageY;
 
+					// Get an object from the highlighted area.
+					let selection = window.getSelection();
+					let range = selection.getRangeAt(0);
+					let rect = range.getBoundingClientRect();
+
+					// Get the height and width of the current window.
+					let windowHeight = $(window).height();
+					let windowsWidth = $(window).width();
+
+					// Get the height and width of the popup box.
+					let h = stsBoxEle.outerHeight();
+					let w = stsBoxEle.outerWidth();
+
+					// Calculate the space to the top and to the right of the popup box.
+					let spaceToTop   = windowHeight - ( (windowHeight - mouseY) + h + 20 );
+					let spaceToRight = windowsWidth - ( mouseX + w + 10 );
+
+					// Set the initial top and left styles for the popup.
+					let top  = 0;
+					let left = 0;
+
+					// Make adjustments to the popup position if it goes out of the window.
+                    if (spaceToTop >= 0) {
+						top = mouseY - 20 - (stsBoxEle.outerHeight() + ($('.stsBox li a').length));
+					} else {
+						top = mouseY + 20;
+					}
+
+                    if (spaceToRight >= 0) {
+						left = mouseX + 20;
+					} else {
+						left = mouseX - Math.abs(spaceToRight);
+					}
+
+					// Calculate the position/size of the popup and the highlighted text.
+					let boxTop    = top;
+					let boxBottom = top + stsBoxEle.outerHeight();
+					let boxLeft   = left;
+					let boxRight  = left + stsBoxEle.outerWidth();
+					let highlightTop = rect.top + window.scrollY;
+					let highlightBot = rect.bottom + window.scrollY;
+					let highlightLeft  = rect.left + window.scrollX;
+					let highlightRight = rect.right + window.scrollX;
+
+					let sidesAreInHighlight = false;
+
+					// Check if the popup goes over the highlighted text.
+					if (boxLeft > highlightLeft && boxLeft < highlightRight) {
+						sidesAreInHighlight = true;
+					} else if (boxRight > highlightLeft && boxRight < highlightRight) {
+						sidesAreInHighlight = true;
+					} else if(boxLeft < highlightLeft && boxRight > highlightRight) {
+						sidesAreInHighlight = true;
+					}
+
+					if (sidesAreInHighlight) {
+						// If the bottom of the popup is in the highlighted area.
+						if (boxBottom < highlightBot && boxBottom > highlightTop) {
+							// If the top of the popup is also in the highlighted area.
+							if (boxTop < highlightBot && boxTop > highlightTop) {
+								// Check if the top or the bottom is closer.
+								if (mouseY - highlightTop < highlightBot - mouseY) {
+									top = highlightTop - 5 - (stsBoxEle.outerHeight() + ($('.stsBox li a').length));
+								} else {
+									top = highlightBot + 10;
+								}
+							} else {
+								top = highlightTop - 5 - (stsBoxEle.outerHeight() + ($('.stsBox li a').length));
+							}
+						// If the top of the popup is in the highlighted area.
+						} else if (boxTop < highlightBot && boxTop > highlightTop) {
+							top = highlightBot + 10;
+						// If the highlighted between the top and bottom of the popup.
+						} else {
+							// Check if the top or the bottom is closer.
+							if (mouseY - highlightTop < highlightBot - mouseY) {
+								top = highlightTop - 5 - (stsBoxEle.outerHeight() + ($('.stsBox li a').length));
+							} else {
+								top = highlightBot + 10;
+							}
+						}
+					}
+
+					// Set the final styles/position for the popup
+					stsBoxEle.css({
+						top: top,
+						left: left,
+					});
+
+					// Make the popup visible. (fade in).
                     stsBoxEle.fadeIn('fast');
-                    if (stsBoxEle.outerHeight() <= y) {
-                        stsBoxEle.css({
-                            top: y - 10 - (stsBoxEle.outerHeight() + ($('.stsBox li a').length)),
-                            left: x + 30
-                        });
-                        // The menu shouldn't get displayed out of the viewport
-                    } else {
-                        stsBoxEle.css({
-                            top: y - (stsBoxEle.outerHeight() - ($('.stsBox li a').length * 30)),
-                            left: x + 30
-                        });
-                    }
 
                     $('.stsBox li a').each(function() {
                         $(this).attr('rev', getSelectionText());
                     });
-
                 }
             });
 
