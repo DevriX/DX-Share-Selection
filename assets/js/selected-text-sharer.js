@@ -77,7 +77,7 @@
 
             stsBoxEle.css({
                 'display': 'none',
-                'z-index': 200,
+                'z-index': 999999999,
                 'position': 'absolute',
                 'overflow': 'hidden',
                 'border': '1px solid ' + options.borderColor,
@@ -279,6 +279,16 @@
 							} else {
 								top = highlightBot + 10;
 							}
+						}
+					}
+
+					spaceToTop = windowHeight - (windowHeight - top + window.scrollY);
+
+					if (spaceToTop < 0) {
+						if (sidesAreInHighlight) {
+							top = highlightBot + 10;
+						} else {
+							top = mouseY + 20;
 						}
 					}
 
