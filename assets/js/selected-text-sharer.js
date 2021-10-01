@@ -222,13 +222,13 @@
 
 					// Make adjustments to the popup position if it goes out of the window.
                     if (spaceToTop >= 0) {
-						top = mouseY - 20 - (stsBoxEle.outerHeight() + ($('.stsBox li a').length));
+						top = mouseY - 15 - (stsBoxEle.outerHeight() + ($('.stsBox li a').length));
 					} else {
-						top = mouseY + 20;
+						top = mouseY + 15;
 					}
 
                     if (spaceToRight >= 0) {
-						left = mouseX + 20;
+						left = mouseX + 15;
 					} else {
 						left = mouseX - Math.abs(spaceToRight);
 					}
@@ -261,23 +261,23 @@
 							if (boxTop < highlightBot && boxTop > highlightTop) {
 								// Check if the top or the bottom is closer.
 								if (mouseY - highlightTop < highlightBot - mouseY) {
-									top = highlightTop - 5 - (stsBoxEle.outerHeight() + ($('.stsBox li a').length));
+									top = highlightTop - 15 - (stsBoxEle.outerHeight() + ($('.stsBox li a').length));
 								} else {
-									top = highlightBot + 10;
+									top = highlightBot + 15;
 								}
 							} else {
-								top = highlightTop - 5 - (stsBoxEle.outerHeight() + ($('.stsBox li a').length));
+								top = highlightTop - 15 - (stsBoxEle.outerHeight() + ($('.stsBox li a').length));
 							}
 						// If the top of the popup is in the highlighted area.
 						} else if (boxTop < highlightBot && boxTop > highlightTop) {
-							top = highlightBot + 10;
+							top = highlightBot + 15;
 						// If the highlighted between the top and bottom of the popup.
 						} else {
 							// Check if the top or the bottom is closer.
 							if (mouseY - highlightTop < highlightBot - mouseY) {
-								top = highlightTop - 5 - (stsBoxEle.outerHeight() + ($('.stsBox li a').length));
+								top = highlightTop - 15 - (stsBoxEle.outerHeight() + ($('.stsBox li a').length));
 							} else {
-								top = highlightBot + 10;
+								top = highlightBot + 15;
 							}
 						}
 					}
@@ -286,9 +286,9 @@
 
 					if (spaceToTop < 0) {
 						if (sidesAreInHighlight) {
-							top = highlightBot + 10;
+							top = highlightBot + 15;
 						} else {
-							top = mouseY + 20;
+							top = mouseY + 15;
 						}
 					}
 
