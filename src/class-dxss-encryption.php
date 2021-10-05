@@ -1,14 +1,31 @@
 <?php
+/**
+ * Contains encrypting and decripting functions.
+ *
+ * @package DX-Share-Selection
+ */
 
-
+/**
+ * DXSS_Encryption
+ */
 class DXSS_Encryption {
+	/**
+	 * Secret key for encryption.
+	 *
+	 * @var String $encrypt_secret
+	 */
 	private static $encrypt_secret = '2KwK<J)Uvmp/{AP}q;M-<2d(VZ]ELAF)W>3#,e2T$.Mg^;G9}r*RFsc6hF_-?>+SU97Tv9';
+	/**
+	 * Dumb token view.
+	 *
+	 * @var String $dumb_token_view
+	 */
 	public static $dumb_token_view = '*************************************';
 
 	/**
 	 * Encrypt's string.
 	 *
-	 * @param $string
+	 * @param String $string The string to encrypt.
 	 *
 	 * @return string
 	 */
@@ -27,7 +44,7 @@ class DXSS_Encryption {
 	/**
 	 * Decrypts string.
 	 *
-	 * @param $encrypted_string
+	 * @param String $encrypted_string The string to decrypt.
 	 *
 	 * @return false|string
 	 */

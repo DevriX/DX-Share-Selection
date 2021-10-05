@@ -1,22 +1,24 @@
 <?php
-/*
-Plugin Name: DX Share Selection
-Plugin URI: https://devrix.com/
-Plugin Author: nofeairnc
-Description: DX Share Selection is a fork of WP Selected Text sharer aiming to share your selected text in social networks. Select a text/code snippet from your post/page and share it to various social media websites.
-Version: 1.4
-Author: DevriX
-Author URI: https://devrix.com/
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-*/
+/**
+ * Plugin Name: DX Share Selection
+ * Plugin URI: https://devrix.com/
+ * Plugin Author: nofeairnc
+ * Description: DX Share Selection is a fork of WP Selected Text sharer aiming to share your selected text in social networks. Select a text/code snippet from your post/page and share it to various social media websites.
+ * Version: 1.5
+ * Author: DevriX
+ * Author URI: https://devrix.com/
+ * License: GPLv2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * @package DX-Share-Selection
+ */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 if ( ! defined( 'DXSS_VERSION' ) ) {
-	define( 'DXSS_VERSION', '1.4');
+	define( 'DXSS_VERSION', '1.5' );
 }
 if ( ! defined( 'DXSS_DIR' ) ) {
 	define( 'DXSS_DIR', dirname( __FILE__ ) );
@@ -28,15 +30,15 @@ if ( ! defined( 'DXSS_BASENAME' ) ) {
 	define( 'DXSS_BASENAME', plugin_basename( __FILE__ ) );
 }
 
-// Load languages
+// Load languages.
 load_plugin_textdomain( 'dxss', false, basename( dirname( __FILE__ ) ) . '/languages/' );
 
-// Include the files
-require_once 'src/DXSS_Share_Selection.php';
-require_once 'src/DXSS_WPSR.php';
-require_once 'src/DXSS_Option_Helper.php';
-require_once 'src/DXSS_Bitly.php';
-require_once 'src/DXSS_Encryption.php';
+// Include the files.
+require_once 'src/class-dxss-share-selection.php';
+require_once 'src/class-dxss-wpsr.php';
+require_once 'src/class-dxss-option-helper.php';
+require_once 'src/class-dxss-bitly.php';
+require_once 'src/class-dxss-encryption.php';
 
 
 $dxss_share_selection = new DXSS_Share_Selection();
