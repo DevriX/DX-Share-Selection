@@ -16,13 +16,9 @@
 				<h4><?php esc_html_e( 'General', 'dxss' ); ?></h4>
 				<div class="section">
 					<table width="100%" border="0">
-						<tr>
+					<tr style="display: block; padding-bottom: 30px;">
 							<td width="19%" height="32"><?php esc_html_e( 'Widget Title', 'dxss' ); ?></td>
 							<td width="81%"><input name="dxss_title" id="dxss_title" type="text" value="<?php echo esc_attr( $dxss_settings['title'] ); ?>"/></td>
-						</tr>
-						<tr>
-							<td height="33"><?php esc_html_e( 'Share Items', 'dxss' ); ?></td>
-							<td>&nbsp;</td>
 						</tr>
 						<tr>
 							<td height="33" colspan="2">
@@ -173,7 +169,7 @@
 			<input type="button" class="closeLinks close button" value="Close"/>
 			<h3><?php esc_html_e( 'Install WP Socializer plugin', 'dxss' ); ?></h3>
 			<hr/>
-			<p><?php esc_html_e( 'Sorry, you need to install <b>WP Socializer plugin</b> to get the additional social buttons links and data.', 'dxss' ); ?></p>
+			<p><?php _e( 'Sorry, you need to install <b>WP Socializer plugin</b> to get the additional social buttons links and data.', 'dxss' ); ?></p>
 			<p><?php esc_html_e( 'You can install the powerful WP Socializer plugin in one click securely by clicking the Install button below.', 'dxss' ); ?></p>
 			<?php
 			$install_url = 'https://wordpress.org/plugins/wp-socializer/';
