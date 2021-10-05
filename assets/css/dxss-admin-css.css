@@ -5,7 +5,7 @@
 */
 
 .wrap h3 {
-	font: italic 21px "Times New Roman", Times, serif;
+	font: 21px "Times New Roman", Times, serif;
 	color: #333333;
 	margin: 10px 0px 0px;
 	padding: 0px;
@@ -150,11 +150,9 @@ table #addList {
 	padding-bottom: 4px;
 }
 
-.codeBox {
+code {
 	background: #FCFCFC;
-	padding: 3px;
-	margin-right: 5px;
-	margin-left: 5px;
+	padding: 1px 3px 2px 3px;
 	border: 1px solid #e2e2e2;
 	font-size: 11px;
 }
