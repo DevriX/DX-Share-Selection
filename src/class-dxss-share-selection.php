@@ -102,9 +102,9 @@ class DXSS_Share_Selection {
 	 */
 	public function dxss_admin_css() {
 		if ( isset( $_GET['page'] ) && 'dx-share-selection' === $_GET['page'] ) {
-			wp_enqueue_style( 'dsxx-css', DXSS_URL . 'assets/dist/css/dxss-css.min.css', array(), '1.5', true );
+			wp_enqueue_style( 'dxss-css', DXSS_URL . 'assets/dist/css/dxss-css.min.css', array(), '1.5', false );
 			wp_enqueue_style( 'dxss-admin-css', DXSS_URL . 'assets/dist/css/dxss-admin-css.min.css', array(), '1.5', false );
-			wp_enqueue_style( 'farbtastic-css', DXSS_URL . '/js/farbtastic/farbtastic.css', array(), '1.5', true );
+			wp_enqueue_style( 'farbtastic-css', DXSS_URL . '/js/farbtastic/farbtastic.css', array(), '1.5', false );
 		}
 	}
 
@@ -199,7 +199,7 @@ class DXSS_Share_Selection {
 
 		$dxss_js = DXSS_URL . 'assets/dist/js/selected-text-sharer.min.js';
 
-		wp_enqueue_style( 'dsxx-css', DXSS_URL . 'assets/dist/css/dxss-css.min.css', array(), '1.5', true );
+		wp_enqueue_style( 'dxss-css', DXSS_URL . 'assets/dist/css/dxss-css.min.css', array(), '1.5', false );
 		wp_enqueue_script( 'wp-selected-text-searcher', $dxss_js, array( 'jquery' ), '1.5', $dxss_script_place );
 	}
 
