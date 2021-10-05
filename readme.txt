@@ -3,8 +3,8 @@ Contributors: nofearinc, devrix
 Author URI: https://devrix.com/
 Tags: posts, page, links, plugin, share, search, jquery, content, social, social bookmarking, tweet, Facebook, twitter, bitly
 Requires at least: 4.9
-Tested up to: 5.5.1
-Stable tag: 1.4
+Tested up to: 5.8.1
+Stable tag: 1.5
 Requires PHP: 5.6
 
 Allows you to share/search selected text from your site - select a snippet, search for it or share it to popular social networks.
