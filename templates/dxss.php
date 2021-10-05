@@ -9,7 +9,6 @@
 
 <div class="wrap">
 	<h2><img width="32" height="32" src="<?php echo esc_url( DXSS_URL ); ?>images/dx-share-selection.png" align="absmiddle"/>&nbsp;DX Share Selection <span class="smallText">v<?php echo esc_html( DXSS_VERSION ); ?></span></h2>
-
 	<div id="leftContent">
 		<form method="post">
 			<div class="content">
@@ -39,14 +38,12 @@
 								<span class="smallText"><?php esc_html_e( 'Format : Name, Share/Search URL, Icon URL', 'dxss' ); ?></span></td>
 						</tr>
 					</table>
-
 				</div>
 
 				<div id="colorpicker" class="picker"></div>
 
 				<h4><?php esc_html_e( 'Customize', 'dxss' ); ?></h4>
 				<div class="section">
-
 					<table width="100%" height="220" border="0">
 						<tr>
 							<td width="22%" height="33"><?php esc_html_e( 'Border Color', 'dxss' ); ?></td>
@@ -83,7 +80,6 @@
 					</table>
 					<div class="restore-button-parent"><input type="button" id="restore-customize" class="toolBt button" value="<?php esc_html_e( 'Restore Customize Settings', 'dxss' ); ?>" /></div>
 				</div>
-
 				<h4><?php esc_html_e( 'Optional', 'dxss' ); ?></h4>
 				<div class="section">
 					<table width="100%" height="162" border="0">
@@ -92,7 +88,8 @@
 							<td><select id="dxss_scriptPlace" name="dxss_scriptPlace">
 									<option <?php echo intval( $dxss_settings['scriptPlace'] ) === 0 ? ' selected="selected"' : ''; ?> value="0"><?php esc_html_e( 'Header', 'dxss' ); ?></option>
 									<option <?php echo intval( $dxss_settings['scriptPlace'] ) === 1 ? ' selected="selected"' : ''; ?> value="1"><?php esc_html_e( 'Footer', 'dxss' ); ?></option>
-								</select></td>
+								</select>
+							</td>
 						</tr>
 						<tr>
 							<td height="35"><?php esc_html_e( 'Truncate Text', 'dxss' ); ?></td>
@@ -118,19 +115,16 @@
 					</table>
 					<div class="restore-button-parent"><input type="button" id="restore-optional" class="toolBt button" value="<?php esc_attr_e( 'Restore Optional Settings', 'dxss' ); ?>" /></div>
 				</div>
-
 				<h4><?php esc_html_e( 'Preview', 'dxss' ); ?></h4>
 				<div class="section preview">
 					<small class="smallText"><?php esc_html_e( 'Select a text to show the widget', 'dxss' ); ?></small><br/>
 					Lorem ipsum et natum omnesque vel, id audire repudiandae mei, eirmod tritani ex usu. Ius ex wisi labores nonummy, omnis fuisset persequeris no ius. Eam modus persecuti ex, qui in alienum vulputate, kasd elitr an cum. Corpora molestiae forensibus quo ei, autem dicam vivendo ne
 					eum. Id numquam nominavi similique usu.
 				</div>
-
 				<input class="button-primary" type="submit" name="dxss_submit" id="dxss_submit" value="	    <?php esc_attr_e( 'Update', 'dxss' ); ?>     "/>
 			</div>
 		</form>
 	</div>
-
 	<div class="lightBox helpWindow bottomShadow">
 		<input type="button" class="closeHelp close button" value="Close"/>
 		<h3><?php esc_html_e( 'Help', 'dxss' ); ?></h3>
@@ -151,7 +145,6 @@
 			<p class="smallText"><?php esc_html_e( 'Popular and recommended buttons are given in by default. Just select the button from the dropdown list. Above settings are required only if you want to add a custom button or change the template', 'dxss' ); ?></p>
 		</div>
 	</div>
-
 	<div class="lightBox wpsrBox bottomShadow">
 		<?php if ( class_exists( 'WPSR_Lists' ) ) : ?>
 			<input type="button" class="closeLinks close button" value="Close"/>
@@ -179,6 +172,4 @@
 			<small class="smallText"><?php _e( 'DX share Selection requires to install WP Socializer to link the additional 98 buttons. <a href="https://wordpress.org/plugins/wp-socializer/" target="_blank">See here</a> for more info', 'dxss' ); ?></small>
 		<?php endif; ?>
 	</div>
-
-
 </div>
