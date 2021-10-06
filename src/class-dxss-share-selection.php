@@ -114,28 +114,28 @@ class DXSS_Share_Selection {
 	 * @return array
 	 */
 	public function dxss_get_post_details() {
-		// Get the global variables.
+		// Get the global post variable.
 		global $post;
 
-		// Inside loop.
-		$permalink_inside_loop = get_permalink( $post->ID );
-		$title_inside_loop     = str_replace( '+', '%20', get_the_title( $post->ID ) );
-
-		// Outside loop.
-		$permalink_outside_loop = ( ! empty( $_SERVER['HTTPS'] ) ) ? 'https://' . $this->dxss_sanitize_server_data( 'SERVER_NAME' ) . $this->dxss_sanitize_server_data( 'REQUEST_URI' ) : 'http://' . $this->dxss_sanitize_server_data( 'SERVER_NAME' ) . $this->dxss_sanitize_server_data( 'REQUEST_URI' );
-		$title_outside_loop     = str_replace( '+', '%20', wp_title( '', 0 ) );
-		// If title is null.
-		if ( '' === $title_outside_loop ) {
-			$title_outside_loop = str_replace( '+', '%20', get_bloginfo( 'name' ) );
-		}
-
 		if ( in_the_loop() ) {
+			// Inside loop.
+			$permalink_inside_loop = get_permalink( $post->ID );
+			$title_inside_loop     = str_replace( '+', '%20', get_the_title( $post->ID ) );
+
 			$details = array(
 				'permalink' => $permalink_inside_loop,
 				'title'     => $title_inside_loop,
 			);
-
 		} else {
+			// Outside loop.
+			$permalink_outside_loop = ( ! empty( $_SERVER['HTTPS'] ) ) ? 'https://' . $this->dxss_sanitize_server_data( 'SERVER_NAME' ) . $this->dxss_sanitize_server_data( 'REQUEST_URI' ) : 'http://' . $this->dxss_sanitize_server_data( 'SERVER_NAME' ) . $this->dxss_sanitize_server_data( 'REQUEST_URI' );
+			$title_outside_loop     = str_replace( '+', '%20', wp_title( '', 0 ) );
+
+			// If title is null.
+			if ( '' === $title_outside_loop ) {
+				$title_outside_loop = str_replace( '+', '%20', get_bloginfo( 'name' ) );
+			}
+
 			$details = array(
 				'permalink' => $permalink_outside_loop,
 				'title'     => $title_outside_loop,
