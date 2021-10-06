@@ -41,7 +41,8 @@ $j(document).ready(function() {
 
         var button = lists[$j(this).val()];
         delete button[3];
-        val = $j('#dxss_lists').val() + '\n' + button;
+		let newLine = $j('#dxss_lists').val() === '' ? '' : '\n';
+        val = $j('#dxss_lists').val() + newLine + button;
         $j('#dxss_lists').val(val);
 
     });
