@@ -14,7 +14,7 @@
 .wrap h4 {
 	font-weight: bold;
 	display: block;
-	padding: 10px 0px 5px;
+	padding: 10px 0 5px 6px;
 	margin: 0px 0px 5px;
 	border-bottom: 1px solid #e7e7e7;
 	clear: both;
@@ -23,6 +23,10 @@
 .wrap h5 {
 	margin: 7px 0px;
 	font-size: 13px;
+}
+
+.align-table-row {
+	vertical-align: initial;
 }
 
 .wrap h4 .max_min {
@@ -39,7 +43,7 @@
 }
 
 .wrap .section {
-	padding: 10px;
+    padding: 10px 10px 10px 15px;
 }
 
 .wrap .section img {

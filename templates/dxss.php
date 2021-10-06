@@ -46,30 +46,30 @@
 				<div class="section">
 					<table width="100%" height="220" border="0">
 						<tr>
-							<td width="22%" height="33"><?php esc_html_e( 'Border Color', 'dxss' ); ?></td>
-							<td width="78%"><input name="dxss_borderColor" id="dxss_borderColor" class="color" type="text" value="<?php echo esc_attr( $dxss_settings['borderColor'] ); ?>"/></td>
+							<td width="21%" height="33"><?php esc_html_e( 'Border Color', 'dxss' ); ?></td>
+							<td width="79%"><input name="dxss_borderColor" id="dxss_borderColor" class="color" type="text" value="<?php echo esc_attr( $dxss_settings['borderColor'] ); ?>"/></td>
 						</tr>
 						<tr>
-							<td height="37"><?php esc_html_e( 'Background Color', 'dxss' ); ?></td>
+							<td height="33"><?php esc_html_e( 'Background Color', 'dxss' ); ?></td>
 							<td><input name="dxss_bgColor" id="dxss_bgColor" class="color" type="text" value="<?php echo esc_html( $dxss_settings['bgColor'] ); ?>"/></td>
 						</tr>
 						<tr>
-							<td height="35"><?php esc_html_e( 'Title Background color', 'dxss' ); ?></td>
+							<td height="33"><?php esc_html_e( 'Title Background color', 'dxss' ); ?></td>
 							<td><input name="dxss_titleColor" id="dxss_titleColor" class="color" type="text" value="<?php echo esc_html( $dxss_settings['titleColor'] ); ?>"/></td>
 						</tr>
 						<tr>
-							<td height="30"><?php esc_html_e( 'Title Text Color', 'dxss' ); ?></td>
+							<td height="33"><?php esc_html_e( 'Title Text Color', 'dxss' ); ?></td>
 							<td><input name="dxss_titleTextColor" id="dxss_titleTextColor" class="color" type="text" value="<?php echo esc_html( $dxss_settings['titleTextColor'] ); ?>"/></td>
 						</tr>
 						<tr>
-							<td height="36"><?php esc_html_e( 'Hover Color', 'dxss' ); ?></td>
+							<td height="33"><?php esc_html_e( 'Hover Color', 'dxss' ); ?></td>
 							<td><input name="dxss_hoverColor" id="dxss_hoverColor" class="color" type="text" value="<?php echo esc_html( $dxss_settings['hoverColor'] ); ?>"/></td>
 						</tr>
 						<tr>
-							<td height="30"><?php esc_html_e( 'Text Color', 'dxss' ); ?></td>
+							<td height="33"><?php esc_html_e( 'Text Color', 'dxss' ); ?></td>
 							<td><input name="dxss_textColor" id="dxss_textColor" class="color" type="text" value="<?php echo esc_html( $dxss_settings['textColor'] ); ?>"/></td>
 						</tr>
-						<tr>
+						<tr class="align-table-row">
 							<td><?php esc_html_e( 'Extra Class', 'dxss' ); ?></td>
 							<td>
 								<input name="dxss_extraClass" type="text" value="<?php echo esc_html( $dxss_settings['extraClass'] ); ?>"/>
@@ -83,29 +83,32 @@
 				<h4><?php esc_html_e( 'Optional', 'dxss' ); ?></h4>
 				<div class="section">
 					<table width="100%" height="162" border="0">
-						<tr>
-							<td height="35"><?php esc_html_e( 'Load scripts in', 'dxss' ); ?></td>
-							<td><select id="dxss_scriptPlace" name="dxss_scriptPlace">
+						<tr class="align-table-row">
+							<td width="21%" height="33"><?php esc_html_e( 'Load scripts in', 'dxss' ); ?></td>
+							<td width="79%">
+								<select id="dxss_scriptPlace" name="dxss_scriptPlace">
 									<option <?php echo intval( $dxss_settings['scriptPlace'] ) === 0 ? ' selected="selected"' : ''; ?> value="0"><?php esc_html_e( 'Header', 'dxss' ); ?></option>
 									<option <?php echo intval( $dxss_settings['scriptPlace'] ) === 1 ? ' selected="selected"' : ''; ?> value="1"><?php esc_html_e( 'Footer', 'dxss' ); ?></option>
 								</select>
+								<br/>
+								<small class="smallText"><?php esc_html_e( 'Choose where to load the main scripts', 'dxss' ); ?></small>
 							</td>
 						</tr>
-						<tr>
-							<td height="35"><?php esc_html_e( 'Truncate Text', 'dxss' ); ?></td>
+						<tr class="align-table-row">
+							<td height="33"><?php esc_html_e( 'Truncate Text', 'dxss' ); ?></td>
 							<td><input name="dxss_truncateChars" type="text" value="<?php echo esc_attr( $dxss_settings['truncateChars'] ); ?>"/><br/>
 								<small class="smallText"><?php _e( 'Selected texts are truncated when <code>%ts</code> is used in the URL', 'dxss' ); ?></small>
 							</td>
 						</tr>
-						<tr>
-							<td height="35"><?php esc_html_e( 'Target Content', 'dxss' ); ?></td>
+						<tr class="align-table-row">
+							<td height="33"><?php esc_html_e( 'Target Content', 'dxss' ); ?></td>
 							<td>
 								<input name="dxss_element" type="text" value="<?php echo esc_attr( $dxss_settings['element'] ); ?>"/></br>
 								<small class="smallText"><?php esc_html_e( 'The DX Share Selection will work only with this jQuery selector' ); ?></small>
 							</td>
 						</tr>
-						<tr>
-							<td><?php esc_html_e( 'Bitly Token', 'dxss' ); ?></td>
+						<tr class="align-table-row">
+							<td height="33"><?php esc_html_e( 'Bitly Token', 'dxss' ); ?></td>
 							<td>
 								<input name="dxss_bitly_token" type="text" value="<?php echo ! empty( $dxss_settings['bitly_token'] ) ? esc_html( DXSS_Encryption::$dumb_token_view ) : ''; ?>" autocomplete="off" size="40"/>
 								<br/>
@@ -121,7 +124,7 @@
 					Lorem ipsum et natum omnesque vel, id audire repudiandae mei, eirmod tritani ex usu. Ius ex wisi labores nonummy, omnis fuisset persequeris no ius. Eam modus persecuti ex, qui in alienum vulputate, kasd elitr an cum. Corpora molestiae forensibus quo ei, autem dicam vivendo ne
 					eum. Id numquam nominavi similique usu.
 				</div>
-				<input class="button-primary" type="submit" name="dxss_submit" id="dxss_submit" value="	    <?php esc_attr_e( 'Update', 'dxss' ); ?>     "/>
+				<input class="button-primary" type="submit" name="dxss_submit" id="dxss_submit" value="<?php esc_attr_e( 'Update', 'dxss' ); ?>"/>
 			</div>
 		</form>
 	</div>
