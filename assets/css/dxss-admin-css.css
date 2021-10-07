@@ -43,7 +43,7 @@
 }
 
 .wrap .section {
-    padding: 10px 10px 10px 15px;
+    padding: 10px 15px;
 }
 
 .wrap .section img {
@@ -58,10 +58,15 @@
 }
 
 #leftContent {
-	width: 79%;
+	width: 74%;
 	float: left;
 	margin: 0px;
 	padding: 0px;
+}
+
+#rightContent {
+	width: 26%;
+	float: right;
 }
 
 .content {
@@ -292,4 +297,8 @@ code:hover {
 textarea#dxss_lists {
 	width: 100%;
 	height: 200px;
+}
+
+#dxss_submit {
+	margin-left: 15px;
 }
