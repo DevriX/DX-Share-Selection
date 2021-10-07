@@ -148,7 +148,7 @@
                 'bottom': '-19px'
             });
 
-            stsBoxEle.find('li').hover(function() {
+            stsBoxEle.find('li').on( 'hover', function() {
                 $(this).css({
                     background: options.hoverColor
                 });
@@ -307,7 +307,7 @@
                 }
             });
 
-            $('.stsBox li').click(function() {
+            $('.stsBox li').on('click', function() {
                 sUrl = $(this).children('a').attr('rel');
                 selectedText = $(this).children('a').attr('rev');
                 theUrl = sUrl.replace('%s', selectedText);
@@ -319,14 +319,14 @@
                 e.target.style.display = 'none'
             })
 
-            $(document).mousedown(function(e) {
+            $(document).on( 'mousedown', function(e) {
                 if ($(e.target).closest('.stsBox').length)
                     return;
 
                 $('.stsBox').fadeOut('fast');
             });
 
-            $(window).blur(function(e) {
+            $(window).on( 'blur', function(e) {
                 $('.stsBox').fadeOut('fast');
             });
 
