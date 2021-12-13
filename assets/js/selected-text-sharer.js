@@ -6,6 +6,7 @@
  */
 (function($) {
     $.fn.selectedTextSharer = function(options) {
+		let isOptionsPage = (window.location.href.indexOf("dx-share-selection") >= 0 && window.location.href.indexOf("wp-admin") >= 0);
 
         let defaults = {
             title: 'Share',
@@ -42,7 +43,7 @@
 
         function createListBox(ele, e) {
             e = e || window.event;
-            stsBox = '<div class="stsBox ' + options.extraClass + '"><div class="title">' + options.title + '</div><div class="list"><ul></ul></div><span class="arrow"></span></div>';
+            stsBox = '<div class="stsBox' + (options.extraClass ? ' ' + options.extraClass : '') + '"><div class="title">' + options.title + '</div><div class="list"><ul></ul></div></div>';
 
             $('body > .stsBox ').remove();
             $('body').append(stsBox);
@@ -65,8 +66,8 @@
                     } else {
                         img = '';
                     }
-                    // '<li>' +
-                    tempList = '<li>' + img + '<a rel="' + lstSplit[i][1] + '" title="' + lstSplit[i][0] + '" href="#">' + lstSplit[i][0] + '</a></li>';
+					let rel = isOptionsPage ? '' : 'rel="' + lstSplit[i][1] + '"';
+                    tempList = '<li>' + img + '<a ' + rel + ' title="' + lstSplit[i][0] + '" href="#">' + lstSplit[i][0] + '</a></li>';
                     stsBoxEle.find('ul').append(tempList);
                 }
             }
@@ -126,7 +127,7 @@
 
             stsBoxEle.find('.list').css({
                 'background': options.background,
-                'padding': '7px'
+                'padding': '3px'
             });
 
             $('.stsBox ul, .stsBox li').css({
@@ -152,17 +153,7 @@
                 'padding': '3px 7px'
             });
 
-            stsBoxEle.find('.arrow').css({
-                'width': 0,
-                'height': 0,
-                'line-height': 0,
-                'border-left': '10px solid transparent',
-                'border-top': '15px solid ' + options.borderColor,
-                'position': 'absolute',
-                'bottom': '-19px'
-            });
-
-            stsBoxEle.find('li').on( 'hover', function() {
+            stsBoxEle.find('li').hover(function() {
                 $(this).css({
                     background: options.hoverColor
                 });
@@ -321,6 +312,9 @@
                 }
             });
 
+            $('img').on('error', function(e) {
+                e.target.style.display = 'none'
+            })
 			if (!isOptionsPage) {
 				$('.stsBox li').on('click', function() {
 					sUrl = $(this).children('a').attr('rel');
