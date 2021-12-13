@@ -7,8 +7,8 @@
 
 ?>
 
-<div class="wrap">
-	<h2><img width="32" height="32" src="<?php echo esc_url( DXSS_URL ); ?>images/dx-share-selection.png" align="absmiddle"/>&nbsp;DX Share Selection <span class="smallText">v<?php echo esc_html( DXSS_VERSION ); ?></span></h2>
+<h2><img width="32" height="32" src="<?php echo esc_url( DXSS_URL ); ?>images/dx-share-selection.png" align="absmiddle"/>&nbsp;DX Share Selection <span class="smallText">v<?php echo esc_html( DXSS_VERSION ); ?></span></h2>
+<div class="wrap main-wrap">
 	<div id="leftContent">
 		<form method="post">
 			<div class="content">
@@ -17,7 +17,7 @@
 					<table width="100%" border="0">
 					<tr style="display: block; padding-bottom: 30px;">
 							<td width="19%" height="32"><?php esc_html_e( 'Widget Title', 'dxss' ); ?></td>
-							<td width="81%"><input name="dxss_title" id="dxss_title" type="text" value="<?php echo esc_attr( $dxss_settings['title'] ); ?>"/></td>
+							<td width="81%"><input class="dxss-settings" name="dxss_title" id="dxss_title" type="text" value="<?php echo esc_attr( $dxss_settings['title'] ); ?>"/></td>
 						</tr>
 						<tr>
 							<td height="33" colspan="2">
@@ -34,58 +34,56 @@
 								<input type="button" class="toolBt openHelp button" value="<?php esc_attr_e( 'Help', 'dxss' ); ?>"/>
 						</tr>
 						<tr>
-							<td colspan="2"><textarea name="dxss_lists" id="dxss_lists"><?php echo esc_html( $dxss_settings['lists'] ); ?></textarea>
+							<td colspan="2"><textarea class="dxss-settings" name="dxss_lists" id="dxss_lists"><?php echo esc_html( $dxss_settings['lists'] ); ?></textarea>
 								<span class="smallText"><?php esc_html_e( 'Format : Name, Share/Search URL, Icon URL', 'dxss' ); ?></span></td>
 						</tr>
 					</table>
 				</div>
-
-				<div id="colorpicker" class="picker"></div>
-
 				<h4><?php esc_html_e( 'Customize', 'dxss' ); ?></h4>
-				<div class="section">
+				<div class="section relative-section">
+					<div id="colorpicker" class="picker"></div>
 					<table width="100%" height="220" border="0">
 						<tr>
-							<td width="21%" height="33"><?php esc_html_e( 'Border Color', 'dxss' ); ?></td>
-							<td width="79%"><input name="dxss_borderColor" id="dxss_borderColor" class="color" type="text" value="<?php echo esc_attr( $dxss_settings['borderColor'] ); ?>"/></td>
+							<td width="23%" height="33"><?php esc_html_e( 'Border Color', 'dxss' ); ?></td>
+							<td width="77%"><input name="dxss_borderColor" id="dxss_borderColor" class="color dxss-settings" type="text" value="<?php echo esc_attr( $dxss_settings['borderColor'] ); ?>"/></td>
 						</tr>
 						<tr>
 							<td height="33"><?php esc_html_e( 'Background Color', 'dxss' ); ?></td>
-							<td><input name="dxss_bgColor" id="dxss_bgColor" class="color" type="text" value="<?php echo esc_html( $dxss_settings['bgColor'] ); ?>"/></td>
+							<td><input name="dxss_bgColor" id="dxss_bgColor" class="color dxss-settings" type="text" value="<?php echo esc_html( $dxss_settings['bgColor'] ); ?>"/></td>
 						</tr>
 						<tr>
 							<td height="33"><?php esc_html_e( 'Title Background color', 'dxss' ); ?></td>
-							<td><input name="dxss_titleColor" id="dxss_titleColor" class="color" type="text" value="<?php echo esc_html( $dxss_settings['titleColor'] ); ?>"/></td>
+							<td><input name="dxss_titleColor" id="dxss_titleColor" class="color dxss-settings" type="text" value="<?php echo esc_html( $dxss_settings['titleColor'] ); ?>"/></td>
 						</tr>
 						<tr>
 							<td height="33"><?php esc_html_e( 'Title Text Color', 'dxss' ); ?></td>
-							<td><input name="dxss_titleTextColor" id="dxss_titleTextColor" class="color" type="text" value="<?php echo esc_html( $dxss_settings['titleTextColor'] ); ?>"/></td>
+							<td><input name="dxss_titleTextColor" id="dxss_titleTextColor" class="color dxss-settings" type="text" value="<?php echo esc_html( $dxss_settings['titleTextColor'] ); ?>"/></td>
 						</tr>
 						<tr>
 							<td height="33"><?php esc_html_e( 'Hover Color', 'dxss' ); ?></td>
-							<td><input name="dxss_hoverColor" id="dxss_hoverColor" class="color" type="text" value="<?php echo esc_html( $dxss_settings['hoverColor'] ); ?>"/></td>
+							<td><input name="dxss_hoverColor" id="dxss_hoverColor" class="color dxss-settings" type="text" value="<?php echo esc_html( $dxss_settings['hoverColor'] ); ?>"/></td>
 						</tr>
 						<tr>
 							<td height="33"><?php esc_html_e( 'Text Color', 'dxss' ); ?></td>
-							<td><input name="dxss_textColor" id="dxss_textColor" class="color" type="text" value="<?php echo esc_html( $dxss_settings['textColor'] ); ?>"/></td>
+							<td><input name="dxss_textColor" id="dxss_textColor" class="color dxss-settings" type="text" value="<?php echo esc_html( $dxss_settings['textColor'] ); ?>"/></td>
 						</tr>
 						<tr class="align-table-row">
 							<td><?php esc_html_e( 'Extra Class', 'dxss' ); ?></td>
 							<td>
-								<input name="dxss_extraClass" type="text" value="<?php echo esc_html( $dxss_settings['extraClass'] ); ?>"/>
+								<input name="dxss_extraClass" id="dxss_extraClass" class="dxss-settings" type="text" value="<?php echo esc_html( $dxss_settings['extraClass'] ); ?>"/>
 								<br/>
 								<small class="smallText"><?php esc_html_e( 'The class will be added to the main Share Selection div', 'dxss' ); ?></small>
 							</td>
 						</tr>
 					</table>
-					<div class="restore-button-parent"><input type="button" id="restore-customize" class="toolBt button" value="<?php esc_html_e( 'Restore Customize Settings', 'dxss' ); ?>" /></div>
+					<div class="restore-button-parent"><input type="button" id="restore-customize" class="toolBt button dxss-restore-button" value="<?php esc_html_e( 'Restore Customize Settings', 'dxss' ); ?>" /></div>
 				</div>
 				<h4><?php esc_html_e( 'Optional', 'dxss' ); ?></h4>
 				<div class="section">
 					<table width="100%" height="162" border="0">
 						<tr class="align-table-row">
-							<td width="21%" height="33"><?php esc_html_e( 'Load scripts in', 'dxss' ); ?></td>
-							<td width="79%">
+							<td width="23%" height="33"><?php esc_html_e( 'Load scripts in', 'dxss' ); ?></td>
+							<td width="77%">
 								<select id="dxss_scriptPlace" name="dxss_scriptPlace">
 									<option <?php echo intval( $dxss_settings['scriptPlace'] ) === 0 ? ' selected="selected"' : ''; ?> value="0"><?php esc_html_e( 'Header', 'dxss' ); ?></option>
 									<option <?php echo intval( $dxss_settings['scriptPlace'] ) === 1 ? ' selected="selected"' : ''; ?> value="1"><?php esc_html_e( 'Footer', 'dxss' ); ?></option>
@@ -96,37 +94,35 @@
 						</tr>
 						<tr class="align-table-row">
 							<td height="33"><?php esc_html_e( 'Truncate Text', 'dxss' ); ?></td>
-							<td><input name="dxss_truncateChars" type="text" value="<?php echo esc_attr( $dxss_settings['truncateChars'] ); ?>"/><br/>
+							<td><input class="dxss-settings" name="dxss_truncateChars" id="dxss_truncateChars" type="text" value="<?php echo esc_attr( $dxss_settings['truncateChars'] ); ?>"/><br/>
 								<small class="smallText"><?php _e( 'Selected texts are truncated when <code>%ts</code> is used in the URL', 'dxss' ); ?></small>
 							</td>
 						</tr>
 						<tr class="align-table-row">
 							<td height="33"><?php esc_html_e( 'Target Content', 'dxss' ); ?></td>
 							<td>
-								<input name="dxss_element" type="text" value="<?php echo esc_attr( $dxss_settings['element'] ); ?>"/></br>
+								<input name="dxss_element" id="dxss_element" type="text" value="<?php echo esc_attr( $dxss_settings['element'] ); ?>"/></br>
 								<small class="smallText"><?php esc_html_e( 'The DX Share Selection will work only with this jQuery selector' ); ?></small>
 							</td>
 						</tr>
 						<tr class="align-table-row">
 							<td height="33"><?php esc_html_e( 'Bitly Token', 'dxss' ); ?></td>
 							<td>
-								<input name="dxss_bitly_token" type="text" value="<?php echo ! empty( $dxss_settings['bitly_token'] ) ? esc_html( DXSS_Encryption::$dumb_token_view ) : ''; ?>" autocomplete="off" size="40"/>
+								<input name="dxss_bitly_token" type="text" value="<?php echo ! empty( $dxss_settings['bitly_token'] ) ? esc_html( DXSS_Encryption::$dumb_token_view ) : ''; ?>" autocomplete="off"/>
 								<br/>
 								<small class="smallText"><?php _e( 'Bitly API Access Token. Used for <code>{surl}</code>', 'dxss' ); ?> <a href="https://bitly.is/accesstoken" target="_blank">Generate here</a></small>
 							</td>
 						</tr>
 					</table>
-					<div class="restore-button-parent"><input type="button" id="restore-optional" class="toolBt button" value="<?php esc_attr_e( 'Restore Optional Settings', 'dxss' ); ?>" /></div>
+					<div class="restore-button-parent"><input type="button" id="restore-optional" class="toolBt button dxss-restore-button" value="<?php esc_attr_e( 'Restore Optional Settings', 'dxss' ); ?>" /></div>
 				</div>
-				<h4><?php esc_html_e( 'Preview', 'dxss' ); ?></h4>
-				<div class="section preview">
-					<small class="smallText"><?php esc_html_e( 'Select a text to show the widget', 'dxss' ); ?></small><br/>
-					Lorem ipsum et natum omnesque vel, id audire repudiandae mei, eirmod tritani ex usu. Ius ex wisi labores nonummy, omnis fuisset persequeris no ius. Eam modus persecuti ex, qui in alienum vulputate, kasd elitr an cum. Corpora molestiae forensibus quo ei, autem dicam vivendo ne
-					eum. Id numquam nominavi similique usu.
-				</div>
-				<input class="button-primary" type="submit" name="dxss_submit" id="dxss_submit" value="<?php esc_attr_e( 'Update', 'dxss' ); ?>"/>
+				<input class="button-primary" type="submit" name="dxss_submit" id="dxss_submit" value="<?php esc_attr_e( 'Save Changes', 'dxss' ); ?>"/>
 			</div>
 		</form>
+	</div>
+	<div id="rightContent">
+			<h4 class="preview-text">Preview:</h4>
+			<div class="test-preview section"></div>
 	</div>
 	<div class="lightBox helpWindow bottomShadow">
 		<input type="button" class="closeHelp close button" value="Close"/>
