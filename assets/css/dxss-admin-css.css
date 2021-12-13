@@ -57,27 +57,12 @@
 	cursor: pointer;
 }
 
-#leftContent {
-	width: 74%;
-	float: left;
-	margin: 0px;
-	padding: 0px;
-}
-
-#rightContent {
-	width: 26%;
-	float: right;
-}
-
 .content {
 	clear: both;
 	padding: 5px 10px 10px;
 	margin: 0px;
-	background: #FFFFFF;
-	border-top: 1px solid #e9e9e9;
+	background: #fff;
 	border-right: 1px solid #e9e9e9;
-	border-bottom: 2px solid #CC0033;
-	border-left: 1px solid #e9e9e9;
 }
 
 #sidebar {
@@ -187,7 +172,7 @@ code:hover {
 	background: #FFFFFF;
 	border: 1px solid #e9e9e9;
 	position: absolute;
-	right: 21.5%;
+	right: 4%;
 	margin-top: 33px;
 }
 
@@ -301,4 +286,72 @@ textarea#dxss_lists {
 
 #dxss_submit {
 	margin-left: 15px;
+	margin-top: 15px;
+}
+
+.main-wrap {
+	margin: 10px 20px 0 2px;
+    display: flex;
+}
+
+#leftContent {
+	border-top: 1px solid #e9e9e9;
+	border-bottom: 2px solid #c03;
+	border-left: 1px solid #e9e9e9;
+	margin: 0px;
+	padding: 0px;
+}
+
+#rightContent {
+	border-top: 1px solid #e9e9e9;
+	border-right: 1px solid #e9e9e9;
+	border-bottom: 2px solid #c03;
+	clear: both;
+	padding: 5px 10px 10px;
+	margin: 0;
+	background: #fff;
+}
+
+.dxss-settings * {
+	font-size: 1em;
+}
+
+.relative-section {
+	position: relative;
+}
+
+@media (max-width: 782px) {
+	#leftContent {
+		width: fit-content;
+		font-size: 0.9em;
+		border-bottom: none;
+	}
+
+	#rightContent {
+		text-align: center;
+		border-top: none;
+	}
+
+	.main-wrap {
+		display: block;
+	}
+
+	.stsBox {
+		margin-left: 0;
+		transform: none;
+		top: 0;
+		position: unset;
+		display: inline-block !important;
+		text-align: initial;
+	}
+}
+
+@media (max-width: 845px) {
+	.picker {
+		position: relative;
+		display: inline-block;
+		margin-left: 73px;
+		right: 0;
+    	margin-top: 0;
+	}
 }
