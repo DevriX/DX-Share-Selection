@@ -72,7 +72,6 @@ $j(document).ready(function() {
 
     $j('.openHelp').on('click', function() {
         $j('.helpWindow').fadeIn();
-		$j(document).on('click', fadeOutBox);
     });
 
     $j('.closeHelp').on('click', function() {
@@ -82,7 +81,6 @@ $j(document).ready(function() {
     $j('.openWpsrLinks').on('click', function() {
 		$j('.wpsrBox').fadeIn();
         $j('#dxss_list_search').focus();
-		$j(document).on('click', fadeOutBox);
     });
 
     $j('.closeLinks').on('click', function() {
