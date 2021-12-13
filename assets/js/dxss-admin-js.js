@@ -42,8 +42,7 @@ $j(document).ready(function() {
         delete button[3];
 		let newLine = $j('#dxss_lists').val() === '' ? '' : '\n';
         val = $j('#dxss_lists').val() + newLine + button;
-        $j('#dxss_lists').val(val);
-
+        $j('#dxss_lists').val(val).change();
     });
 
     $j('#addCustom').on('click', function() {
@@ -52,8 +51,9 @@ $j(document).ready(function() {
         customIcon = prompt('Enter the Icon URL. Use "favicon" to automatically get the Icon', 'favicon');
 
         if (customName != null) {
-            val = $j('#dxss_lists').val() + '\n' + customName + ',' + customUrl + ',' + customIcon;
-            $j('#dxss_lists').val(val);
+			let newLine = $j('#dxss_lists').val() === '' ? '' : '\n';
+            val = $j('#dxss_lists').val() + newLine + customName + ',' + customUrl + ',' + customIcon;
+            $j('#dxss_lists').val(val).change();
         }
 
     });
@@ -64,13 +64,15 @@ $j(document).ready(function() {
         searchIcon = prompt('Enter the Icon URL. Use "favicon" to automatically get the Icon', 'favicon');
 
         if (searchName != null) {
-            val = $j('#dxss_lists').val() + '\n' + searchName + ',' + searchUrl + ',' + searchIcon;
-            $j('#dxss_lists').val(val);
+			let newLine = $j('#dxss_lists').val() === '' ? '' : '\n';
+            val = $j('#dxss_lists').val() + newLine + searchName + ',' + searchUrl + ',' + searchIcon;
+            $j('#dxss_lists').val(val).change();
         }
     });
 
     $j('.openHelp').on('click', function() {
         $j('.helpWindow').fadeIn();
+		$j(document).on('click', fadeOutBox);
     });
 
     $j('.closeHelp').on('click', function() {
@@ -78,12 +80,19 @@ $j(document).ready(function() {
     });
 
     $j('.openWpsrLinks').on('click', function() {
+		$j('.wpsrBox').fadeIn();
         $j('#dxss_list_search').focus();
+		$j(document).on('click', fadeOutBox);
     });
 
     $j('.closeLinks').on('click', function() {
         $j('.wpsrBox').fadeOut();
     });
+
+	function fadeOutBox() {
+        $j('.lightBox').fadeOut();
+		$j(document).off('click', fadeOutBox);
+	}
 
     var f = $j.farbtastic('#colorpicker');
     $j('.color').each(function() {
@@ -92,12 +101,22 @@ $j(document).ready(function() {
         f.linkTo(this);
     });
 
-    $j('.color').focus(function() {
-        $j('#colorpicker').fadeIn();
+    $j('.color').on('focus', function() {
+		setTimeout(function(){
+			if ($j('#colorpicker').css('display') === 'none') {
+				$j('#colorpicker').fadeIn();
+			} else {
+				$j('#colorpicker').css('display', 'inline-block');
+			}
+		}, 6);
     });
 
-    $j('.color').blur(function() {
-        $j('#colorpicker').fadeOut();
+    $j('.color').on('blur', function() {
+		setTimeout(function(){
+			if (!$j('.color').is(":focus")) {
+				$j('#colorpicker').fadeOut();
+			}
+		}, 5);
     });
 
     // Live search
@@ -113,45 +132,44 @@ $j(document).ready(function() {
         });
     });
 
-    $j('.dxss_wpsr_sites a').click(function() {
-        val = $j('#dxss_lists').val() + '\n' + $j(this).text() + ',' + decodeURIComponent($j(this).attr('rel')) + ',' + 'favicon';
-        $j('#dxss_lists').val(val);
+	updatePreview();
+	$j('.dxss-settings').on('input change paste', updatePreview);
+	$j('.dxss-restore-button').on('click', function() {
+		setTimeout(updatePreview, 40)
+	});
+
+	$j('.farbtastic div').on('mousedown', function() {
+		$j(document).one('mouseup', updatePreview);
+	});
+
+	function updatePreview () {
+		listVal = $j( '#dxss_lists' ).val();
+		listsFinal = listVal.split( '\n' ).join( '|' );
+
+		$j( '.test-preview' ).empty();
+		$j( '.test-preview' ).append('<div class="append-here"></div>');
+		$j( '.append-here' ).selectedTextSharer( {
+			title: $j( '#dxss_title' ).val(),
+			lists: listsFinal,
+			truncateChars: $j( '#dxss_truncateChars' ).val(),
+			extraClass: $j( '#dxss_extraClass' ).val(),
+			borderColor: $j( '#dxss_borderColor' ).val(),
+			background: $j( '#dxss_bgColor' ).val(),
+			titleColor: $j( '#dxss_titleColor' ).val(),
+			titleTextColor: $j( '#dxss_titleTextColor' ).val(),
+			hoverColor: $j( '#dxss_hoverColor' ).val(),
+			textColor: $j( '#dxss_textColor' ).val(),
+		} );
+		$j('.append-here').append($j('.stsBox'));
+		$j('.stsBox a').on('click', e => e.preventDefault());
+	}
+
+    $j('.dxss_wpsr_sites a').on('click', function() {
+		let newLine = $j('#dxss_lists').val() === '' ? '' : '\n';
+        val = $j('#dxss_lists').val() + newLine + $j(this).text() + ',' + $j(this).attr('rel') + ',' + 'favicon';
+        $j('#dxss_lists').val(val).change();
         $j(this).after('<span class="addedInfo">  Added !</span>');
         $j('.addedInfo').fadeOut('100');
-    });
-
-    $j('.preview').hover(function() {
-        listVal = $j('#dxss_lists').val();
-        listsFinal = listVal.split('\n').join('|');
-
-        terms = [
-            '{url}',
-            '{title}',
-            '{surl}',
-            '{blogname}',
-            '{rss-url}',
-        ];
-        replacable = [
-            window.location.href,
-            document.title,
-            window.location.href,
-            document.title,
-            window.location.origin + '/feed',
-        ];
-        listsFinal = listsFinal.replaceArray(terms, replacable);
-
-        $j('.preview').selectedTextSharer({
-            title: $j('input[name="dxss_title"]').val(),
-            lists: listsFinal,
-            truncateChars: $j('input[name=dxss_truncateChars]').val(),
-            extraClass: $j('input[name=dxss_extraClass]').val(),
-            borderColor: $j('input[name=dxss_borderColor]').val(),
-            background: $j('input[name=dxss_bgColor]').val(),
-            titleColor: $j('input[name=dxss_titleColor]').val(),
-            hoverColor: $j('input[name=dxss_hoverColor]').val(),
-            textColor: $j('input[name=dxss_textColor]').val(),
-            titleTextColor: $j('input[name=dxss_titleTextColor]').val(),
-        });
     });
 
     $j('#restore-customize').on('click', function() {
