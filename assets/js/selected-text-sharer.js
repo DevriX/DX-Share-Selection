@@ -7,29 +7,29 @@
 (function($) {
     $.fn.selectedTextSharer = function(options) {
 
-        var defaults = {
+        let defaults = {
             title: 'Share',
             lists: 'Google,http://www.google.com/search?q=%s',
-            truncateChars: 115,
-            extraClass: '',
-            borderColor: '#444',
-            background: '#fff',
+            borderColor: '#7a7a7a',
+            background: '#aaaaaa',
             titleColor: '#f2f2f2',
+            titleTextColor: '#000',
             hoverColor: '#ffffcc',
             textColor: '#000',
-            titleTextColor: '#000',
+            extraClass: '',
+            truncateChars: 115,
         };
 
-        var options = $.extend(defaults, options);
+        options = $.extend(defaults, options);
 
-        var listSplit = [];
-        var lstSplit = [];
+        let listSplit = [];
+        let lstSplit = [];
 
         function getBaseUrl(url) {
             if (url.indexOf('.') == -1 || url.indexOf('/') == -1) {
                 return false;
             }
-            var result = url.substr(0, url.indexOf('/', url.indexOf('.')) + 1);
+            let result = url.substr(0, url.indexOf('/', url.indexOf('.')) + 1);
             return result;
         }
 
@@ -135,7 +135,8 @@
                 'list-style-type': 'none',
                 'transition': 'all .3s ease',
                 'user-select': 'none',
-                'margin-bottom': '5px'
+                'margin-bottom': '5px',
+				'border-radius': '2px'
             });
 
             $('.stsBox ul, .stsBox li img').css({
@@ -148,7 +149,7 @@
             });
 
             $('.stsBox li').css({
-                'padding': '3'
+                'padding': '3px 7px'
             });
 
             stsBoxEle.find('.arrow').css({
