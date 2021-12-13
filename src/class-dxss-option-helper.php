@@ -46,7 +46,7 @@ class DXSS_Option_Helper {
 			$dxss_settings = array_merge(
 				self::get_default_settings_data(),
 				array(
-					'title' => __( 'Share this text ...', 'dxss' ),
+					'title' => __( 'Share this text...', 'dxss' ),
 					'lists' => "Search,$search_url,favicon\nTwitter,https://twitter.com/intent/tweet?text=%s {url},favicon",
 				)
 			);
@@ -118,16 +118,16 @@ class DXSS_Option_Helper {
 	 */
 	public static function get_default_settings_data() {
 		return array(
-			'borderColor'    => '#fff',
-			'bgColor'        => '#444',
+			'borderColor'    => '#7a7a7a',
+			'bgColor'        => '#aaaaaa',
 			'titleColor'     => '#f2f2f2',
+			'titleTextColor' => '#000',
 			'hoverColor'     => '#ffffcc',
 			'textColor'      => '#000',
-			'titleTextColor' => '#000',
 			'extraClass'     => '',
-			'element'        => 'body',
 			'scriptPlace'    => '1',
 			'truncateChars'  => '115',
+			'element'        => 'body',
 			'bitly_token'    => '',
 		);
 	}
