@@ -74,20 +74,33 @@
 
         function applyCss(ele) {
             stsBoxEle = $('body').find('.stsBox');
-
-            stsBoxEle.css({
-                'display': 'none',
-                'z-index': 999999999,
-                'position': 'absolute',
-                'overflow': 'hidden',
-                'border': '1px solid ' + options.borderColor,
-                'white-space': 'nowrap',
-                'font-family': 'sans-serif',
-                'background': '#FFF',
-                'color': '#333',
-                'border-radius': '5px',
-                'padding': 0
-            });
+			if (isOptionsPage) {
+				stsBoxEle.css({
+					'display': 'block',
+					'overflow': 'hidden',
+					'border': '1px solid ' + options.borderColor,
+					'white-space': 'nowrap',
+					'font-family': 'sans-serif',
+					'background': '#aaaaaa',
+					'color': '#333',
+					'border-radius': '5px',
+					'padding': 0
+				});
+			} else {
+				stsBoxEle.css({
+					'display': 'none',
+					'z-index': 999999999,
+					'position': 'absolute',
+					'overflow': 'hidden',
+					'border': '1px solid ' + options.borderColor,
+					'white-space': 'nowrap',
+					'font-family': 'sans-serif',
+					'background': '#aaaaaa',
+					'color': '#333',
+					'border-radius': '5px',
+					'padding': 0
+				});
+			}
 
             stsBoxEle.find('img').css({
                 'vertical-align': 'middle'
@@ -196,8 +209,8 @@
                     stsBoxEle = $('body').find('.stsBox');
 
                     // Get the coordinates of the mouse on the screen.
-                    var mouseX = e.pageX;
-                    var mouseY = e.pageY;
+                    let mouseX = e.pageX;
+                    let mouseY = e.pageY;
 
                     // Get an object from the highlighted area.
                     let selection = window.getSelection();
@@ -307,29 +320,26 @@
                 }
             });
 
-            $('.stsBox li').on('click', function() {
-                sUrl = $(this).children('a').attr('rel');
-                selectedText = $(this).children('a').attr('rev');
-                theUrl = sUrl.replace('%s', selectedText);
-                theUrl = theUrl.replace('%ts', selectedText.trunc(options.truncateChars));
-                window.open(theUrl, 'sts_window');
-            });
+			if (!isOptionsPage) {
+				$('.stsBox li').on('click', function() {
+					sUrl = $(this).children('a').attr('rel');
+					selectedText = $(this).children('a').attr('rev');
+					theUrl = sUrl.replace('%s', selectedText);
+					theUrl = theUrl.replace('%ts', selectedText.trunc(options.truncateChars));
+					window.open(theUrl, 'sts_window');
+				});
 
-            $('img').on('error', function(e) {
-                e.target.style.display = 'none'
-            })
+				$(document).on( 'mousedown', function(e) {
+					if ($(e.target).closest('.stsBox').length)
+						return;
 
-            $(document).on( 'mousedown', function(e) {
-                if ($(e.target).closest('.stsBox').length)
-                    return;
+					$('.stsBox').fadeOut('fast');
+				});
 
-                $('.stsBox').fadeOut('fast');
-            });
-
-            $(window).on( 'blur', function(e) {
-                $('.stsBox').fadeOut('fast');
-            });
-
+				$(window).on( 'blur', function(e) {
+					$('.stsBox').fadeOut('fast');
+				});
+			}
         });
     };
 })(jQuery);

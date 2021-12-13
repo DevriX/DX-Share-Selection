@@ -18,7 +18,7 @@ $j(document).ready(function() {
 
     $j('.message').append('<span class="close">x</span>');
 
-    $j('.message .close').click(function() {
+    $j('.message .close').on('click', function() {
         $j(this).parent().slideUp();
     });
 
@@ -37,8 +37,7 @@ $j(document).ready(function() {
     }
 
 
-    $j('#addList button').click(function() {
-
+    $j('#addList button').on('click', function() {
         var button = lists[$j(this).val()];
         delete button[3];
 		let newLine = $j('#dxss_lists').val() === '' ? '' : '\n';
@@ -47,7 +46,7 @@ $j(document).ready(function() {
 
     });
 
-    $j('#addCustom').click(function() {
+    $j('#addCustom').on('click', function() {
         customName = prompt('Enter the name of the button. Eg: Google, Wikipedia');
         customUrl = prompt('Enter the Share URL of the site. Use %s in the URL for the selected text. See help for more terms', 'http://');
         customIcon = prompt('Enter the Icon URL. Use "favicon" to automatically get the Icon', 'favicon');
@@ -59,7 +58,7 @@ $j(document).ready(function() {
 
     });
 
-    $j('#addSearch').click(function() {
+    $j('#addSearch').on('click', function() {
         searchName = prompt('Enter the name of the button. Eg: Search my blog');
         searchUrl = prompt('Enter the Search URL of your site. You can also use your google adsense search URL eg:http://domain.com/?s=%s', 'http://');
         searchIcon = prompt('Enter the Icon URL. Use "favicon" to automatically get the Icon', 'favicon');
@@ -70,20 +69,19 @@ $j(document).ready(function() {
         }
     });
 
-    $j('.openHelp').click(function() {
+    $j('.openHelp').on('click', function() {
         $j('.helpWindow').fadeIn();
     });
 
-    $j('.closeHelp').click(function() {
+    $j('.closeHelp').on('click', function() {
         $j('.helpWindow').fadeOut();
     });
 
-    $j('.openWpsrLinks').click(function() {
-        $j('.wpsrBox').fadeIn();
+    $j('.openWpsrLinks').on('click', function() {
         $j('#dxss_list_search').focus();
     });
 
-    $j('.closeLinks').click(function() {
+    $j('.closeLinks').on('click', function() {
         $j('.wpsrBox').fadeOut();
     });
 
@@ -156,17 +154,16 @@ $j(document).ready(function() {
         });
     });
 
-    $j('#restore-customize').click(function() {
+    $j('#restore-customize').on('click', function() {
         var defaultSetings = dx_share_selection.settings_data_default;
 
-        $j('input[name=dxss_borderColor]').val(defaultSetings.borderColor);
-        $j('input[name=dxss_bgColor]').val(defaultSetings.bgColor);
-        $j('input[name=dxss_titleColor]').val(defaultSetings.titleColor);
-        $j('input[name=dxss_hoverColor]').val(defaultSetings.hoverColor);
-        $j('input[name=dxss_textColor]').val(defaultSetings.textColor);
-        $j('input[name=dxss_titleTextColor]').val(defaultSetings.titleTextColor);
-        $j('input[name=dxss_extraClass]').val(defaultSetings.extraClass);
-        $j('input[name=dxss_dxssgrep_element]').val(defaultSetings.grepElement);
+        $j('#dxss_borderColor').val(defaultSetings.borderColor);
+        $j('#dxss_bgColor').val(defaultSetings.bgColor);
+        $j('#dxss_titleColor').val(defaultSetings.titleColor);
+        $j('#dxss_hoverColor').val(defaultSetings.hoverColor);
+        $j('#dxss_textColor').val(defaultSetings.textColor);
+        $j('#dxss_titleTextColor').val(defaultSetings.titleTextColor);
+        $j('#dxss_extraClass').val(defaultSetings.extraClass);
 
         $j('.color').each(function() {
             f.linkTo(this);
@@ -176,13 +173,13 @@ $j(document).ready(function() {
 
     });
 
-    $j('#restore-optional').click(function() {
+    $j('#restore-optional').on('click', function() {
         var defaultSetings = dx_share_selection.settings_data_default;
 
-        $j('select[name=dxss_scriptPlace]').val(defaultSetings.scriptPlace);
-        $j('input[name=dxss_truncateChars]').val(defaultSetings.truncateChars);
-        $j('input[name=dxss_element]').val(defaultSetings.element);
-        $j('input[name=dxss_bitly]').val(defaultSetings.bitly);
+        $j('#dxss_scriptPlace').val(defaultSetings.scriptPlace);
+        $j('#dxss_truncateChars').val(defaultSetings.truncateChars);
+        $j('#dxss_element').val(defaultSetings.element);
+        $j('input[name=dxss_bitly_token]').val(defaultSetings.bitly);
     });
 });
 
