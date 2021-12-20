@@ -124,6 +124,37 @@
 			<h4 class="preview-text">Preview:</h4>
 			<div class="test-preview section"></div>
 	</div>
+	<div class="lightBox custom-button-window bottomShadow">
+		<input type="button" class="close-custom-button close button" value="Close"/>
+		<h3><?php esc_html_e( 'Add Custom Button', 'dxss' ); ?></h3>
+		<hr/>
+		<div class="wrap">
+			<div class="customName">
+				<br>
+				<?php esc_html_e( '*Enter the name of the button:', 'dxss' ); ?>
+				<br>
+				<input type="text" id="dxss_custom_name" title="<?php esc_attr_e( 'Button Name', 'dxss' ); ?>" placeholder="Google, Wikipedia..." size="35"/>
+			</div>
+			<div class="customURL">
+				<br>
+				<?php esc_html_e( '*Enter the Share URL of the site.', 'dxss' ); ?><br>
+				<?php esc_html_e( 'Use %s in the URL for the selected text.', 'dxss' ); ?><br>
+				<?php esc_html_e( 'See help for more terms:', 'dxss' ); ?>
+				<br>
+				<input type="text" id="dxss_custom_url" title="<?php esc_attr_e( 'Button URL', 'dxss' ); ?>" placeholder="https://..." size="35"/>
+			</div>
+			<div class="customIcon">
+				<br>
+				<?php esc_html_e( 'Enter the Icon URL. Use "favicon" to automatically get the Icon:', 'dxss' ); ?>
+				<br>
+				<input type="text" id="dxss_custom_icon" title="<?php esc_attr_e( 'Button Icon', 'dxss' ); ?>" placeholder="favicon" size="35"/>
+			</div>
+			<div class="buttons-wrapper">
+				<input type="button" class="close-custom-button close button" value="Cancel"/>
+				<input type="button" class="add-custom-button add button" value="Add Button"/>
+			</div>
+		</div>
+	</div>
 	<div class="lightBox helpWindow bottomShadow">
 		<input type="button" class="closeHelp close button" value="Close"/>
 		<h3><?php esc_html_e( 'Help', 'dxss' ); ?></h3>

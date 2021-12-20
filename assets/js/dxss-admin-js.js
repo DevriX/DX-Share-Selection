@@ -45,19 +45,6 @@ $j(document).ready(function() {
         $j('#dxss_lists').val(val).change();
     });
 
-    $j('#addCustom').on('click', function() {
-        customName = prompt('Enter the name of the button. Eg: Google, Wikipedia');
-        customUrl = prompt('Enter the Share URL of the site. Use %s in the URL for the selected text. See help for more terms', 'http://');
-        customIcon = prompt('Enter the Icon URL. Use "favicon" to automatically get the Icon', 'favicon');
-
-        if (customName != null) {
-			let newLine = $j('#dxss_lists').val() === '' ? '' : '\n';
-            val = $j('#dxss_lists').val() + newLine + customName + ',' + customUrl + ',' + customIcon;
-            $j('#dxss_lists').val(val).change();
-        }
-
-    });
-
     $j('#addSearch').on('click', function() {
         searchName = prompt('Enter the name of the button. Eg: Search my blog');
         searchUrl = prompt('Enter the Search URL of your site. You can also use your google adsense search URL eg:http://domain.com/?s=%s', 'http://');
@@ -68,6 +55,60 @@ $j(document).ready(function() {
             val = $j('#dxss_lists').val() + newLine + searchName + ',' + searchUrl + ',' + searchIcon;
             $j('#dxss_lists').val(val).change();
         }
+    });
+
+    $j('#addCustom').on('click', function() {
+		$j('.custom-button-window').fadeIn();
+        $j('#dxss_custom_name').focus();
+    });
+
+    $j('.add-custom-button').on('click', function() {
+		$j('#dxss_custom_name').removeClass('error');
+		$j('#dxss_custom_url').removeClass('error');
+
+		customName = $j('#dxss_custom_name').val();
+		customUrl = $j('#dxss_custom_url').val();
+		customIcon = $j('#dxss_custom_link').val();
+
+		let error = false;
+
+		if (!customName) {
+			$j('#dxss_custom_name').addClass('error');
+			error = true;
+		}
+
+		if (!customUrl) {
+			$j('#dxss_custom_url').addClass('error');
+			error = true;
+		}
+
+		if (error) {
+			return;
+		}
+
+		if (!customIcon) {
+			customIcon = 'favicon';
+		}
+
+		let newLine = $j('#dxss_lists').val() === '' ? '' : '\n';
+		val = $j('#dxss_lists').val() + newLine + customName + ',' + customUrl + ',' + customIcon;
+		$j('#dxss_lists').val(val).change();
+
+		$j('.custom-button-window').fadeOut();
+		setTimeout(() => {
+			$j('#dxss_custom_name').val('');
+			$j('#dxss_custom_url').val('');
+			$j('#dxss_custom_link').val('');
+		}, 300);
+	});
+
+	$j('.close-custom-button').on('click', function() {
+        $j('.custom-button-window').fadeOut();
+		setTimeout(() => {
+			$j('#dxss_custom_name').val('');
+			$j('#dxss_custom_url').val('');
+			$j('#dxss_custom_link').val('');
+		}, 300);
     });
 
     $j('.openHelp').on('click', function() {
@@ -86,11 +127,6 @@ $j(document).ready(function() {
     $j('.closeLinks').on('click', function() {
         $j('.wpsrBox').fadeOut();
     });
-
-	function fadeOutBox() {
-        $j('.lightBox').fadeOut();
-		$j(document).off('click', fadeOutBox);
-	}
 
     var f = $j.farbtastic('#colorpicker');
     $j('.color').each(function() {
