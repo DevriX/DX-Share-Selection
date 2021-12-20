@@ -14,7 +14,6 @@ $j(document).ready(function() {
     // Basic Admin Functions
 
     $j('#colorpicker').hide();
-    $j('.helpWindow, .wpsrBox').hide();
 
     $j('.message').append('<span class="close">x</span>');
 
@@ -36,41 +35,42 @@ $j(document).ready(function() {
         $j('#addList').append('<button value="' + i + '" type="button" class="button" >' + img + lists[i][0] + '</button>');
     }
 
-
-    $j('#addList button').on('click', function() {
+	$j('#addList button').on('click', function() {
         var button = lists[$j(this).val()];
-        delete button[3];
-		let newLine = $j('#dxss_lists').val() === '' ? '' : '\n';
-        val = $j('#dxss_lists').val() + newLine + button;
+		var newLine = $j('#dxss_lists').val() === '' ? '' : '\n';
+        var val = $j('#dxss_lists').val() + newLine + button;
         $j('#dxss_lists').val(val).change();
     });
 
-    $j('#addSearch').on('click', function() {
-        searchName = prompt('Enter the name of the button. Eg: Search my blog');
-        searchUrl = prompt('Enter the Search URL of your site. You can also use your google adsense search URL eg:http://domain.com/?s=%s', 'http://');
-        searchIcon = prompt('Enter the Icon URL. Use "favicon" to automatically get the Icon', 'favicon');
-
-        if (searchName != null) {
-			let newLine = $j('#dxss_lists').val() === '' ? '' : '\n';
-            val = $j('#dxss_lists').val() + newLine + searchName + ',' + searchUrl + ',' + searchIcon;
-            $j('#dxss_lists').val(val).change();
-        }
-    });
-
-    $j('#addCustom').on('click', function() {
-		$j('.custom-button-window').fadeIn();
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	$j('#addCustom').on('click', function() {
+		showModal('.custom-button-window');
         $j('#dxss_custom_name').focus();
     });
 
-    $j('.add-custom-button').on('click', function() {
+	$j('#addSearch').on('click', function() {
+		showModal('.search-button-window');
+        $j('#dxss_custom_name').focus();
+    });
+
+	$j('.openWpsrLinks').on('click', function() {
+		showModal('.wpsrBox');
+        $j('#dxss_list_search').focus();
+    });
+
+	$j('.openHelp').on('click', function() {
+		showModal('.helpWindow');
+    });
+
+	$j('.add-custom-button').on('click', function() {
 		$j('#dxss_custom_name').removeClass('error');
 		$j('#dxss_custom_url').removeClass('error');
 
 		customName = $j('#dxss_custom_name').val();
 		customUrl = $j('#dxss_custom_url').val();
-		customIcon = $j('#dxss_custom_link').val();
+		customIcon = $j('#dxss_custom_icon').val();
 
-		let error = false;
+		var error = false;
 
 		if (!customName) {
 			$j('#dxss_custom_name').addClass('error');
@@ -90,44 +90,47 @@ $j(document).ready(function() {
 			customIcon = 'favicon';
 		}
 
-		let newLine = $j('#dxss_lists').val() === '' ? '' : '\n';
-		val = $j('#dxss_lists').val() + newLine + customName + ',' + customUrl + ',' + customIcon;
+		var newLine = $j('#dxss_lists').val() === '' ? '' : '\n';
+		var val = $j('#dxss_lists').val() + newLine + customName + ',' + customUrl + ',' + customIcon;
 		$j('#dxss_lists').val(val).change();
 
-		$j('.custom-button-window').fadeOut();
-		setTimeout(() => {
-			$j('#dxss_custom_name').val('');
-			$j('#dxss_custom_url').val('');
-			$j('#dxss_custom_link').val('');
-		}, 300);
+		closeModals();
 	});
 
-	$j('.close-custom-button').on('click', function() {
-        $j('.custom-button-window').fadeOut();
-		setTimeout(() => {
-			$j('#dxss_custom_name').val('');
-			$j('#dxss_custom_url').val('');
-			$j('#dxss_custom_link').val('');
-		}, 300);
+    // $j('#addSearch').on('click', function() {
+    //     searchName = prompt('Enter the name of the button. Eg: Search my blog');
+    //     searchUrl = prompt('Enter the Search URL of your site. You can also use your google adsense search URL eg:http://domain.com/?s=%s', 'http://');
+    //     searchIcon = prompt('Enter the Icon URL. Use "favicon" to automatically get the Icon', 'favicon');
+
+    //     if (searchName != null) {
+	// 		var newLine = $j('#dxss_lists').val() === '' ? '' : '\n';
+    //         var val = $j('#dxss_lists').val() + newLine + searchName + ',' + searchUrl + ',' + searchIcon;
+    //         $j('#dxss_lists').val(val).change();
+    //     }
+    // });
+
+	$j('.overlay').on('click', function (e) {
+		if ( !$j(e.target).hasClass('overlay') ) {
+			return;
+		}
+		closeModals();
+	});
+
+	$j('.close').on('click', function() {
+        closeModals();
     });
 
-    $j('.openHelp').on('click', function() {
-        $j('.helpWindow').fadeIn();
-    });
+	function showModal(selector) {
+		$j(selector).fadeIn().addClass('is-visible');
+		$j('.overlay').fadeIn().addClass('is-visible');
+	}
 
-    $j('.closeHelp').on('click', function() {
-        $j('.helpWindow').fadeOut();
-    });
-
-    $j('.openWpsrLinks').on('click', function() {
-		$j('.wpsrBox').fadeIn();
-        $j('#dxss_list_search').focus();
-    });
-
-    $j('.closeLinks').on('click', function() {
-        $j('.wpsrBox').fadeOut();
-    });
-
+	function closeModals() {
+		$j('.is-visible').fadeOut();
+		$j('.is-visible').removeClass('is-visible');
+		$j('.popup-input').val('');
+	}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     var f = $j.farbtastic('#colorpicker');
     $j('.color').each(function() {
         f.linkTo(this);
@@ -169,7 +172,7 @@ $j(document).ready(function() {
 	updatePreview();
 	$j('.dxss-settings').on('input change paste', updatePreview);
 	$j('.dxss-restore-button').on('click', function() {
-		setTimeout(updatePreview, 40)
+		setTimeout(updatePreview, 40);
 	});
 
 	$j('.farbtastic div').on('mousedown', function() {
@@ -199,8 +202,8 @@ $j(document).ready(function() {
 	}
 
     $j('.dxss_wpsr_sites a').on('click', function() {
-		let newLine = $j('#dxss_lists').val() === '' ? '' : '\n';
-        val = $j('#dxss_lists').val() + newLine + $j(this).text() + ',' + $j(this).attr('rel') + ',' + 'favicon';
+		var newLine = $j('#dxss_lists').val() === '' ? '' : '\n';
+        var val = $j('#dxss_lists').val() + newLine + $j(this).text() + ',' + $j(this).attr('rel') + ',' + 'favicon';
         $j('#dxss_lists').val(val).change();
         $j(this).after('<span class="addedInfo">  Added !</span>');
         $j('.addedInfo').fadeOut('100');
