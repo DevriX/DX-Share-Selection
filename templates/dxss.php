@@ -131,23 +131,18 @@
 			<hr/>
 			<div class="wrap">
 				<div class="customName">
-					<br>
-					<?php esc_html_e( '*Enter the name of the button:', 'dxss' ); ?>
-					<br>
+					<label for="dxss_custom_name"><?php esc_html_e( '*Enter the name of the button.', 'dxss' ); ?>:</label>
 					<input class="popup-input" type="text" id="dxss_custom_name" title="<?php esc_attr_e( 'Button Name', 'dxss' ); ?>" placeholder="Google, Wikipedia..." size="35"/>
 				</div>
 				<div class="customURL">
-					<br>
-					<?php esc_html_e( '*Enter the Share URL of the site.', 'dxss' ); ?><br>
-					<?php esc_html_e( 'Use %s in the URL for the selected text.', 'dxss' ); ?><br>
-					<?php esc_html_e( 'See help for more terms:', 'dxss' ); ?>
-					<br>
+					<label for="dxss_custom_url"><?php esc_html_e( '*Enter the Share URL of the site.', 'dxss' ); ?></label>
+					<label for="dxss_custom_url"><?php esc_html_e( 'Use %s in the URL for the selected text.', 'dxss' ); ?></label>
+					<label for="dxss_custom_url"><?php esc_html_e( 'See help for more terms', 'dxss' ); ?>:</label>
 					<input class="popup-input" type="text" id="dxss_custom_url" title="<?php esc_attr_e( 'Button URL', 'dxss' ); ?>" placeholder="https://..." size="35"/>
 				</div>
 				<div class="customIcon">
-					<br>
-					<?php esc_html_e( 'Enter the Icon URL. Use "favicon" to automatically get the Icon:', 'dxss' ); ?>
-					<br>
+					<label for="dxss_custom_icon"><?php esc_html_e( 'Enter the Icon URL.', 'dxss' ); ?></label>
+					<label for="dxss_custom_icon"><?php esc_html_e( 'Use "favicon" to automatically get the Icon', 'dxss' ); ?>:</label>
 					<input class="popup-input" type="text" id="dxss_custom_icon" title="<?php esc_attr_e( 'Button Icon', 'dxss' ); ?>" placeholder="favicon" size="35"/>
 				</div>
 				<div class="buttons-wrapper">
@@ -162,23 +157,18 @@
 			<hr/>
 			<div class="wrap">
 				<div class="searchName">
-					<br>
-					<?php esc_html_e( '*Enter the name of the button:', 'dxss' ); ?>
-					<br>
+					<label for="dxss_search_name"><?php esc_html_e( '*Enter the name of the button', 'dxss' ); ?>:</label>
 					<input class="popup-input" type="text" id="dxss_search_name" title="<?php esc_attr_e( 'Button Name', 'dxss' ); ?>" placeholder="Search my Blog" size="35"/>
 				</div>
 				<div class="searchURL">
-					<br>
-					<?php esc_html_e( '*Enter the Search URL of your site', 'dxss' ); ?><br>
-					<?php esc_html_e( 'Use %s in the URL for the selected text.', 'dxss' ); ?><br>
-					<?php esc_html_e( 'See help for more terms:', 'dxss' ); ?>
-					<br>
+					<label for="dxss_search_url"><?php esc_html_e( '*Enter the Search URL of your site.', 'dxss' ); ?></label>
+					<label for="dxss_search_url"><?php esc_html_e( 'Use %s in the URL for the selected text.', 'dxss' ); ?></label>
+					<label for="dxss_search_url"><?php esc_html_e( 'See help for more terms', 'dxss' ); ?>:</label>
 					<input class="popup-input" type="text" id="dxss_search_url" title="<?php esc_attr_e( 'Button URL', 'dxss' ); ?>" placeholder="https://domain.com/?s=%s" size="35"/>
 				</div>
 				<div class="searchIcon">
-					<br>
-					<?php esc_html_e( 'Enter the Icon URL. Use "favicon" to automatically get the Icon', 'dxss' ); ?>:
-					<br>
+					<label for="dxss_search_icon"><?php esc_html_e( 'Enter the Icon URL.', 'dxss' ); ?></label>
+					<label for="dxss_search_icon"><?php esc_html_e( 'Use "favicon" to automatically get the Icon', 'dxss' ); ?>:</label>
 					<input class="popup-input" type="text" id="dxss_search_icon" title="<?php esc_attr_e( 'Button Icon', 'dxss' ); ?>" placeholder="favicon" size="35"/>
 				</div>
 				<div class="buttons-wrapper">

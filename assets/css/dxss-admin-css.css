@@ -200,7 +200,7 @@ code:hover {
 
 .modal .wrap {
 	width: 99%;
-	height: 84%;
+	height: 74%;
 	overflow: auto;
 	padding: 0px 0px 0px 5px;
 }
@@ -218,6 +218,10 @@ code:hover {
 	margin-right: 1em;
 }
 
+.modal label {
+	display: block;
+}
+
 .wpsrBox {
 	height: 500px;
 	width: 500px;
@@ -228,13 +232,8 @@ code:hover {
 }
 
 .buttons-wrapper {
-	margin-top: 2em;
+	margin-top: 1em;
 	margin-right: 0.5em;
-}
-
-.custom-button-window {
-	/* width: 420px; */
-	/* height: 360px; */
 }
 
 input.error {
@@ -242,8 +241,7 @@ input.error {
 }
 
 .listSearch {
-	float: right;
-	margin: 15px 15px -15px;
+	margin: 15px 0 -10px;
 }
 
 /* Sprites */
@@ -407,4 +405,8 @@ textarea#dxss_lists {
 	display: block;
 	opacity: 1;
 	pointer-events: all;
+}
+
+.popup-input {
+	margin-bottom: 15px;
 }
