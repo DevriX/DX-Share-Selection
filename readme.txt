@@ -3,7 +3,7 @@ Contributors: nofearinc, devrix
 Author URI: https://devrix.com/
 Tags: posts, page, links, plugin, share, search, jquery, content, social, social bookmarking, tweet, Facebook, twitter, bitly
 Requires at least: 4.9
-Tested up to: 5.8.1
+Tested up to: 5.8.2
 Stable tag: 1.5
 Requires PHP: 5.6
 
