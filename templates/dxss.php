@@ -7,14 +7,14 @@
 
 ?>
 
-<h2><img width="32" height="32" src="<?php echo esc_url( DXSS_URL ); ?>images/dx-share-selection.png" align="absmiddle"/>&nbsp;DX Share Selection <span class="smallText">v<?php echo esc_html( DXSS_VERSION ); ?></span></h2>
+<h2><img width="32" height="32" src="<?php echo esc_url( DXSS_URL ); ?>images/dx-share-selection.png" style="vertical-align: middle;"/>&nbsp;DX Share Selection <span class="smallText">v<?php echo esc_html( DXSS_VERSION ); ?></span></h2>
 <div class="wrap main-wrap">
 	<div id="leftContent">
 		<form method="post">
 			<div class="content">
 				<h4><?php esc_html_e( 'General', 'dxss' ); ?></h4>
 				<div class="section">
-					<table width="100%" border="0">
+					<table width="100%" style="border: 0;">
 					<tr style="display: block; padding-bottom: 30px;">
 							<td width="19%" height="32"><?php esc_html_e( 'Widget Title', 'dxss' ); ?></td>
 							<td width="81%"><input class="dxss-settings" name="dxss_title" id="dxss_title" type="text" value="<?php echo esc_attr( $dxss_settings['title'] ); ?>"/></td>
@@ -42,7 +42,7 @@
 				<h4><?php esc_html_e( 'Customize', 'dxss' ); ?></h4>
 				<div class="section relative-section">
 					<div id="colorpicker" class="picker"></div>
-					<table width="100%" height="220" border="0">
+					<table width="100%" height="220" style="border: 0;">
 						<tr>
 							<td width="23%" height="33"><?php esc_html_e( 'Border Color', 'dxss' ); ?></td>
 							<td width="77%"><input name="dxss_borderColor" id="dxss_borderColor" class="color dxss-settings" type="text" value="<?php echo esc_attr( $dxss_settings['borderColor'] ); ?>"/></td>
@@ -80,7 +80,7 @@
 				</div>
 				<h4><?php esc_html_e( 'Optional', 'dxss' ); ?></h4>
 				<div class="section">
-					<table width="100%" height="162" border="0">
+					<table width="100%" height="162" style="border: 0;">
 						<tr class="align-table-row">
 							<td width="23%" height="33"><?php esc_html_e( 'Load scripts in', 'dxss' ); ?></td>
 							<td width="77%">
@@ -102,7 +102,7 @@
 							<td height="33"><?php esc_html_e( 'Target Content', 'dxss' ); ?></td>
 							<td>
 								<input name="dxss_element" id="dxss_element" type="text" value="<?php echo esc_attr( $dxss_settings['element'] ); ?>"/></br>
-								<small class="smallText"><?php esc_html_e( 'The DX Share Selection will work only with this jQuery selector' ); ?></small>
+								<small class="smallText"><?php esc_html_e( 'The DX Share Selection will work only with this jQuery selector', 'dxss' ); ?></small>
 							</td>
 						</tr>
 						<tr class="align-table-row">
@@ -110,7 +110,7 @@
 							<td>
 								<input name="dxss_bitly_token" type="text" value="<?php echo ! empty( $dxss_settings['bitly_token'] ) ? esc_html( DXSS_Encryption::$dumb_token_view ) : ''; ?>" autocomplete="off"/>
 								<br/>
-								<small class="smallText"><?php _e( 'Bitly API Access Token. Used for <code>{surl}</code>', 'dxss' ); ?> <a href="https://bitly.is/accesstoken" target="_blank">Generate here</a></small>
+								<small class="smallText"><?php _e( 'Bitly API Access Token. Used for <code>{surl}</code>', 'dxss' ); ?> <a href="https://bitly.is/accesstoken" target="_blank"><?php esc_html_e( 'Generate here', 'dxss' ); ?></a></small>
 							</td>
 						</tr>
 					</table>
@@ -121,7 +121,7 @@
 		</form>
 	</div>
 	<div id="rightContent">
-			<h4 class="preview-text">Preview:</h4>
+			<h4 class="preview-text"><?php esc_html_e( 'Preview', 'dxss' ); ?>:</h4>
 			<div class="test-preview section"></div>
 	</div>
 	<div class="lightBox custom-button-window bottomShadow">
@@ -197,7 +197,7 @@
 			<?php
 			$install_url = 'https://wordpress.org/plugins/wp-socializer/';
 			?>
-			<p align="center"><a href="<?php echo esc_url( $install_url ); ?>" target="_blank" class="button-primary"><?php esc_html_e( 'Install Plugin', 'dxss' ); ?></a></p>
+			<p style="align:center"><a href="<?php echo esc_url( $install_url ); ?>" target="_blank" class="button-primary"><?php esc_html_e( 'Install Plugin', 'dxss' ); ?></a></p>
 			<b><?php esc_html_e( 'Note:', 'dxss' ); ?></b><br/>
 			<small class="smallText"><?php _e( 'DX share Selection requires to install WP Socializer to link the additional 98 buttons. <a href="https://wordpress.org/plugins/wp-socializer/" target="_blank">See here</a> for more info', 'dxss' ); ?></small>
 		<?php endif; ?>
