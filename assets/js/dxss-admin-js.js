@@ -97,17 +97,40 @@ $j(document).ready(function() {
 		closeModals();
 	});
 
-    // $j('#addSearch').on('click', function() {
-    //     searchName = prompt('Enter the name of the button. Eg: Search my blog');
-    //     searchUrl = prompt('Enter the Search URL of your site. You can also use your google adsense search URL eg:http://domain.com/?s=%s', 'http://');
-    //     searchIcon = prompt('Enter the Icon URL. Use "favicon" to automatically get the Icon', 'favicon');
+	$j('.add-search-button').on('click', function() {
+		$j('#dxss_search_name').removeClass('error');
+		$j('#dxss_search_url').removeClass('error');
 
-    //     if (searchName != null) {
-	// 		var newLine = $j('#dxss_lists').val() === '' ? '' : '\n';
-    //         var val = $j('#dxss_lists').val() + newLine + searchName + ',' + searchUrl + ',' + searchIcon;
-    //         $j('#dxss_lists').val(val).change();
-    //     }
-    // });
+		searchName = $j('#dxss_search_name').val();
+		searchUrl = $j('#dxss_search_url').val();
+		searchIcon = $j('#dxss_search_icon').val();
+
+		var error = false;
+
+		if (!searchName) {
+			$j('#dxss_search_name').addClass('error');
+			error = true;
+		}
+
+		if (!searchUrl) {
+			$j('#dxss_search_url').addClass('error');
+			error = true;
+		}
+
+		if (error) {
+			return;
+		}
+
+		if (!searchIcon) {
+			searchIcon = 'favicon';
+		}
+
+		var newLine = $j('#dxss_lists').val() === '' ? '' : '\n';
+		var val = $j('#dxss_lists').val() + newLine + searchName + ',' + searchUrl + ',' + searchIcon;
+		$j('#dxss_lists').val(val).change();
+
+		closeModals();
+	});
 
 	$j('.overlay').on('click', function (e) {
 		if ( !$j(e.target).hasClass('overlay') ) {

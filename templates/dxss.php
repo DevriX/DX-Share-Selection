@@ -157,30 +157,32 @@
 			</div>
 		</div>
 		<div class="modal search-button-window">
-			<input type="button" class="close-custom-button close button" value="Close"/>
-			<h3><?php esc_html_e( 'Add Custom Button', 'dxss' ); ?></h3>
+			<input type="button" class="close-search-button close button" value="Close"/>
+			<h3><?php esc_html_e( 'Add Search Button', 'dxss' ); ?></h3>
 			<hr/>
 			<div class="wrap">
-				<div class="customName">
+				<div class="searchName">
 					<br>
 					<?php esc_html_e( '*Enter the name of the button:', 'dxss' ); ?>
 					<br>
-					<input class="popup-input" type="text" id="dxss_custom_name" title="<?php esc_attr_e( 'Button Name', 'dxss' ); ?>" placeholder="Search my Blog" size="35"/>
+					<input class="popup-input" type="text" id="dxss_search_name" title="<?php esc_attr_e( 'Button Name', 'dxss' ); ?>" placeholder="Search my Blog" size="35"/>
 				</div>
-				<div class="customURL">
+				<div class="searchURL">
 					<br>
-					<?php esc_html_e( '*Enter the Search URL of your site', 'dxss' ); ?>:
+					<?php esc_html_e( '*Enter the Search URL of your site', 'dxss' ); ?><br>
+					<?php esc_html_e( 'Use %s in the URL for the selected text.', 'dxss' ); ?><br>
+					<?php esc_html_e( 'See help for more terms:', 'dxss' ); ?>
 					<br>
-					<input class="popup-input" type="text" id="dxss_custom_url" title="<?php esc_attr_e( 'Button URL', 'dxss' ); ?>" placeholder="https://domain.com/?s=%s" size="35"/>
+					<input class="popup-input" type="text" id="dxss_search_url" title="<?php esc_attr_e( 'Button URL', 'dxss' ); ?>" placeholder="https://domain.com/?s=%s" size="35"/>
 				</div>
-				<div class="customIcon">
+				<div class="searchIcon">
 					<br>
-					<?php esc_html_e( 'Enter the Icon URL. Use "favicon" to automatically get the Icon:', 'dxss' ); ?>
+					<?php esc_html_e( 'Enter the Icon URL. Use "favicon" to automatically get the Icon', 'dxss' ); ?>:
 					<br>
-					<input class="popup-input" type="text" id="dxss_custom_icon" title="<?php esc_attr_e( 'Button Icon', 'dxss' ); ?>" placeholder="favicon" size="35"/>
+					<input class="popup-input" type="text" id="dxss_search_icon" title="<?php esc_attr_e( 'Button Icon', 'dxss' ); ?>" placeholder="favicon" size="35"/>
 				</div>
 				<div class="buttons-wrapper">
-					<input type="button" class="close-custom-button close button" value="Cancel"/>
+					<input type="button" class="close-search-button close button" value="Cancel"/>
 					<input type="button" class="add-search-button add button" value="Add Button"/>
 				</div>
 			</div>
