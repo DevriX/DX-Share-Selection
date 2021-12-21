@@ -165,8 +165,9 @@ code:hover {
 	background: #FFFFFF;
 	border: 1px solid #e9e9e9;
 	position: absolute;
-	right: 4%;
+	right: 3%;
 	margin-top: 33px;
+	z-index: 10;
 }
 
 .modal {
@@ -432,6 +433,9 @@ textarea#dxss_lists {
     max-width: 450px;
 }
 
+.color-settings {
+	position: relative;
+}
 .inner-span {
 	width: 185px;
 }
@@ -481,9 +485,8 @@ section .p-with-small {
 	.picker {
 		position: relative;
 		display: inline-block;
-		margin-left: 73px;
-		right: 0;
-		margin-top: 0;
+		left: 50%;
+		transform: translate(-50%, -15%);
 	}
 
 	div#leftContent {

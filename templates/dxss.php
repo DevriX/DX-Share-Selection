@@ -38,7 +38,7 @@
 						<span class="smallText"><?php esc_html_e( 'Format : Name, Share/Search URL, Icon URL', 'dxss' ); ?></span>
 					</section>
 					<h4 class="color-settings-heading"><?php esc_html_e( 'Customize', 'dxss' ); ?></h4>
-					<section class="section relative-section color-settings">
+					<section class="section color-settings">
 						<div class="colors-wrapper">
 							<div id="colorpicker" class="picker"></div>
 							<p>
