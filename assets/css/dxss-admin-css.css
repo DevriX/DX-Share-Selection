@@ -25,10 +25,6 @@
 	font-size: 13px;
 }
 
-.align-table-row {
-	vertical-align: initial;
-}
-
 .wrap h4 .max_min {
 	float: right;
 	font-weight: bold;
@@ -123,17 +119,14 @@
 }
 
 .smallText {
-	display: inline-block;
+	display: block;
 	font-size: 10px;
 	color: #666666;
+	max-width: fit-content;
 }
 
-.buttons-text {
-	width: 70px;
-}
-
-table #addList {
-	display: inline-block;
+.widget-title {
+	padding-bottom: 20px;
 }
 
 #addList button {
@@ -181,7 +174,7 @@ code:hover {
 	z-index: 100;
 	background-color: #fff;
 	min-width: 320px;
-	border: 5px solid #CC0033;
+	border: 3px solid black;
 	border-radius: 10px;
 	padding: 10px;
 	width: auto;
@@ -344,8 +337,107 @@ textarea#dxss_lists {
 	font-size: 1em;
 }
 
-.relative-section {
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: rgba(0,0,0,0.2);
+	width: 100vw;
+	height: 100vh;
+	z-index: 90;
+	display: none;
+}
+
+.is-visible {
+	display: block;
+	opacity: 1;
+	pointer-events: all;
+}
+
+.popup-input {
+	margin-bottom: 15px;
+}
+
+.default-buttons-list,
+.other-buttons-list {
+	margin-bottom: 8px;
+}
+
+.dxss-settings p {
+    margin: 0;
+    margin-bottom: 0.75em;
+	padding-right: 225px;
+}
+
+.dxss-settings input {
+    background: none;
+    outline: none;
+    padding: 0.3em 0.6em;
+    border: 1px solid #333;
+    font-weight: 500;
+    border-radius: 4px;
+    max-width: 100%;
+}
+
+.dxss-settings input:hover, .dxss-settings textarea:hover, .dxss-settings .button:hover, .dxss-settings select:hover {
+    border-color: skyblue;
+}
+.dxss-settings label {
+    margin-right: 1.5em;
+}
+.dxss-settings select {
+	font-size: 14px;
+	padding: 0.75em 1.5em 0.75em 0.75em;
+    border: 1px solid #333;
+    color: #333;
+    font-weight: 500;
+    border-radius: 4px;
+    display: inline-block;
+    line-height: 1;
+}
+.dxss-settings .button,
+.modal .button {
+    background: none;
+    outline: none;
+    padding: 0.5em;
+    border: 1px solid #333;
+    color: #333;
+    font-weight: 500;
+    border-radius: 4px;
+    line-height: 1.4;
+}
+.dxss-settings .button:hover,
+.modal .button:hover {
+    background: none;
+    color: skyblue;
+}
+.dxss-settings textarea {
+    padding: 1em;
+    max-width: 700px;
+}
+.dxss-settings small {
+	font-size: 11px;
+}
+.dxss-settings h4 {
+    margin-bottom: 1.5em !important;
+}
+.color-settings p,
+.optional-settings p {
 	position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 450px;
+}
+
+.inner-span {
+	width: 185px;
+}
+
+section .p-with-small {
+    align-items: baseline;
 }
 
 @media (max-width: 782px) {
@@ -376,9 +468,16 @@ textarea#dxss_lists {
 		display: inline-block !important;
 		text-align: initial;
 	}
-}
 
-@media (max-width: 845px) {
+	.smalltext-wrapper {
+		width: min-content;
+	}
+
+	.default-buttons-list,
+	.other-buttons-list {
+		display: block;
+	}
+
 	.picker {
 		position: relative;
 		display: inline-block;
@@ -386,27 +485,16 @@ textarea#dxss_lists {
 		right: 0;
 		margin-top: 0;
 	}
-}
 
-.overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	background-color: rgba(0,0,0,0.2);
-	width: 100vw;
-	height: 100vh;
-	z-index: 90;
-	display: none;
-}
+	div#leftContent {
+        width: 100%;
+    }
 
-.is-visible {
-	display: block;
-	opacity: 1;
-	pointer-events: all;
-}
+	.dxss-settings p {
+		padding-right: 0;
+	}
 
-.popup-input {
-	margin-bottom: 15px;
+	.inner-span {
+		width: 162px;
+	}
 }
