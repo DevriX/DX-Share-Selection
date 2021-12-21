@@ -337,7 +337,7 @@ textarea#dxss_lists {
 	font-size: 1em;
 }
 
-.overlay {
+.modal-overlay {
 	position: fixed;
 	top: 0;
 	left: 0;

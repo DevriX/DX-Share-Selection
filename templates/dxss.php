@@ -119,7 +119,7 @@
 		<h4 class="preview-text"><?php esc_html_e( 'Preview', 'dxss' ); ?>:</h4>
 		<div class="test-preview section"></div>
 	</div>
-	<div class="overlay">
+	<div class="modal-overlay">
 		<div class="modal custom-button-window">
 			<input type="button" class="close-custom-button close button" value="Close"/>
 			<h3><?php esc_html_e( 'Add Custom Button', 'dxss' ); ?></h3>

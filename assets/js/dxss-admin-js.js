@@ -132,8 +132,8 @@ $j(document).ready(function() {
 		closeModals();
 	});
 
-	$j('.overlay').on('click', function (e) {
-		if ( !$j(e.target).hasClass('overlay') ) {
+	$j('.modal-overlay').on('click', function (e) {
+		if ( !$j(e.target).hasClass('modal-overlay') ) {
 			return;
 		}
 		closeModals();
@@ -145,7 +145,7 @@ $j(document).ready(function() {
 
 	function showModal(selector) {
 		$j(selector).fadeIn().addClass('is-visible');
-		$j('.overlay').fadeIn().addClass('is-visible');
+		$j('.modal-overlay').fadeIn().addClass('is-visible');
 	}
 
 	function closeModals() {
