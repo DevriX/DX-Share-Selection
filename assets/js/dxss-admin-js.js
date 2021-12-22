@@ -50,7 +50,7 @@ $j(document).ready(function() {
 
 	$j('#addSearch').on('click', function() {
 		showModal('.search-button-window');
-        $j('#dxss_custom_name').focus();
+        $j('#dxss_search_name').focus();
     });
 
 	$j('.openWpsrLinks').on('click', function() {
