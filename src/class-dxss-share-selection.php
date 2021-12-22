@@ -262,18 +262,8 @@ class DXSS_Share_Selection {
 		$dxss_settings['truncateChars']  = $this->dxss_sanitize_post_data( 'dxss_truncateChars' );
 		$dxss_settings['element']        = $this->dxss_sanitize_post_data( 'dxss_element' );
 		$dxss_settings['bitly_token']    = DXSS_Option_Helper::get_bitly_token( $this->dxss_sanitize_post_data( 'dxss_bitly_token' ) );
-
-		if ( isset( $_POST['dxss_deact_desktop'] ) ) {
-			$dxss_settings['deactDesktop'] = $_POST['dxss_deact_desktop'];
-		} else {
-			$dxss_settings['deactDesktop'] = 'deactivate';
-		}
-
-		if ( isset( $_POST['dxss_deact_mobile'] ) ) {
-			$dxss_settings['deactMobile'] = $_POST['dxss_deact_mobile'];
-		} else {
-			$dxss_settings['deactMobile'] = 'deactivate';
-		}
+		$dxss_settings['deactDesktop']   = $this->dxss_sanitize_post_data( 'dxss_deact_desktop' );
+		$dxss_settings['deactMobile']    = $this->dxss_sanitize_post_data( 'dxss_deact_mobile' );
 
 		$dxss_settings['dxss_is_activate']      = 1;
 		$dxss_settings['bitly_token_encrypted'] = 1;

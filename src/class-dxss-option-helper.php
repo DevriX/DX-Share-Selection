@@ -129,6 +129,8 @@ class DXSS_Option_Helper {
 			'truncateChars'  => '115',
 			'element'        => 'body',
 			'bitly_token'    => '',
+			'deactDesktop'   => 'deactivate',
+			'deactMobile'    => 'deactivate',
 		);
 	}
 }
