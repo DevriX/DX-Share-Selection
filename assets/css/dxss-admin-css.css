@@ -385,9 +385,11 @@ textarea#dxss_lists {
 .dxss-settings input:hover, .dxss-settings textarea:hover, .dxss-settings .button:hover, .dxss-settings select:hover {
     border-color: skyblue;
 }
+
 .dxss-settings label {
     margin-right: 1.5em;
 }
+
 .dxss-settings select {
 	font-size: 14px;
 	padding: 0.75em 1.5em 0.75em 0.75em;
@@ -398,6 +400,7 @@ textarea#dxss_lists {
     display: inline-block;
     line-height: 1;
 }
+
 .dxss-settings .button,
 .modal .button {
     background: none;
@@ -409,21 +412,26 @@ textarea#dxss_lists {
     border-radius: 4px;
     line-height: 1.4;
 }
+
 .dxss-settings .button:hover,
 .modal .button:hover {
     background: none;
     color: skyblue;
 }
+
 .dxss-settings textarea {
     padding: 1em;
     max-width: 700px;
 }
+
 .dxss-settings small {
 	font-size: 11px;
 }
+
 .dxss-settings h4 {
     margin-bottom: 1.5em !important;
 }
+
 .color-settings p,
 .optional-settings p {
 	position: relative;
@@ -436,12 +444,23 @@ textarea#dxss_lists {
 .color-settings {
 	position: relative;
 }
+
 .inner-span {
 	width: 185px;
 }
 
 section .p-with-small {
     align-items: baseline;
+}
+
+p.p-checkbox {
+    padding-right: 397px;
+}
+
+@media (max-width: 1133px) {
+	p.p-checkbox {
+		padding-right: 389px;
+	}
 }
 
 @media (max-width: 782px) {

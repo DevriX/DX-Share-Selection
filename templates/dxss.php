@@ -108,6 +108,14 @@
 								<small class="smallText"><?php _e( 'Bitly API Access Token. Used for <code>{surl}</code>', 'dxss' ); ?> <a href="https://bitly.is/accesstoken" target="_blank"><?php esc_html_e( 'Generate here', 'dxss' ); ?></a></small>
 							</span>
 						</p>
+						<p class="p-checkbox">
+							<label><?php _e('Deactivate on Desktop', 'dxss'); ?></label>
+							<input type="checkbox" name="dxss_deact_desktop" value="activate" <?php echo checked( 'activate', $dxss_settings['deactDesktop'], false ) ?>>
+						</p>
+						<p class="p-checkbox">
+							<label><?php _e('Deactivate on Mobile', 'dxss'); ?></label>
+							<input type="checkbox" name="dxss_deact_mobile" value="activate" <?php echo checked( 'activate', $dxss_settings['deactMobile'], false ) ?>>
+						</p>
 						<div class="restore-button-parent"><input type="button" id="restore-optional" class="toolBt button dxss-restore-button" value="<?php esc_attr_e( 'Restore Optional Settings', 'dxss' ); ?>" /></div>
 					</section>
 					<input class="button-primary" type="submit" name="dxss_submit" id="dxss_submit" value="<?php esc_attr_e( 'Save Changes', 'dxss' ); ?>"/>

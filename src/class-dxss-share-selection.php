@@ -199,8 +199,11 @@ class DXSS_Share_Selection {
 
 		$dxss_js = DXSS_URL . 'assets/dist/js/selected-text-sharer.min.js';
 
-		wp_enqueue_style( 'dxss-css', DXSS_URL . 'assets/dist/css/dxss-css.min.css', array(), '1.5', false );
-		wp_enqueue_script( 'wp-selected-text-searcher', $dxss_js, array( 'jquery' ), '1.5', $dxss_script_place );
+		if ( ( wp_is_mobile() && $dxss_settings['deactMobile'] == "deactivate" ) || ( ! wp_is_mobile() && $dxss_settings['deactDesktop'] == "deactivate" ) ) {
+			wp_enqueue_style( 'dxss-css', DXSS_URL . 'assets/dist/css/dxss-css.min.css', array(), '1.5', false );
+			wp_enqueue_script( 'wp-selected-text-searcher', $dxss_js, array( 'jquery' ), '1.5', $dxss_script_place );
+			wp_enqueue_script('jquery-mobile', DXSS_URL . 'js/jquery.mobile-1.4.5.min.js', array('jquery'));
+		}
 	}
 
 	/**
@@ -259,6 +262,18 @@ class DXSS_Share_Selection {
 		$dxss_settings['truncateChars']  = $this->dxss_sanitize_post_data( 'dxss_truncateChars' );
 		$dxss_settings['element']        = $this->dxss_sanitize_post_data( 'dxss_element' );
 		$dxss_settings['bitly_token']    = DXSS_Option_Helper::get_bitly_token( $this->dxss_sanitize_post_data( 'dxss_bitly_token' ) );
+
+		if ( isset( $_POST['dxss_deact_desktop'] ) ) {
+			$dxss_settings['deactDesktop'] = $_POST['dxss_deact_desktop'];
+		} else {
+			$dxss_settings['deactDesktop'] = 'deactivate';
+		}
+
+		if ( isset( $_POST['dxss_deact_mobile'] ) ) {
+			$dxss_settings['deactMobile'] = $_POST['dxss_deact_mobile'];
+		} else {
+			$dxss_settings['deactMobile'] = 'deactivate';
+		}
 
 		$dxss_settings['dxss_is_activate']      = 1;
 		$dxss_settings['bitly_token_encrypted'] = 1;
