@@ -310,7 +310,7 @@
 							$(this).attr('rev', getSelectionText());
 						});
 					}
-				}, 400);
+				}, 5);
             });
 
             $('img').on('error', function(e) {
