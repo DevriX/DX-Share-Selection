@@ -265,6 +265,14 @@ class DXSS_Share_Selection {
 		$dxss_settings['deactDesktop']   = $this->dxss_sanitize_post_data( 'dxss_deact_desktop' );
 		$dxss_settings['deactMobile']    = $this->dxss_sanitize_post_data( 'dxss_deact_mobile' );
 
+		if ( empty( $dxss_settings['deactDesktop'] ) ) {
+			$dxss_settings['deactDesktop'] = 'deactivate';
+		}
+
+		if ( empty( $dxss_settings['deactMobile'] ) ) {
+			$dxss_settings['deactMobile'] = 'deactivate';
+		}
+
 		$dxss_settings['dxss_is_activate']      = 1;
 		$dxss_settings['bitly_token_encrypted'] = 1;
 
