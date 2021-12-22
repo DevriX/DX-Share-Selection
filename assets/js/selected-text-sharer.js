@@ -310,12 +310,13 @@
 							$(this).attr('rev', getSelectionText());
 						});
 					}
-				}, 5);
+				}, 400);
             });
 
             $('img').on('error', function(e) {
                 e.target.style.display = 'none'
-            })
+            });
+
 			if (!isOptionsPage) {
 				$('.stsBox li').on('click', function() {
 					sUrl = $(this).children('a').attr('rel');
