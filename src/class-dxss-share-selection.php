@@ -66,7 +66,7 @@ class DXSS_Share_Selection {
 	public function dxss_plugin_actions( $links, $file ) {
 
 		if ( DXSS_BASENAME === $file ) {
-			$settings_link = '<a href="options-general.php?page=dx-share-selection">' . __( 'Settings', 'dxss' ) . '</a> ' . __( 'Support', 'dxss' ) . '</a>';
+			$settings_link = '<a href="options-general.php?page=dx-share-selection">' . __( 'Settings', 'dxss' ) . '</a>';
 			$links         = array_merge( array( $settings_link ), $links );
 		}
 
