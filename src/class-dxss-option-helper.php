@@ -90,7 +90,11 @@ class DXSS_Option_Helper {
 	public static function get_bitly_token( $bitly_token ) {
 
 		$dxss_old_settings = self::fetch_settings_data();
-		$old_token         = $dxss_old_settings['bitly_token'];
+		if ( array_key_exists( 'bitly_token', $dxss_old_settings ) ) {
+			$old_token = $dxss_old_settings['bitly_token'];
+		} else {
+			$old_token = '';
+		}
 
 		// If user have set a token, before encryption was implemented and it's not changed, encrypt the token before save.
 		if ( ! isset( $dxss_old_settings['bitly_token_encrypted'] ) && ! empty( $old_token ) && DXSS_Encryption::$dumb_token_view === $bitly_token ) {
