@@ -369,7 +369,6 @@ textarea#dxss_lists {
 .dxss-settings p {
     margin: 0;
     margin-bottom: 0.75em;
-	padding-right: 225px;
 }
 
 .dxss-settings input {
@@ -387,7 +386,7 @@ textarea#dxss_lists {
 }
 
 .dxss-settings label {
-    margin-right: 1.5em;
+	width: 245px;
 }
 
 .dxss-settings select {
@@ -436,7 +435,7 @@ textarea#dxss_lists {
 .optional-settings p {
 	position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: left;
     align-items: center;
     max-width: 450px;
 }
@@ -446,21 +445,11 @@ textarea#dxss_lists {
 }
 
 .inner-span {
-	width: 185px;
+	width: 15em;
 }
 
 section .p-with-small {
     align-items: baseline;
-}
-
-p.p-checkbox {
-    padding-right: 397px;
-}
-
-@media (max-width: 1133px) {
-	p.p-checkbox {
-		padding-right: 389px;
-	}
 }
 
 @media (max-width: 782px) {
@@ -514,9 +503,5 @@ p.p-checkbox {
 
 	.dxss-settings p {
 		padding-right: 0;
-	}
-
-	.inner-span {
-		width: 162px;
 	}
 }
