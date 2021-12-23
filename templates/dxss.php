@@ -7,7 +7,7 @@
 
 ?>
 
-<h2><img width="32" height="32" src="<?php echo esc_url( DXSS_URL ); ?>images/dx-share-selection.png" style="vertical-align: middle;"/>&nbsp;DX Share Selection <span class="smallText">v<?php echo esc_html( DXSS_VERSION ); ?></span></h2>
+<h2 class="dxss-header"><img width="32" height="32" src="<?php echo esc_url( DXSS_URL ); ?>images/dx-share-selection.png" style="vertical-align: middle;"/>&nbsp;DX Share Selection <span class="smallText header-small">v<?php echo esc_html( DXSS_VERSION ); ?></span></h2>
 <div class="wrap main-wrap">
 	<div id="leftContent">
 		<form method="post">
