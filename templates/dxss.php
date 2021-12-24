@@ -228,4 +228,8 @@
 			<?php endif; ?>
 		</div>
 	</div>
+	<div class="sidebars">
+		<?php include_once( 'sidebar-right-help.php' );?>
+		<?php include_once( 'sidebar-right-plugins.php' );?>
+	</div>
 </div>
