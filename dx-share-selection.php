@@ -44,26 +44,3 @@ require_once 'src/class-dxss-encryption.php';
 $dxss_share_selection = new DXSS_Share_Selection();
 register_activation_hook( __FILE__, array( $dxss_share_selection, 'dxss_plugin_activate' ) );
 register_deactivation_hook( __FILE__, array( $dxss_share_selection, 'dxss_plugin_deactivate' ) );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
