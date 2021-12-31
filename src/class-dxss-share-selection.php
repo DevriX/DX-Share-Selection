@@ -27,7 +27,7 @@ class DXSS_Share_Selection {
 	}
 
 	/**
-	 * WPSTS Is active check.
+	 * DXSS Is active check.
 	 *
 	 * @return int 1 or 0
 	 */
@@ -40,10 +40,17 @@ class DXSS_Share_Selection {
 	}
 
 	/**
-	 * WPSTS plugin activate.
+	 * DXSS plugin activate.
 	 */
 	public function dxss_plugin_activate() {
 		update_option( 'dxss_active', 1 );
+	}
+
+	/**
+	 * DXSS plugin deactivate.
+	 */
+	public function dxss_plugin_deactivate() {
+		update_option( 'dxss_active', 0 );
 	}
 
 	/**

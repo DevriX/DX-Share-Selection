@@ -158,12 +158,6 @@ code:hover {
 	color: #FFFFFF;
 }
 
-#wpsts_lists {
-	width: 100%;
-	font: 12px/2em "Courier New", Courier, monospace;
-	height: 150px;
-}
-
 .picker {
 	background: #FFFFFF;
 	border: 1px solid #e9e9e9;
