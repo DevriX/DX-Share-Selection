@@ -202,7 +202,7 @@ class DXSS_Share_Selection {
 			add_action( 'wp_footer', array( $this, 'dxss_jquery_plugin_activate' ) );
 			wp_enqueue_style( 'dxss-css', DXSS_URL . 'assets/dist/css/dxss-css.min.css', array(), '1.5', false );
 			wp_enqueue_script( 'wp-selected-text-searcher', $dxss_js, array( 'jquery' ), '1.5', $dxss_script_place );
-			wp_enqueue_script( 'jquery-mobile', DXSS_URL . 'js/jquery.mobile-1.4.5.min.js', array( 'jquery' ), '1.5', false );
+			wp_enqueue_script( 'jquery-mobile', DXSS_URL . 'js/jquery.mobile/jquery.mobile-1.4.5.min.js', array( 'jquery' ), '1.5', false );
 		}
 	}
 
